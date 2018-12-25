@@ -1,0 +1,12 @@
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\bin\Debug\netcoreapp2.1\EPMS.EF.deps.json
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\bin\Debug\netcoreapp2.1\EPMS.EF.dll
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\bin\Debug\netcoreapp2.1\EPMS.EF.pdb
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.Model.dll
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.Model.pdb
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.csprojAssemblyReference.cache
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.csproj.CoreCompileInputs.cache
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.AssemblyInfoInputs.cache
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.AssemblyInfo.cs
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.csproj.CopyComplete
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\obj\Debug\netcoreapp2.1\EPMS.EF.dll
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\obj\Debug\netcoreapp2.1\EPMS.EF.pdb

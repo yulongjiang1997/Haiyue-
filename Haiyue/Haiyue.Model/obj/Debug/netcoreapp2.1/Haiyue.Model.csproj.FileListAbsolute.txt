@@ -1,0 +1,8 @@
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\bin\Debug\netcoreapp2.1\Haiyue.Model.deps.json
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\bin\Debug\netcoreapp2.1\Haiyue.Model.dll
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\bin\Debug\netcoreapp2.1\Haiyue.Model.pdb
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.csproj.CoreCompileInputs.cache
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.AssemblyInfoInputs.cache
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.AssemblyInfo.cs
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.dll
+D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.pdb
