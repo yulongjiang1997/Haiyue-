@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EPMS.Model;
+using Haiyue.Model;
 using Haiyue.Model.Dto.Game;
 using Haiyue.Service.Services.GameServices;
 using Microsoft.AspNetCore.Http;

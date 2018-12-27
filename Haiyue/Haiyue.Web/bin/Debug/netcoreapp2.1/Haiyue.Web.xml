@@ -4,52 +4,6 @@
         <name>Haiyue.Web</name>
     </assembly>
     <members>
-        <member name="M:EPMS.Web.Controllers.PurchaseController.CreateAsync(EPMS.Model.Dto.Purchase.PurchaseAddOrEditDto)">
-            <summary>
-            添加订单
-            </summary>
-            <param name="model"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EPMS.Web.Controllers.PurchaseController.DeleteAsync(System.Int32)">
-            <summary>
-            删除订单
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EPMS.Web.Controllers.PurchaseController.QueryAsync(Haiyue.Model.Dto.Purchase.SelectPurchaseDto)">
-            <summary>
-            查询订单
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:EPMS.Web.Controllers.PurchaseController.EditAsync(System.Int32,EPMS.Model.Dto.Purchase.PurchaseAddOrEditDto)">
-            <summary>
-            编辑订单
-            </summary>
-            <param name="id"></param>
-            <param name="model"></param>
-            <returns></returns>
-        </member>
-        <member name="M:EPMS.Web.Controllers.PurchaseController.EditPaymentStatusAsync(System.Int32)">
-            <summary>
-            修改付款状态
-            </summary>
-            <param name="id"></param>
-            <returns></returns>
-        </member>
-        <member name="T:EPMS.Web.Startup">
-            <summary>
-            Startup类
-            </summary>
-        </member>
-        <member name="M:EPMS.Web.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
-            <summary>
-            构造函数
-            </summary>
-            <param name="configuration"></param>
-        </member>
         <member name="T:Haiyue.Web.Controllers.CurrencyController">
             <summary>
             汇率管理
@@ -152,6 +106,41 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Haiyue.Web.Controllers.PurchaseController.CreateAsync(Haiyue.Model.Dto.Purchase.PurchaseAddOrEditDto)">
+            <summary>
+            添加订单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.PurchaseController.DeleteAsync(System.Int32)">
+            <summary>
+            删除订单
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.PurchaseController.QueryAsync(Haiyue.Model.Dto.Purchase.SelectPurchaseDto)">
+            <summary>
+            查询订单
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.PurchaseController.EditAsync(System.Int32,Haiyue.Model.Dto.Purchase.PurchaseAddOrEditDto)">
+            <summary>
+            编辑订单
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.PurchaseController.EditPaymentStatusAsync(System.Int32)">
+            <summary>
+            修改付款状态
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Haiyue.Web.Controllers.UserController.GetJurisdictionType">
             <summary>
             获得所有权限名称
@@ -185,6 +174,17 @@
             </summary>
             <param name="model"></param>
             <returns></returns>
+        </member>
+        <member name="T:Haiyue.Web.Startup">
+            <summary>
+            Startup类
+            </summary>
+        </member>
+        <member name="M:Haiyue.Web.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="configuration"></param>
         </member>
     </members>
 </doc>

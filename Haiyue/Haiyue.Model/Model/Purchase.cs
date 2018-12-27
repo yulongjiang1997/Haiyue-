@@ -1,4 +1,4 @@
-﻿using EPMS.Model.Enums;
+﻿using Haiyue.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +8,13 @@ namespace Haiyue.Model.Model
 {
     public class Purchase:BaseModel
     {
+        /// <summary>
+        /// 游戏外键ID
+        /// </summary>
         public int GameId { get; set; }
+
+        [ForeignKey("GameId")]
+        public virtual Game Game { get; set; }
 
         /// <summary>
         /// 订单日期
@@ -46,9 +52,15 @@ namespace Haiyue.Model.Model
         public double TotalPrice { get; set; }
 
         /// <summary>
-        /// 币种
+        /// 币种外键ID
         /// </summary>
         public int CurrencyId { get; set; }
+
+        /// <summary>
+        /// 币种外键
+        /// </summary>
+        [ForeignKey("CurrencyId")]
+        public Currency Currency { get; set; }
 
         /// <summary>
         /// 实收
@@ -56,7 +68,7 @@ namespace Haiyue.Model.Model
         public double RealIncome { get; set; }
 
         /// <summary>
-        /// 实收
+        /// 实收RMB
         /// </summary>
         public double RealIncomeRMB { get; set; }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EPMS.Model;
+using Haiyue.Model;
 using Haiyue.Model.Dto.Currencys;
 using Haiyue.Service.Services.CurrencyServices;
 using Microsoft.AspNetCore.Http;

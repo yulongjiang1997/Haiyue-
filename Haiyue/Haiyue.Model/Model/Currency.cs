@@ -12,5 +12,7 @@ namespace Haiyue.Model.Model
 
         public double ExchangeRate { get; set; }
        
+
+        public ICollection<Purchase> Purchase { get; set; }
     }
 }

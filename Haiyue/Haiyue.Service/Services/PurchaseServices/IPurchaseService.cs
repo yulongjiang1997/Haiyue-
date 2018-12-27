@@ -1,5 +1,5 @@
-﻿using EPMS.Model.Dto.Purchase;
-using EPMS.Model.Enums;
+﻿using Haiyue.Model.Dto.Purchase;
+using Haiyue.Model.Enums;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Purchase;
 using Haiyue.Model.Model;
@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EPMS.Service.Services.PurchaseServices
+namespace Haiyue.Service.Services.PurchaseServices
 {
     public interface IPurchaseService
     {

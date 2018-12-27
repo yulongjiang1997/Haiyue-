@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EPMS.Model.Enums
+namespace Haiyue.Model.Enums
 {
     public enum IncumbencyStatusType
     {

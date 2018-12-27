@@ -1,52 +1,36 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
-using EPMS.Model.Dto.Purchase;
-using EPMS.Model.Enums;
-using Haiyue.EF;
-using Haiyue.Model.Dto;
+using AutoMapper;
 using Haiyue.Model.Dto.Purchase;
+using Haiyue.Model.Enums;
+using Haiyue.HYEF;
+using Haiyue.Model.Dto;
 using Haiyue.Model.Model;
-using Haiyue.Service;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
-namespace EPMS.Service.Services.PurchaseServices
+namespace Haiyue.Service.Services.PurchaseServices
 {
     public class PurchaseService : IPurchaseService
     {
         private readonly HYContext _context;
+        private readonly IMapper _mapper;
 
-        public PurchaseService(HYContext context)
+        public PurchaseService(HYContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<bool> CreateAsync(PurchaseAddOrEditDto model)
         {
-            var currency = await _context.Currencys.FirstOrDefaultAsync(i=>i.Id==model.Currency);
-            if(currency!=null)
+            var currency = await _context.Currencys.FirstOrDefaultAsync(i => i.Id == model.CurrencyId);
+            if (currency != null)
             {
-                _context.Purchases.Add(new Purchase()
-                {
-                    CreateTime = DateTime.Now,
-                    CurrencyId = model.Currency,
-                    GameId = model.GameId,
-                    LastUpTime = DateTime.Now,
-                    Number = model.Number,
-                    OrderDate = model.OrderDate,
-                    OrderNumber = model.OrderNumber,
-                    PaymentAccount = model.PaymentAccount,
-                    PaymentStatus = model.PaymentStatus,
-                    RealIncome = model.RealIncome,
-                    Remarks = model.Remarks,
-                    ServerName = model.ServerName,
-                    SupplierPhone = model.SupplierPhone,
-                    TotalNumber = model.TotalNumber,
-                    TotalPrice = model.TotalPrice,
-                    UnitPrice = model.UnitPrice,
-                    Handler = model.Handler,
-                    RealIncomeRMB = model.RealIncome * currency.ExchangeRate
-                });
+                var purchases = _mapper.Map<Purchase>(model);
+                purchases.RealIncomeRMB = model.RealIncome * currency.ExchangeRate;
+                _context.Purchases.Add(purchases);
             }
             else
             {
@@ -68,24 +52,10 @@ namespace EPMS.Service.Services.PurchaseServices
         public async Task<bool> EditAsync(int id, PurchaseAddOrEditDto model)
         {
             var result = await _context.Purchases.FirstOrDefaultAsync(i => i.Id == id);
-            var currency = await _context.Currencys.FirstOrDefaultAsync(i => i.Id == model.Currency);
+            var currency = await _context.Currencys.FirstOrDefaultAsync(i => i.Id == model.CurrencyId);
             if (result != null)
             {
-                result.CurrencyId = model.Currency;
-                result.GameId = model.GameId;
-                result.LastUpTime = DateTime.Now;
-                result.Number = model.Number;
-                result.OrderDate = model.OrderDate;
-                result.OrderNumber = model.OrderNumber;
-                result.PaymentAccount = model.PaymentAccount;
-                result.PaymentStatus = model.PaymentStatus;
-                result.RealIncome = model.RealIncome;
-                result.Remarks = model.Remarks;
-                result.ServerName = model.ServerName;
-                result.SupplierPhone = model.SupplierPhone;
-                result.TotalNumber = model.TotalNumber;
-                result.TotalPrice = model.TotalPrice;
-                result.UnitPrice = model.UnitPrice;
+                _mapper.Map(model, result);
                 result.RealIncomeRMB = model.RealIncome * currency.ExchangeRate;
             }
             return await _context.SaveChangesAsync() > 0;
@@ -98,43 +68,63 @@ namespace EPMS.Service.Services.PurchaseServices
             {
                 purchase.PaymentStatus = PaymentStatusType.AlreadyPaid;
             }
-           return await _context.SaveChangesAsync() > 0;
+            return await _context.SaveChangesAsync() > 0;
         }
 
         public async Task<ReturnPaginSelectDto<ReturnPuurchaseDto>> QueryPaginAsync(SelectPurchaseDto model)
         {
             var result = new ReturnPaginSelectDto<ReturnPuurchaseDto>();
-            var purchases = from p in _context.Purchases
-                            join g in _context.Games on p.GameId equals g.Id
-                            join c in _context.Currencys on p.CurrencyId equals c.Id
-                            select new ReturnPuurchaseDto()
-                            {
-                                CreateTime = p.CreateTime,
-                                CurrencyName = c.Name,
-                                OrderNumber = p.OrderNumber,
-                                GameName = g.Name,
-                                Id = p.Id,
-                                Number = p.Number,
-                                OrderDate = p.OrderDate,
-                                PaymentAccount = p.PaymentAccount,
-                                PaymentStatus = p.PaymentStatus,
-                                RealIncome = p.RealIncome,
-                                Remarks = p.Remarks,
-                                ServerName = p.ServerName,
-                                SupplierPhone = p.SupplierPhone,
-                                TotalNumber = p.TotalNumber,
-                                TotalPrice = p.TotalPrice,
-                                UnitPrice = p.UnitPrice,
-                                Handler = p.Handler,
-                                RealIncomeRMB = p.RealIncomeRMB
-                            };
+            var purchases = _context.Purchases.Include(i => i.Game).Include(i => i.Currency).AsNoTracking();
 
-           
+
+            #region 高级筛选
+            //筛选所选游戏数据
+            if (model.GameId.HasValue)
+            {
+                purchases = purchases.Where(i => i.Game.Id == model.GameId);
+            }
+
+            //筛选所选付款状态
+            if (model.PaymentStatus.HasValue)
+            {
+                purchases = purchases.Where(i => i.PaymentStatus == model.PaymentStatus);
+            }
+
+            //筛选符合输入的订单号的数据
+            if (!string.IsNullOrEmpty(model.OrderNumber))
+            {
+                purchases = purchases.Where(i => EF.Functions.Like(i.OrderNumber, $"{model.OrderNumber}"));
+            }
+
+            //筛选符合输入的服务器名称的数据
+            if (!string.IsNullOrEmpty(model.ServerName))
+            {
+                purchases = purchases.Where(i => EF.Functions.Like(i.ServerName, $"{model.ServerName}"));
+            }
+
+            //筛选输入的供应商联系方式的数据
+            if (!string.IsNullOrEmpty(model.SupplierPhone))
+            {
+                purchases = purchases.Where(i => EF.Functions.Like(i.SupplierPhone, $"{model.SupplierPhone}"));
+            }
+
+            //开始时间
+            if(model.BeginTime.HasValue)
+            {
+                purchases = purchases.Where(i => i.CreateTime >= model.BeginTime);
+            }
+
+            //结束时间
+            if (model.EndTime.HasValue)
+            {
+                purchases = purchases.Where(i => i.CreateTime <= model.EndTime);
+            }
+            #endregion
 
             result.Total = await purchases.CountAsync();
             result.PageNumber = model.PageNumber;
             result.Amount = model.Amount;
-            result.Items = await purchases.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync();
+            result.Items = _mapper.Map<List<ReturnPuurchaseDto>>(await purchases.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync());
 
             return result;
         }

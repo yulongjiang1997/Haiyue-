@@ -1,7 +1,7 @@
 ﻿using Haiyue.Model.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Haiyue.EF
+namespace Haiyue.HYEF
 {
     public class HYContext : DbContext
     {

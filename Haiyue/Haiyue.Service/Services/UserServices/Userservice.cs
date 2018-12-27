@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using EPMS.Model.Enums;
-using Haiyue.EF;
+using Haiyue.Model.Enums;
+using Haiyue.HYEF;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Users;
 using Haiyue.Model.Model;
@@ -49,7 +49,7 @@ namespace Haiyue.Service.Services.UserServices
             var user = await _context.Users.FirstOrDefaultAsync(i => i.Id == id);
             if (user != null && await ChekeUserOnly(model.Name, model.IdNumber, id))
             {
-                user = _mapper.Map<User>(model);
+               _mapper.Map(model,user);
                 user.PassWored = MD5Help.MD5Encrypt32(user.PassWored);
                 user.LastUpTime = DateTime.Now;
             }

@@ -8,9 +8,9 @@ namespace Haiyue.Model.Dto
     {
         public string KeyWord { get; set; }
 
-        public DateTime BeginTime { get; set; }
+        public DateTime? BeginTime { get; set; }
 
-        public DateTime EndTime { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// 第几页

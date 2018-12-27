@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EPMS.Model;
-using EPMS.Model.Dto.Purchase;
+using Haiyue.Model;
+using Haiyue.Model.Dto.Purchase;
 using Haiyue.Model.Model;
-using EPMS.Service.Services.PurchaseServices;
+using Haiyue.Service.Services.PurchaseServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Haiyue.Model.Dto.Purchase;
 using Haiyue.Model.Dto;
 
-namespace EPMS.Web.Controllers
+namespace Haiyue.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

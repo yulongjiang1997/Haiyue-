@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EPMS.Model.Dto.Admin
+namespace Haiyue.Model.Dto.Admin
 {
     public class LoginDto
     {

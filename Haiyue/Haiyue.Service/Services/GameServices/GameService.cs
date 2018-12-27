@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using Haiyue.EF;
+using Haiyue.HYEF;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Game;
 using Haiyue.Model.Model;
@@ -44,7 +44,7 @@ namespace Haiyue.Service.Services.GameServices
             var game = await _context.Games.FirstOrDefaultAsync(i => i.Id == id);
             if (game != null)
             {
-                game.Name = model.Name;
+                _mapper.Map(model, game);
                 game.LastUpTime = DateTime.Now;
             }
             return await _context.SaveChangesAsync() > 0;

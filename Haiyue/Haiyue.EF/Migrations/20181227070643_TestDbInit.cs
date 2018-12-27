@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Haiyue.EF.Migrations
+namespace Haiyue.HYEF.Migrations
 {
-    public partial class UpdateUserTable1 : Migration
+    public partial class TestDbInit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,7 @@ namespace Haiyue.EF.Migrations
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
                     Name = table.Column<string>(nullable: true),
+                    Symbol = table.Column<string>(nullable: true),
                     ExchangeRate = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
@@ -62,7 +63,7 @@ namespace Haiyue.EF.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
-                    GameId = table.Column<int>(nullable: false),
+                    GameId = table.Column<int>(nullable: true),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     OrderNumber = table.Column<string>(nullable: true),
                     ServerName = table.Column<string>(nullable: true),
@@ -82,6 +83,12 @@ namespace Haiyue.EF.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Purchases", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Purchases_Games_GameId",
+                        column: x => x.GameId,
+                        principalTable: "Games",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -118,6 +125,11 @@ namespace Haiyue.EF.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Purchases_GameId",
+                table: "Purchases",
+                column: "GameId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_PositionId",
                 table: "Users",
                 column: "PositionId");
@@ -129,13 +141,13 @@ namespace Haiyue.EF.Migrations
                 name: "Currencys");
 
             migrationBuilder.DropTable(
-                name: "Games");
-
-            migrationBuilder.DropTable(
                 name: "Purchases");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Games");
 
             migrationBuilder.DropTable(
                 name: "Positions");

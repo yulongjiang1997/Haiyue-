@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EPMS.Model
+namespace Haiyue.Model
 {
     public class ReturnData<T>
     {

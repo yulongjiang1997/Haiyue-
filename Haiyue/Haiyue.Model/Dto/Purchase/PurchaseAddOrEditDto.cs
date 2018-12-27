@@ -1,10 +1,10 @@
-﻿using EPMS.Model.Enums;
+﻿using Haiyue.Model.Enums;
 using Haiyue.Model.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace EPMS.Model.Dto.Purchase
+namespace Haiyue.Model.Dto.Purchase
 {
     public class PurchaseAddOrEditDto
     {
@@ -53,7 +53,7 @@ namespace EPMS.Model.Dto.Purchase
         /// <summary>
         /// 币种
         /// </summary>
-        public int Currency { get; set; }
+        public int CurrencyId { get; set; }
 
         /// <summary>
         /// 实收

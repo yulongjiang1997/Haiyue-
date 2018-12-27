@@ -6,13 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace EPMS.Web.ActionFilter
+namespace Haiyue.Web.ActionFilter
 {
     public class ExceptionFiltering : IExceptionFilter
     {
         public void OnException(ExceptionContext context)
         {
-            context.Result =  new ApplicationErrorResult("捕获到异常信息"+context.Exception.Message);
+            context.Result =  new ApplicationErrorResult("Error:"+context.Exception.Message);
             context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             context.ExceptionHandled = true;
         }

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using AutoMapper;
-using EPMS.Service.Services.PurchaseServices;
-using EPMS.Web.ActionFilter;
-using Haiyue.EF;
+using Haiyue.Service.Services.PurchaseServices;
+using Haiyue.Web.ActionFilter;
+using Haiyue.HYEF;
 using Haiyue.Service.Services.CurrencyServices;
 using Haiyue.Service.Services.GameServices;
 using Haiyue.Service.Services.PositionServices;
@@ -17,7 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace EPMS.Web
+namespace Haiyue.Web
 {
     /// <summary>
     /// Startup类
@@ -69,8 +69,8 @@ namespace EPMS.Web
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, "Haiyue.Web.xml");
                 options.IncludeXmlComments(xmlPath);
             });
-            //services.AddDbContextPool<HYContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
-            services.AddDbContextPool<HYContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TestSqlServer")));//测试数据库
+            services.AddDbContextPool<HYContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
+            //services.AddDbContextPool<HYContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TestSqlServer")));//测试数据库
             services.AddMvc(options => { options.Filters.Add(typeof(PermissionActionFillter)); });//权限检查
             services.AddMvc(options => { options.Filters.Add(typeof(ExceptionFiltering)); });
 
