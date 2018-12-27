@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace EPMS.Model.Model
+namespace Haiyue.Model.Model
 {
     /// <summary>
     /// 部门

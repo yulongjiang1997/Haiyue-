@@ -1,8 +1,13 @@
 ﻿using System;
 using System.IO;
-using EF;
+using AutoMapper;
 using EPMS.Service.Services.PurchaseServices;
 using EPMS.Web.ActionFilter;
+using Haiyue.EF;
+using Haiyue.Service.Services.CurrencyServices;
+using Haiyue.Service.Services.GameServices;
+using Haiyue.Service.Services.PositionServices;
+using Haiyue.Service.Services.UserServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -33,13 +38,28 @@ namespace EPMS.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //配置跨域
+            services.AddCors(options =>
+            {
+                options.AddPolicy("allow_all", builder =>
+                {
+                    builder.AllowAnyOrigin() //允许任何来源的主机访问
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials();//指定处理cookie
+                });
+            });
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddAutoMapper();//注册Automapper
+
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new Info
                 {
                     Version = "v1",
-                    Title = "EPMS API",
+                    Title = "Haiyue API",
                     Description = "The All Web API List",
                     TermsOfService = "None",
                 });
@@ -49,12 +69,17 @@ namespace EPMS.Web
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, "Haiyue.Web.xml");
                 options.IncludeXmlComments(xmlPath);
             });
-            services.AddDbContextPool<EPMSContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
-            //services.AddMvc(options => { options.Filters.Add(typeof(PermissionActionFillter)); });//权限检查
+            //services.AddDbContextPool<HYContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
+            services.AddDbContextPool<HYContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TestSqlServer")));//测试数据库
+            services.AddMvc(options => { options.Filters.Add(typeof(PermissionActionFillter)); });//权限检查
             services.AddMvc(options => { options.Filters.Add(typeof(ExceptionFiltering)); });
 
             #region 依赖注入添加
             services.AddTransient<IPurchaseService, PurchaseService>();
+            services.AddTransient<IUserservice, Userservice>();
+            services.AddTransient<IGameService, GameService>();
+            services.AddTransient<ICurrencyService, CurrencyService>();
+            services.AddTransient<IPositionService, PositionService>();
             services.AddTransient<BaseService>();
             #endregion
         }
@@ -70,6 +95,9 @@ namespace EPMS.Web
             {
                 app.UseHsts();
             }
+
+            //启动跨域
+            app.UseCors("allow_all");
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

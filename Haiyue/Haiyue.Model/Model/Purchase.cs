@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace EPMS.Model.Model
+namespace Haiyue.Model.Model
 {
     public class Purchase:BaseModel
     {
-        //[ForeignKey("GameId")]
-        public string Game { get; set; }
+        public int GameId { get; set; }
 
         /// <summary>
         /// 订单日期
@@ -49,12 +48,17 @@ namespace EPMS.Model.Model
         /// <summary>
         /// 币种
         /// </summary>
-        public CurrencyType Currency { get; set; }
+        public int CurrencyId { get; set; }
 
         /// <summary>
         /// 实收
         /// </summary>
         public double RealIncome { get; set; }
+
+        /// <summary>
+        /// 实收
+        /// </summary>
+        public double RealIncomeRMB { get; set; }
 
         /// <summary>
         /// 供应商联系方式
@@ -75,5 +79,10 @@ namespace EPMS.Model.Model
         /// 备注
         /// </summary>
         public string Remarks { get; set; }
+
+        /// <summary>
+        /// 操作人
+        /// </summary>
+        public string Handler { get; set; }
     }
 }

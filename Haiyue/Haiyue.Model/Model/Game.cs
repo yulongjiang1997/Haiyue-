@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace EPMS.Model.Model
+namespace Haiyue.Model.Model
 {
     public class Game:BaseModel
     {
         public string Name { get; set; }
-
+        
         /// <summary>
-        /// 采购导航
+        /// 订单导航
         /// </summary>
-        public virtual ICollection<Purchase> Purchases { get; set; }
+        public  ICollection<Purchase> Purchase { get; set; }
     }
 }

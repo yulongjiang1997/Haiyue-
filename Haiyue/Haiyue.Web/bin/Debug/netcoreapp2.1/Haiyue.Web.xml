@@ -6,22 +6,37 @@
     <members>
         <member name="M:EPMS.Web.Controllers.PurchaseController.CreateAsync(EPMS.Model.Dto.Purchase.PurchaseAddOrEditDto)">
             <summary>
-            添加
+            添加订单
             </summary>
             <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:EPMS.Web.Controllers.PurchaseController.DeleteAsync(System.Int32)">
             <summary>
-            删除
+            删除订单
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:EPMS.Web.Controllers.PurchaseController.QueryAsync">
+        <member name="M:EPMS.Web.Controllers.PurchaseController.QueryAsync(Haiyue.Model.Dto.Purchase.SelectPurchaseDto)">
             <summary>
-            查询
+            查询订单
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.PurchaseController.EditAsync(System.Int32,EPMS.Model.Dto.Purchase.PurchaseAddOrEditDto)">
+            <summary>
+            编辑订单
+            </summary>
+            <param name="id"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPMS.Web.Controllers.PurchaseController.EditPaymentStatusAsync(System.Int32)">
+            <summary>
+            修改付款状态
+            </summary>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="T:EPMS.Web.Startup">
@@ -34,6 +49,142 @@
             构造函数
             </summary>
             <param name="configuration"></param>
+        </member>
+        <member name="T:Haiyue.Web.Controllers.CurrencyController">
+            <summary>
+            汇率管理
+            </summary>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.CurrencyController.CreateAsync(Haiyue.Model.Dto.Currencys.CurrencyAddOrEditDto)">
+            <summary>
+            添加汇率
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.CurrencyController.DeleteAsync(System.Int32)">
+            <summary>
+            删除汇率
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.CurrencyController.EditAsync(System.Int32,System.Double)">
+            <summary>
+            修改汇率
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.CurrencyController.QueryPaginAsync(Haiyue.Model.Dto.Currencys.SelectCurrencyDto)">
+            <summary>
+            分页查询汇率
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.CurrencyController.QueryAllAsync">
+            <summary>
+            查询所有货币
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.GameController.CreateAsync(Haiyue.Model.Dto.Game.GameAddOrEditDto)">
+            <summary>
+            添加游戏
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.GameController.DeleteAsync(System.Int32)">
+            <summary>
+            删除游戏
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.GameController.EditAsync(System.Int32,Haiyue.Model.Dto.Game.GameAddOrEditDto)">
+            <summary>
+            修改游戏
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.GameController.QueryPaginAsync(Haiyue.Model.Dto.Game.SelectGameDto)">
+            <summary>
+            分页查询游戏
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.GameController.QueryAsync">
+            <summary>
+            查询所有游戏
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.PositionController.CreateAsync(Haiyue.Model.Dto.Positions.PositionAddOrEditDto)">
+            <summary>
+            添加职位
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.PositionController.DeleteAsync(System.Int32)">
+            <summary>
+            删除职位
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.PositionController.EditAsync(System.Int32,Haiyue.Model.Dto.Positions.PositionAddOrEditDto)">
+            <summary>
+            修改职位
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.PositionController.QueryPaginAsync(Haiyue.Model.Dto.Positions.SelectPositionDto)">
+            <summary>
+            分页查询职位
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.UserController.GetJurisdictionType">
+            <summary>
+            获得所有权限名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.UserController.CreateAsync(Haiyue.Model.Dto.Users.UserAddOrEditDto)">
+            <summary>
+            添加用户
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.UserController.DeleteAsync(System.Int32)">
+            <summary>
+            删除用户
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.UserController.EditAsync(System.Int32,Haiyue.Model.Dto.Users.UserAddOrEditDto)">
+            <summary>
+            编辑用户
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.UserController.QueryAsync(Haiyue.Model.Dto.Users.SelectUserDto)">
+            <summary>
+            查询用户
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

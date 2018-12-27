@@ -11,6 +11,12 @@ namespace EPMS.Web.ActionFilter
 {
     public class PermissionActionFillter : ActionFilterAttribute
     {
+
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+
+        }
+
         ////private readonly IAdminService _service;
         ////public  PermissionActionFillter(IAdminService service)
         ////{

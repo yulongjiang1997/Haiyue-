@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("EPMS.EF")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Haiyue.EF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("EPMS.EF")]
-[assembly: System.Reflection.AssemblyTitleAttribute("EPMS.EF")]
+[assembly: System.Reflection.AssemblyProductAttribute("Haiyue.EF")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Haiyue.EF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。

@@ -1,4 +1,5 @@
 ﻿using EPMS.Model.Enums;
+using Haiyue.Model.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,12 @@ namespace EPMS.Model.Dto.Purchase
 {
     public class PurchaseAddOrEditDto
     {
-        public string Game { get; set; }
+        public int GameId { get; set; }
+
+        /// <summary>
+        /// 操作人
+        /// </summary>
+        public string Handler { get; set; }
 
         /// <summary>
         /// 订单日期
@@ -47,7 +53,7 @@ namespace EPMS.Model.Dto.Purchase
         /// <summary>
         /// 币种
         /// </summary>
-        public CurrencyType Currency { get; set; }
+        public int Currency { get; set; }
 
         /// <summary>
         /// 实收

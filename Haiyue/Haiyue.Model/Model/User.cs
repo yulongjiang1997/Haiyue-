@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace EPMS.Model.Model
+namespace Haiyue.Model.Model
 {
     public class User : BaseModel
     {
@@ -26,8 +26,7 @@ namespace EPMS.Model.Model
         /// <summary>
         /// 职位外键ID
         /// </summary>
-        [ForeignKey("PositionId")]
-        public Position Position { get; set; }
+        public int PositionId { get; set; }
 
         /// <summary>
         /// 工号
@@ -68,5 +67,10 @@ namespace EPMS.Model.Model
         /// 备注
         /// </summary>
         public string Remarks { get; set; }
+
+        /// <summary>
+        /// 登录时间
+        /// </summary>
+        public DateTime? LoginTime { get; set; }
     }
 }

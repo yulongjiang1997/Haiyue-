@@ -6,3 +6,12 @@ D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.
 D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.AssemblyInfo.cs
 D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.dll
 D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.Model\bin\Debug\netcoreapp2.1\Haiyue.Model.deps.json
+F:\Projects\Haiyue\Haiyue\Haiyue.Model\bin\Debug\netcoreapp2.1\Haiyue.Model.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.Model\bin\Debug\netcoreapp2.1\Haiyue.Model.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.csproj.CoreCompileInputs.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.AssemblyInfoInputs.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.AssemblyInfo.cs
+F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.csprojAssemblyReference.cache

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EPMS.Model.Model
+namespace Haiyue.Model.Model
 {
     /// <summary>
     /// 职位
@@ -15,12 +15,6 @@ namespace EPMS.Model.Model
         /// <summary>
         /// 员工信息导航
         /// </summary>
-        public virtual ICollection<User> Users { get; set; }
-
-        /// <summary>
-        /// 关联部门ID外键
-        /// </summary>
-        [ForeignKey("DepartmentId")]
-        public Department Department { get; set; }
+        public virtual ICollection<User> User { get; set; }
     }
 }

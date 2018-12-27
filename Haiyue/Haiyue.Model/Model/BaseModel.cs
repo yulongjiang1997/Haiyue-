@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace EPMS.Model.Model
+namespace Haiyue.Model.Model
 {
     public class BaseModel
     {
@@ -17,6 +17,7 @@ namespace EPMS.Model.Model
         public BaseModel()
         {
             CreateTime = DateTime.Now;
+            LastUpTime = DateTime.Now;
         }
     }
 }

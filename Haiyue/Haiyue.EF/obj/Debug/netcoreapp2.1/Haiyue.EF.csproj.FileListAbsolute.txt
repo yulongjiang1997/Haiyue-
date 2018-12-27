@@ -10,3 +10,15 @@ D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.
 D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.csproj.CopyComplete
 D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\obj\Debug\netcoreapp2.1\EPMS.EF.dll
 D:\projects\HaiyueProjects\企业后台\EnterprisePersonnelManagerSystem\Haiyue.EF\obj\Debug\netcoreapp2.1\EPMS.EF.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.Model.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.Model.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.csprojAssemblyReference.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.csproj.CoreCompileInputs.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.AssemblyInfoInputs.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.AssemblyInfo.cs
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.csproj.CopyComplete
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.EF.deps.json
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.EF.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.EF.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.EF.pdb

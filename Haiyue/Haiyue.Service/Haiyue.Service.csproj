@@ -9,4 +9,9 @@
     <ProjectReference Include="..\Haiyue.Model\Haiyue.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+  </ItemGroup>
+
 </Project>

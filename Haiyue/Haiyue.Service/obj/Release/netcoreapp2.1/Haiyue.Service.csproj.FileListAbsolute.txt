@@ -1,0 +1,14 @@
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Release\netcoreapp2.1\Haiyue.Service.deps.json
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Release\netcoreapp2.1\Haiyue.Service.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Release\netcoreapp2.1\Haiyue.Service.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Release\netcoreapp2.1\Haiyue.EF.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Release\netcoreapp2.1\Haiyue.Model.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Release\netcoreapp2.1\Haiyue.EF.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Release\netcoreapp2.1\Haiyue.Model.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Release\netcoreapp2.1\Haiyue.Service.csprojAssemblyReference.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Release\netcoreapp2.1\Haiyue.Service.csproj.CoreCompileInputs.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Release\netcoreapp2.1\Haiyue.Service.AssemblyInfoInputs.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Release\netcoreapp2.1\Haiyue.Service.AssemblyInfo.cs
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Release\netcoreapp2.1\Haiyue.Service.csproj.CopyComplete
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Release\netcoreapp2.1\Haiyue.Service.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Release\netcoreapp2.1\Haiyue.Service.pdb
