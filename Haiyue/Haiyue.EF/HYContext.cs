@@ -24,5 +24,17 @@ namespace Haiyue.HYEF
         public DbSet<Currency> Currencys  { get; set; }
 
         public DbSet<NoteBook> NoteBooks { get; set; }
+
+        public DbSet<TaskChangeLog> TaskChangeLogss { get; set; }
+
+        public DbSet<TaskList> TaskLists { get; set; }
+
+        public DbSet<TaskStatusLog> TaskStatusLogss { get; set; }
+
+        public DbSet<Expenditure> Expenditures { get; set; }
+
+        public DbSet<ExpenditureType> ExpenditureTypes { get; set; }
+
+
     }
 }

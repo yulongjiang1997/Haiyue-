@@ -10,6 +10,9 @@ using System.Text;
 using Haiyue.Model.Dto.Currencys;
 using Haiyue.Model.Dto.NoteBooks;
 using Haiyue.Model.Dto.Departments;
+using Haiyue.Model.Dto.TaskLists;
+using Haiyue.Model.Dto.Expenditures;
+using Haiyue.Model.Dto.Expenditures.ExpenditureTypes;
 
 namespace Haiyue.Service
 {
@@ -39,6 +42,18 @@ namespace Haiyue.Service
             CreateMap<DepartmentAddOrEditDto, Department>().ReverseMap();
             CreateMap<ReturnDepartmentDto, Department>().ReverseMap();
 
+            CreateMap<AddOrEditTaskListDto, TaskList>().ReverseMap();
+            CreateMap<AddOrEditTaskListDto, TaskChangeLog>().ReverseMap();
+            CreateMap<ReturnTaskChangeLogDto, TaskChangeLog>().ReverseMap().ForMember(o => o.EditTime, op => op.MapFrom(a => a.CreateTime));
+            CreateMap<ReturnTaskListDto, TaskList>().ReverseMap();
+            CreateMap<ReturnTaskStatueLogDto, TaskStatusLog>().ReverseMap().ForMember(o => o.EditTime, op => op.MapFrom(a => a.CreateTime));
+            CreateMap<AddTaskStatusLogDto, TaskStatusLog>().ReverseMap();
+            
+            CreateMap<AddOrEditExpenditureDto, Expenditure > ().ReverseMap();
+            CreateMap<ReturnExpenditureDto, Expenditure > ().ReverseMap().ForMember(o => o.ExpenditureType, op => op.MapFrom(a => a.ExpenditureType.Name));
+
+            CreateMap<AddOrEditExpeditureTypeDto, ExpenditureType>().ReverseMap();
+            CreateMap<ReturnJurisdictionTypeDto, ExpenditureType>().ReverseMap();
         }
     }
 }

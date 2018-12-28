@@ -18,6 +18,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
 using Haiyue.Service.Services.NoteBookServices;
 using Haiyue.Service.Services.DepartmentServices;
+using Haiyue.Service.Services.TaskListServices;
+using Haiyue.Service.Services.ExpenditureServices;
+using Haiyue.Service.Services.ExpenditureServices.ExpenditureTypeServices;
 
 namespace Haiyue.Web
 {
@@ -84,6 +87,9 @@ namespace Haiyue.Web
             services.AddTransient<IPositionService, PositionService>();
             services.AddTransient<INoteBookService, NoteBookService>();
             services.AddTransient<IDepartmentService, DepartmentService>();
+            services.AddTransient<ITaskListService, TaskListService>();
+            services.AddTransient<IExpenditureService, ExpenditureService>();
+            services.AddTransient<IExpenditureTypeService, ExpenditureTypeService>();
             services.AddTransient<BaseService>();
             #endregion
         }

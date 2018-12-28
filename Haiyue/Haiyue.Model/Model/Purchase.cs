@@ -95,6 +95,9 @@ namespace Haiyue.Model.Model
         /// <summary>
         /// 操作人
         /// </summary>
-        public string Handler { get; set; }
+        public int HandlerId { get; set; }
+
+        [ForeignKey("HandlerId")]
+        public User User { get; set; }
     }
 }

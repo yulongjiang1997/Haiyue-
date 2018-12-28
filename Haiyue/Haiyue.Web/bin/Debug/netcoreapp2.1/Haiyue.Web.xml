@@ -71,6 +71,55 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Haiyue.Web.Controllers.ExpenditureController.CreateAsync(Haiyue.Model.Dto.Expenditures.AddOrEditExpenditureDto)">
+            <summary>
+            添加支出
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.ExpenditureController.DeleteAsync(System.Int32)">
+            <summary>
+            删除支出
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.ExpenditureController.EditAsync(System.Int32,Haiyue.Model.Dto.Expenditures.AddOrEditExpenditureDto)">
+            <summary>
+            修改支出
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.ExpenditureController.QueryPaginAsync(Haiyue.Model.Dto.Expenditures.SelectExpenditureDto)">
+            <summary>
+            分页查询支出
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.ExpenditureTypeController.CreateAsync(Haiyue.Model.Dto.Expenditures.ExpenditureTypes.AddOrEditExpeditureTypeDto)">
+            <summary>
+            添加支出类型
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.ExpenditureTypeController.DeleteAsync(System.Int32)">
+            <summary>
+            删除支出类型
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.ExpenditureTypeController.QueryPaginAsync(Haiyue.Model.Dto.Expenditures.ExpenditureTypes.SelectExpeditureTypeDto)">
+            <summary>
+            分页查询支出类型
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:Haiyue.Web.Controllers.GameController.CreateAsync(Haiyue.Model.Dto.Game.GameAddOrEditDto)">
             <summary>
             添加游戏
@@ -195,6 +244,41 @@
             修改付款状态
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.TaskListController.CreateAsync(Haiyue.Model.Dto.TaskLists.AddOrEditTaskListDto)">
+            <summary>
+            添加任务
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.TaskListController.DeleteAsync(System.Int32)">
+            <summary>
+            删除任务
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.TaskListController.EditAsync(System.Int32,Haiyue.Model.Dto.TaskLists.AddOrEditTaskListDto)">
+            <summary>
+            修改任务
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.TaskListController.EditTaskStatus(System.Int32,Haiyue.Model.Dto.TaskLists.AddTaskStatusLogDto)">
+            <summary>
+            修改任务状态
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.TaskListController.QueryPaginAsync(Haiyue.Model.Dto.TaskLists.SelectTaskListDto)">
+            <summary>
+            分页查询任务
+            </summary>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:Haiyue.Web.Controllers.UserController.GetJurisdictionType">

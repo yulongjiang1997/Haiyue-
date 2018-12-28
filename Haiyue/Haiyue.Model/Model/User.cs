@@ -75,5 +75,8 @@ namespace Haiyue.Model.Model
         /// 登录时间
         /// </summary>
         public DateTime? LoginTime { get; set; }
+        
+
+        public ICollection<Expenditure> Expenditures { get; set; }
     }
 }

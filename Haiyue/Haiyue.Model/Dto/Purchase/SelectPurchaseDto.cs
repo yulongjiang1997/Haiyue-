@@ -13,16 +13,6 @@ namespace Haiyue.Model.Dto.Purchase
         public int? GameId { get; set; }
 
         /// <summary>
-        /// 筛选条件
-        /// </summary>
-        public string SelectCondition { get; set; }
-
-        /// <summary>
-        /// 筛选值
-        /// </summary>
-        public string SelectKeyword { get; set; }
-
-        /// <summary>
         /// 付款状态
         /// </summary>
         public PaymentStatusType? PaymentStatus { get; set; }

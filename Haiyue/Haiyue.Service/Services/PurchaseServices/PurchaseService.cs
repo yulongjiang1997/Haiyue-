@@ -105,20 +105,20 @@ namespace Haiyue.Service.Services.PurchaseServices
             //开始时间
             if (model.BeginTime.HasValue)
             {
-                purchases = purchases.Where(i => i.CreateTime >= model.BeginTime);
+                purchases = purchases.Where(i => i.OrderDate >= model.BeginTime);
             }
 
             //结束时间
             if (model.EndTime.HasValue)
             {
-                purchases = purchases.Where(i => i.CreateTime <= model.EndTime);
+                purchases = purchases.Where(i => i.OrderDate <= model.EndTime);
             }
             #endregion
 
             result.Total = await purchases.CountAsync();
             result.PageNumber = model.PageNumber;
             result.Amount = model.Amount;
-            result.Items = _mapper.Map<List<ReturnPuurchaseDto>>(await purchases.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync());
+            result.Items = _mapper.Map<List<ReturnPuurchaseDto>>(await purchases.Pagin(model).OrderBy(i => i.OrderDate).ToListAsync());
 
             return result;
         }
