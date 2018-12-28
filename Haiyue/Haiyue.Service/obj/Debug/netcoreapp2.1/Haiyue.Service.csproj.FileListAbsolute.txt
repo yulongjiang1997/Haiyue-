@@ -24,5 +24,5 @@ F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Debug\netcoreapp2.1\Haiyue.Service.
 F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Debug\netcoreapp2.1\Haiyue.Service.csproj.CopyComplete
 F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Debug\netcoreapp2.1\Haiyue.Service.dll
 F:\Projects\Haiyue\Haiyue\Haiyue.Service\obj\Debug\netcoreapp2.1\Haiyue.Service.pdb
-F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Debug\netcoreapp2.1\Haiyue.EF.dll
-F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Debug\netcoreapp2.1\Haiyue.EF.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Debug\netcoreapp2.1\Haiyue.HYEF.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.Service\bin\Debug\netcoreapp2.1\Haiyue.HYEF.pdb

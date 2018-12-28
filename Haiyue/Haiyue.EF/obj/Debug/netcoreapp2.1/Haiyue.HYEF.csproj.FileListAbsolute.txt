@@ -1,0 +1,12 @@
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.Model.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.Model.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.HYEF.csprojAssemblyReference.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.HYEF.csproj.CoreCompileInputs.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.HYEF.AssemblyInfoInputs.cache
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.HYEF.AssemblyInfo.cs
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.HYEF.csproj.CopyComplete
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.HYEF.deps.json
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.HYEF.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\bin\Debug\netcoreapp2.1\Haiyue.HYEF.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.HYEF.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.EF\obj\Debug\netcoreapp2.1\Haiyue.HYEF.pdb

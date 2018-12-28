@@ -4699,7 +4699,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
       },
-      "Haiyue.EF/1.0.0": {
+      "Haiyue.HYEF/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.1",
         "dependencies": {
@@ -4707,10 +4707,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "2.1.0"
         },
         "compile": {
-          "bin/placeholder/Haiyue.EF.dll": {}
+          "bin/placeholder/Haiyue.HYEF.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Haiyue.EF.dll": {}
+          "bin/placeholder/Haiyue.HYEF.dll": {}
         }
       },
       "Haiyue.Model/1.0.0": {
@@ -4729,7 +4729,7 @@
         "dependencies": {
           "AutoMapper": "8.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "6.0.0",
-          "Haiyue.EF": "1.0.0",
+          "Haiyue.HYEF": "1.0.0",
           "Haiyue.Model": "1.0.0"
         },
         "compile": {
@@ -12448,10 +12448,10 @@
         "system.xml.xpath.xdocument.nuspec"
       ]
     },
-    "Haiyue.EF/1.0.0": {
+    "Haiyue.HYEF/1.0.0": {
       "type": "project",
-      "path": "../Haiyue.EF/Haiyue.EF.csproj",
-      "msbuildProject": "../Haiyue.EF/Haiyue.EF.csproj"
+      "path": "../Haiyue.EF/Haiyue.HYEF.csproj",
+      "msbuildProject": "../Haiyue.EF/Haiyue.HYEF.csproj"
     },
     "Haiyue.Model/1.0.0": {
       "type": "project",

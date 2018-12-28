@@ -3,11 +3,9 @@ F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.Web.runtim
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.Web.runtimeconfig.dev.json
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.Web.dll
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.Web.pdb
-F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.EF.dll
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.Model.dll
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.Service.dll
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.Service.pdb
-F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.EF.pdb
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.Model.pdb
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\obj\Release\netcoreapp2.1\Haiyue.Web.csprojAssemblyReference.cache
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\obj\Release\netcoreapp2.1\Haiyue.Web.csproj.CoreCompileInputs.cache
@@ -19,3 +17,5 @@ F:\Projects\Haiyue\Haiyue\Haiyue.Web\obj\Release\netcoreapp2.1\Haiyue.Web.RazorT
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\obj\Release\netcoreapp2.1\Haiyue.Web.csproj.CopyComplete
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\obj\Release\netcoreapp2.1\Haiyue.Web.dll
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\obj\Release\netcoreapp2.1\Haiyue.Web.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.HYEF.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Release\netcoreapp2.1\Haiyue.HYEF.pdb

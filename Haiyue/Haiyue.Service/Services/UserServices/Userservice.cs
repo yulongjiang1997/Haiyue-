@@ -69,28 +69,11 @@ namespace Haiyue.Service.Services.UserServices
         public async Task<ReturnPaginSelectDto<ReturnUserDto>> QueryPaginAsync(SelectUserDto model)
         {
             var result = new ReturnPaginSelectDto<ReturnUserDto>();
-            var user = (from u in _context.Users
-                        join p in _context.Positions on u.PositionId equals p.Id
-                        select new ReturnUserDto
-                        {
-                            Education = u.Education,
-                            EntryTime = u.EntryTime,
-                            IdNumber = u.IdNumber,
-                            IncumbencyStatus = u.IncumbencyStatus,
-                            JobNumber = u.JobNumber,
-                            Jurisdiction = u.Jurisdiction,
-                            LoginTime = u.LoginTime,
-                            Name = u.Name,
-                            Phone = u.Phone,
-                            Position = p.Name,
-                            RegisteredResidence = u.RegisteredResidence,
-                            Remarks = u.Remarks,
-                            CreateTime = u.CreateTime
-                        }).AsQueryable();
+            var user = _context.Users.Include(i => i.Position).AsNoTracking();
             result.Amount = model.Amount;
             result.Total = await user.CountAsync();
             result.PageNumber = model.PageNumber;
-            result.Items = await user.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync();
+            result.Items =_mapper.Map<List<ReturnUserDto>>(await user.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync());
             return result;
         }
 

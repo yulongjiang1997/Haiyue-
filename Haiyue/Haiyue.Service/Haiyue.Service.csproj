@@ -4,8 +4,16 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\Haiyue.EF\Haiyue.EF.csproj" />
+    <ProjectReference Include="..\Haiyue.EF\Haiyue.HYEF.csproj" />
     <ProjectReference Include="..\Haiyue.Model\Haiyue.Model.csproj" />
   </ItemGroup>
 

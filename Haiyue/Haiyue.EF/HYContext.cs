@@ -15,10 +15,14 @@ namespace Haiyue.HYEF
 
         public DbSet<Position> Positions { get; set; }
 
+        public DbSet<Department> Department { get; set; }
+
         public DbSet<Purchase> Purchases { get; set; }
 
         public DbSet<Game> Games { get; set; }
 
         public DbSet<Currency> Currencys  { get; set; }
+
+        public DbSet<NoteBook> NoteBooks { get; set; }
     }
 }

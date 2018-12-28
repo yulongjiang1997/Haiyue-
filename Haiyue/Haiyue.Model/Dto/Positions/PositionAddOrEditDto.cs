@@ -7,5 +7,6 @@ namespace Haiyue.Model.Dto.Positions
     public class PositionAddOrEditDto
     {
         public string Name { get; set; }
+        public int DepartmentId { get; set; }
     }
 }

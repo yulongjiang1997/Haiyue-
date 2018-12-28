@@ -28,6 +28,9 @@ namespace Haiyue.Model.Model
         /// </summary>
         public int PositionId { get; set; }
 
+        [ForeignKey("PositionId")]
+        public Position Position { get; set; }
+
         /// <summary>
         /// 工号
         /// </summary>

@@ -6,7 +6,6 @@ namespace Haiyue.Model.Dto
 {
     public class SelectBaseDto
     {
-        public string KeyWord { get; set; }
 
         public DateTime? BeginTime { get; set; }
 

@@ -40,5 +40,5 @@ F:\Projects\Haiyue\Haiyue\Haiyue.Web\obj\Debug\netcoreapp2.1\Haiyue.Web.RazorTar
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\obj\Debug\netcoreapp2.1\Haiyue.Web.csproj.CopyComplete
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\obj\Debug\netcoreapp2.1\Haiyue.Web.dll
 F:\Projects\Haiyue\Haiyue\Haiyue.Web\obj\Debug\netcoreapp2.1\Haiyue.Web.pdb
-F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Debug\netcoreapp2.1\Haiyue.EF.dll
-F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Debug\netcoreapp2.1\Haiyue.EF.pdb
+F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Debug\netcoreapp2.1\Haiyue.HYEF.dll
+F:\Projects\Haiyue\Haiyue\Haiyue.Web\bin\Debug\netcoreapp2.1\Haiyue.HYEF.pdb

@@ -43,6 +43,34 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Haiyue.Web.Controllers.DepartmentController.CreateAsync(Haiyue.Model.Dto.Departments.DepartmentAddOrEditDto)">
+            <summary>
+            添加部门
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.DepartmentController.DeleteAsync(System.Int32)">
+            <summary>
+            删除部门
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.DepartmentController.EditAsync(System.Int32,Haiyue.Model.Dto.Departments.DepartmentAddOrEditDto)">
+            <summary>
+            修改部门
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.DepartmentController.QueryPaginAsync(Haiyue.Model.Dto.Departments.SelectDepartmentDto)">
+            <summary>
+            分页查询部门
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:Haiyue.Web.Controllers.GameController.CreateAsync(Haiyue.Model.Dto.Game.GameAddOrEditDto)">
             <summary>
             添加游戏
@@ -74,6 +102,34 @@
         <member name="M:Haiyue.Web.Controllers.GameController.QueryAsync">
             <summary>
             查询所有游戏
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.NoteBookController.CreateAsync(Haiyue.Model.Dto.NoteBooks.NoteBookAddOrEditDto)">
+            <summary>
+            添加记事本内容
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.NoteBookController.DeleteAsync(System.Int32)">
+            <summary>
+            删除记事本内容
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.NoteBookController.EditAsync(System.Int32,Haiyue.Model.Dto.NoteBooks.NoteBookAddOrEditDto)">
+            <summary>
+            修改记事本内容
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.NoteBookController.QueryPaginAsync(Haiyue.Model.Dto.NoteBooks.SelectNoteBoolDto)">
+            <summary>
+            分页查询记事本内容
             </summary>
             <param name="model"></param>
             <returns></returns>

@@ -3449,9 +3449,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\Haiyue\\Haiyue\\Haiyue.EF\\Haiyue.EF.csproj",
-      "projectName": "Haiyue.EF",
-      "projectPath": "F:\\Projects\\Haiyue\\Haiyue\\Haiyue.EF\\Haiyue.EF.csproj",
+      "projectUniqueName": "F:\\Projects\\Haiyue\\Haiyue\\Haiyue.EF\\Haiyue.HYEF.csproj",
+      "projectName": "Haiyue.HYEF",
+      "projectPath": "F:\\Projects\\Haiyue\\Haiyue\\Haiyue.EF\\Haiyue.HYEF.csproj",
       "packagesPath": "C:\\Users\\m\\.nuget\\packages\\",
       "outputPath": "F:\\Projects\\Haiyue\\Haiyue\\Haiyue.EF\\obj\\",
       "projectStyle": "PackageReference",

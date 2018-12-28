@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Haiyue.HYEf.Migrations
+namespace Haiyue.HYEF.Migrations
 {
     [DbContext(typeof(HYContext))]
     partial class HYContextModelSnapshot : ModelSnapshot
@@ -42,6 +42,26 @@ namespace Haiyue.HYEf.Migrations
                     b.ToTable("Currencys");
                 });
 
+            modelBuilder.Entity("Haiyue.Model.Model.Department", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(50);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Department");
+                });
+
             modelBuilder.Entity("Haiyue.Model.Model.Game", b =>
                 {
                     b.Property<int>("Id")
@@ -61,6 +81,29 @@ namespace Haiyue.HYEf.Migrations
                     b.ToTable("Games");
                 });
 
+            modelBuilder.Entity("Haiyue.Model.Model.NoteBook", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BgColor");
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NoteBooks");
+                });
+
             modelBuilder.Entity("Haiyue.Model.Model.Position", b =>
                 {
                     b.Property<int>("Id")
@@ -70,6 +113,8 @@ namespace Haiyue.HYEf.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
 
+                    b.Property<int>("DepartmentId");
+
                     b.Property<DateTime?>("LastUpTime")
                         .HasMaxLength(30);
 
@@ -77,6 +122,8 @@ namespace Haiyue.HYEf.Migrations
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Positions");
                 });
@@ -179,6 +226,14 @@ namespace Haiyue.HYEf.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Haiyue.Model.Model.Position", b =>
+                {
+                    b.HasOne("Haiyue.Model.Model.Department", "Department")
+                        .WithMany("Positions")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("Haiyue.Model.Model.Purchase", b =>
                 {
                     b.HasOne("Haiyue.Model.Model.Currency", "Currency")
@@ -194,7 +249,7 @@ namespace Haiyue.HYEf.Migrations
 
             modelBuilder.Entity("Haiyue.Model.Model.User", b =>
                 {
-                    b.HasOne("Haiyue.Model.Model.Position")
+                    b.HasOne("Haiyue.Model.Model.Position", "Position")
                         .WithMany("User")
                         .HasForeignKey("PositionId")
                         .OnDelete(DeleteBehavior.Cascade);

@@ -16,6 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
+using Haiyue.Service.Services.NoteBookServices;
+using Haiyue.Service.Services.DepartmentServices;
 
 namespace Haiyue.Web
 {
@@ -80,6 +82,8 @@ namespace Haiyue.Web
             services.AddTransient<IGameService, GameService>();
             services.AddTransient<ICurrencyService, CurrencyService>();
             services.AddTransient<IPositionService, PositionService>();
+            services.AddTransient<INoteBookService, NoteBookService>();
+            services.AddTransient<IDepartmentService, DepartmentService>();
             services.AddTransient<BaseService>();
             #endregion
         }

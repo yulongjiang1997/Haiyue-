@@ -78,6 +78,18 @@ namespace Haiyue.Service.Services.PurchaseServices
 
 
             #region 高级筛选
+
+            switch (model.SelectCondition)
+            {
+                //筛选符合输入的订单号的数据
+                case "OrderNumber": purchases = purchases.Where(i => EF.Functions.Like(i.OrderNumber, $"{model.SelectKeyword}")); break;
+                //筛选符合输入的服务器名称的数据
+                case "ServerName": purchases = purchases.Where(i => EF.Functions.Like(i.SupplierPhone, $"{model.SelectKeyword}")); break;
+                //筛选输入的供应商联系方式的数据
+                case "SupplierPhone": purchases = purchases.Where(i => EF.Functions.Like(i.OrderNumber, $"{model.SelectKeyword}")); break;
+                default:
+                    break;
+            }
             //筛选所选游戏数据
             if (model.GameId.HasValue)
             {
@@ -90,26 +102,8 @@ namespace Haiyue.Service.Services.PurchaseServices
                 purchases = purchases.Where(i => i.PaymentStatus == model.PaymentStatus);
             }
 
-            //筛选符合输入的订单号的数据
-            if (!string.IsNullOrEmpty(model.OrderNumber))
-            {
-                purchases = purchases.Where(i => EF.Functions.Like(i.OrderNumber, $"{model.OrderNumber}"));
-            }
-
-            //筛选符合输入的服务器名称的数据
-            if (!string.IsNullOrEmpty(model.ServerName))
-            {
-                purchases = purchases.Where(i => EF.Functions.Like(i.ServerName, $"{model.ServerName}"));
-            }
-
-            //筛选输入的供应商联系方式的数据
-            if (!string.IsNullOrEmpty(model.SupplierPhone))
-            {
-                purchases = purchases.Where(i => EF.Functions.Like(i.SupplierPhone, $"{model.SupplierPhone}"));
-            }
-
             //开始时间
-            if(model.BeginTime.HasValue)
+            if (model.BeginTime.HasValue)
             {
                 purchases = purchases.Where(i => i.CreateTime >= model.BeginTime);
             }

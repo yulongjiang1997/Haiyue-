@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haiyue.Web", "Haiyue.Web\Haiyue.Web.csproj", "{6559D7FD-F1B8-44A8-9047-54467A15517E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haiyue.EF", "Haiyue.EF\Haiyue.EF.csproj", "{3F79D69B-B701-406D-B2DD-07E0689E6659}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haiyue.HYEF", "Haiyue.EF\Haiyue.HYEF.csproj", "{3F79D69B-B701-406D-B2DD-07E0689E6659}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haiyue.Model", "Haiyue.Model\Haiyue.Model.csproj", "{8F50C9FD-C2CE-4603-8C7A-4964C4ED2D00}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haiyue.Service", "Haiyue.Service\Haiyue.Service.csproj", "{390C4F8B-3EFE-497D-B6BE-3D803F258D01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{F9B8DB60-1C84-48BE-8412-10B685DE5C88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{F9B8DB60-1C84-48BE-8412-10B685DE5C88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

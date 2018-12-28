@@ -13,19 +13,14 @@ namespace Haiyue.Model.Dto.Purchase
         public int? GameId { get; set; }
 
         /// <summary>
-        /// 订单号
+        /// 筛选条件
         /// </summary>
-        public string OrderNumber { get; set; }
+        public string SelectCondition { get; set; }
 
         /// <summary>
-        /// 服务器名称
+        /// 筛选值
         /// </summary>
-        public string ServerName { get; set; }
-
-        /// <summary>
-        /// 供应商联系方式
-        /// </summary>
-        public string SupplierPhone { get; set; }
+        public string SelectKeyword { get; set; }
 
         /// <summary>
         /// 付款状态
