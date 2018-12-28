@@ -1,0 +1,82 @@
+ul{
+    margin-bottom: 0
+}
+
+
+.colorItemsWrapper{
+    display: flex
+}
+.colorPick ul li{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    position: relative;
+    text-align: center
+}
+
+.colorPick ul li.active::before{
+    content: '\2714';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color: #fff
+}
+
+.colorPick ul li:nth-child(1){
+    background-color: #96ceb4
+}
+.colorPick ul li:nth-child(2){
+    background-color:#f07810
+}
+.colorPick ul li:nth-child(3){
+    background-color: #d9534f
+}
+.colorPick ul li:nth-child(4){
+    background-color: #2E94B9
+}
+
+
+.grayBg{
+    background-color: #96ceb4 !important
+}
+.oringeBg{
+    background-color: #f07810 !important
+}
+.greenBg{
+    background-color: #d9534f !important
+}
+.redBg{
+    background-color: #2E94B9 !important
+}
+.cWhite{
+    color: #fff
+}
+
+
+.colorPick{
+    padding: 10px
+}
+
+.noteTitle{
+    width:35%;
+    padding: 10px
+}
+.noteContent{
+    padding: 10px;
+}
+
+
+.messageContainer{
+    margin-bottom: 30px
+}
+
+
+
+
+@media screen and (max-width:768px){
+    .noteTitle{
+        width: 100%
+    }
+}

@@ -1,0 +1,492 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>采购记录</title>
+        <meta name="robots" content="noindex,nofollow,noarchive" />
+        <!-- Mobile Specific Metas -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover,minimum-scale=1, maximum-scale=1">
+        <!-- Force IE9 to render in normal mode -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <!-- Le styles -->
+        <!-- Use new way for google web fonts
+        http://www.smashingmagazine.com/2012/07/11/avoiding-faux-weights-styles-google-web-fonts -->
+        <!-- Headings -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css' />
+        <!-- Text -->
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
+        <!--[if lt IE 9]>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans:400" rel="stylesheet" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet" type="text/css" />
+        <![endif]-->
+        <!-- Core stylesheets do not remove -->
+        <link id="bootstrap" href="~/css/bootstrap/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/bootstrap/bootstrap-theme.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/supr-theme/jquery.ui.supr.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/icons.css" rel="stylesheet" type="text/css" />
+        <!-- Plugins stylesheets -->
+        <link href="~/plugins/misc/qtip/jquery.qtip.css" rel="stylesheet" type="text/css" />
+        <link href="~/plugins/misc/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+        <link href="~/plugins/misc/search/tipuesearch.css" type="text/css" rel="stylesheet" />
+
+        <link href="~/plugins/forms/uniform/uniform.default.css" type="text/css" rel="stylesheet" />
+        <link href="~/plugins/tables/dataTables/jquery.dataTables.css" type="text/css" rel="stylesheet" />
+
+
+        <!-- Main stylesheets -->
+        <link href="~/css/main.css" rel="stylesheet" type="text/css" />
+
+        <!-- Custom stylesheets ( Put your own changes here ) -->
+        <link href="~/css/custom.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/fix.css" rel="stylesheet" type="text/css" />
+
+        <!--[if IE 8]><link href="css/ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script type="text/javascript" src="~/js/libs/excanvas.min.js"></script>
+          <script type="text/javascript" src="~/js/libs/respond.min.js"></script>
+        <![endif]-->
+        <!-- Le fav and touch icons -->
+        <link rel="shortcut icon" href="~/images/favicon.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/images/apple-touch-icon-144-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/images/apple-touch-icon-114-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/images/apple-touch-icon-72-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" href="~/images/apple-touch-icon-57-precomposed.png" />
+
+        <!-- Windows8 touch icon ( http://www.buildmypinnedsite.com/ )-->
+        <meta name="application-name" content="Supr" />
+        <meta name="msapplication-TileColor" content="#3399cc" />
+
+        <!-- Load modernizr first -->
+        <script type="text/javascript" src="~/js/libs/modernizr.js"></script>
+
+    </head>
+
+    <body>
+        <!-- loading animation -->
+        <div id="qLoverlay"></div>
+        <div id="qLbar"></div>
+
+        <div id="header">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="./home.html" style="font-size: 14px">海悦华创</a>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon16 icomoon-icon-arrow-4"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="./home.html"><span class="icon16 icomoon-icon-screen-2"></span> <span class="txt">回到首页</span></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="icon16 icomoon-icon-envelop"></span><span class="txt">Messages</span><span class="notification">8</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="menu">
+                                    <ul class="messages">
+                                        <li class="header"><strong>Messages</strong></li>
+                                        <li>
+                                            <span class="icon"><span class="icon16 icomoon-icon-user-plus"></span></span>
+                                            <span class="name">
+                                                <a data-toggle="modal" href="#myModal1">
+                                                    <strong>
+                                                        Sammy
+                                                        Morerira
+                                                    </strong>
+                                                </a>
+                                            </span>
+                                            <span class="msg">I have question about new function ...</span>
+                                        </li>
+                                        <li>
+                                            <span class="icon"><span class="icon16 icomoon-icon-user-plus"></span></span>
+                                            <span class="name">
+                                                <a data-toggle="modal" href="#myModal1">
+                                                    <strong>
+                                                        Sammy
+                                                        Morerira
+                                                    </strong>
+                                                </a>
+                                            </span>
+                                            <span class="msg">I need to meet you urgent please call me ...</span>
+                                        </li>
+                                        <li>
+                                            <span class="icon"><span class="icon16 icomoon-icon-user-plus"></span></span>
+                                            <span class="name">
+                                                <a data-toggle="modal" href="#myModal1">
+                                                    <strong>
+                                                        Sammy
+                                                        Morerira
+                                                    </strong>
+                                                </a>
+                                            </span>
+                                            <span class="msg">I send you my suggestion, please look and ...</span>
+                                        </li>
+
+                                        <li class="view-all"><a href="#">View all messages <span class="icon16 icomoon-icon-arrow-right-8"></span></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-right usernav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="icon16 icomoon-icon-bell"></span><span class="notification">3</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="menu">
+                                    <ul class="notif">
+                                        <li class="header"><strong>未读</strong> (3)</li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon"><span class="icon16 icomoon-icon-bubble-3"></span></span>
+                                                <span class="event">主管 发布了一个任务</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon"><span class="icon16 icomoon-icon-bubble-3"></span></span>
+                                                <span class="event">主管 发布了一个任务</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="icon"><span class="icon16 icomoon-icon-bubble-3"></span></span>
+                                                <span class="event">技术 发布了一个任务</span>
+                                            </a>
+                                        </li>
+                                        <li class="view-all"><a href="#">查看所有任务 <span class="icon16 icomoon-icon-arrow-right-8"></span></a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle avatar" data-toggle="dropdown">
+                                <img src="~/images/avatar.jpg" alt="" class="image" />
+                                <span class="txt">Amor丶从此夏小白</span>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="menu">
+                                    <ul>
+                                        <li><a href="#"><span class="icon16 icomoon-icon-user-plus"></span>超级管理员</a></li>
+                                        <li>
+                                            <a href="#" style="text-decoration:none;white-space: nowrap">
+                                                <span class="icon16 icomoon-icon-bubble-2"></span>上次登录:2018/12/12 18:22
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="./index.html"><span class="icon16 icomoon-icon-exit"></span><span class="txt"> 退出登陆</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div id="wrapper">
+
+
+            <div class="resBtn">
+                <a href="#"><span class="icon16 minia-icon-list-3"></span></a>
+            </div>
+
+
+            <div class="collapseBtn leftbar">
+                <a href="#" class="tipR" title="Hide Left Sidebar"><span class="icon12 minia-icon-layout"></span></a>
+            </div>
+
+
+            <div id="sidebarbg"></div>
+            <div id="sidebar">
+
+                <div class="sidenav">
+                    <div class="sidebar-widget" style="margin: -1px 0 0 0;">
+                        <h5 class="title" style="margin-bottom:0">导航</h5>
+                    </div>
+                    <div class="mainnav">
+                        <ul>
+                            <li>
+                                <a href="#" class="drop"><span class="icon16 icomoon-icon-list"></span>账单 Excel</a>
+                                <ul class="sub">
+                                    <li><a href="./purchase.html"><span class="icon16 icomoon-icon-file"></span>采购记录</a></li>
+                                    <li><a href="./refund.html"><span class="icon16 icomoon-icon-file"></span>退款申请</a></li>
+                                    <li><a href="./otherOrder.html"><span class="icon16 icomoon-icon-file"></span>其他订单</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="drop"><span class="icon16 icomoon-icon-list"></span>客服专区</a>
+                                <ul class="sub">
+                                    <li><a href="./message.html"><span class="icon16 icomoon-icon-file"></span>留言板</a></li>
+                                    <li><a href="./noteBook.html"><span class="icon16 icomoon-icon-file"></span>记事本</a></li>
+                                    <li><a href="./tasks.html"><span class="icon16 icomoon-icon-file"></span>任务列表</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="drop"><span class="icon16 icomoon-icon-list"></span>管理员专区</a>
+                                <ul class="sub">
+                                    <li><a href="./payout.html"><span class="icon16 icomoon-icon-file"></span>支出管理</a></li>
+                                    <li><a href="./gameList.html"><span class="icon16 icomoon-icon-file"></span>游戏管理</a></li>
+                                    <li><a href="./userList.html"><span class="icon16 icomoon-icon-file"></span>员工管理</a></li>
+                                    <li><a href="./rate.html"><span class="icon16 icomoon-icon-file"></span>汇率管理</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <div id="content" class="clearfix">
+                <div class="contentwrapper">
+                    <div class="heading">
+                        <h3>采购记录</h3>
+                        <div class="resBtnSearch">
+                            <a href="#"><span class="icon16 icomoon-icon-search-3"></span></a>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li>当前位置:</li>
+                            <li>
+                                <a href="#" class="tip" title="back to dashboard">
+                                    <span class="icon16 icomoon-icon-screen-2"></span>
+                                </a>
+                                <span class="divider">
+                                    <span class="icon16 icomoon-icon-arrow-right-3"></span>
+                                </span>
+                            </li>
+                            <li class="active">采购记录</li>
+                        </ul>
+                    </div>
+                    <div class="row mb15 ">
+                        <form class="form-inline " role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control width100-sm pdl10" id="startDatepicker" placeholder="请选择起始时间"
+                                       style="min-width:318px">
+                            </div>
+                            <span class="inBlock mb15 hide-sm">
+                                &nbsp;&nbsp;-&nbsp;&nbsp;
+                            </span>
+                            <div class="form-group">
+                                <input type="text" class="form-control width100-sm pdl10" id="endDatepicker" placeholder="请选择截止时间"
+                                       style="min-width:318px">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row mb15 ">
+                        <form class="form-inline " role="form">
+                            <div class="form-group mr15-lg">
+                                <select name="" class="form-control minWidth308" id="">
+                                    <option value="" disabled selected hide>选择游戏</option>
+                                    <option value="all">全部</option>
+                                    <option value="NBA2K">NBA2K</option>
+                                    <option value="FIFA">FIFA</option>
+                                </select>
+                            </div>
+                            <div class="form-group mr15-lg">
+                                <select name="" class="form-control minWidth308" id="">
+                                    <option value="" disabled selected hide>选择搜索条件</option>
+                                    <option value="orderId">订单号</option>
+                                    <option value="server">服务器</option>
+                                    <option value="provider">供应商</option>
+                                    <option value="contact">联系方式</option>
+                                    <option value="state">付款状态</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control minWidth318 width100-sm pdl10" style="height:30px"
+                                       placeholder="输入关键字">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row mb15">
+                        <!-- <button class="cbtn cPointer mr10">搜索</button> -->
+                        <button class="btn btn-default">搜索</button>
+                    </div>
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="tright">
+                                    <span aria-hidden="true" class="icon16 minia-icon-plus-2  cPointer " id="add">
+                                    </span>
+                                </h4>
+                            </div>
+                            <div class="panel-body noPad">
+                                <div class="responsive panel">
+                                    <table class="table table-bordered" id="checkAll">
+                                        <thead>
+                                            <tr>
+                                                <th>游戏名</th>
+                                                <th>日期</th>
+                                                <th>订单号</th>
+                                                <th>服务器</th>
+                                                <th>数量</th>
+                                                <th>总量</th>
+                                                <th>支出单价(￥)</th>
+                                                <th>支出总价(￥)</th>
+                                                <th>实收</th>
+                                                <th>实收人民币</th>
+                                                <th>支付账号</th>
+                                                <th>付款状态</th>
+                                                <th>备注(点击查看)</th>
+                                                <th>供应商联系方式</th>
+                                                <th>录入</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>NBA Live</td>
+                                                <td>2018-12-01</td>
+                                                <td>or123456</td>
+                                                <td>EUR</td>
+                                                <td>20</td>
+                                                <td>10</td>
+                                                <td>￥1</td>
+                                                <td>￥20</td>
+                                                <td>￥20</td>
+                                                <td>￥21(1)</td>
+                                                <td>dsadsdad</td>
+                                                <td>已付款</td>
+                                                <td class="more cPointer"></td>
+                                                <td>dasdasd@gmail.com</td>
+                                                <td>admin168</td>
+                                                <td>
+                                                    <div class="controls center">
+                                                        <a href="#" title="edit user" class="tip edit"><span class="icon12 icomoon-icon-pencil"></span></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>NBA Live</td>
+                                                <td>2018-12-01</td>
+                                                <td>or123456</td>
+                                                <td>EUR</td>
+                                                <td>20</td>
+                                                <td>10</td>
+                                                <td>￥1</td>
+                                                <td>￥20</td>
+                                                <td>￥20</td>
+                                                <td>￥21(1)</td>
+                                                <td>dsadsdad</td>
+                                                <td>
+                                                    <select name="" id="" class="tcenter">
+                                                        <option value="todo">未付款</option>
+                                                        <option value="done">已付款</option>
+                                                    </select>
+                                                </td>
+                                                <td class="more cPointer"></td>
+                                                <td>dasdasd@gmail.com</td>
+                                                <td>admin168</td>
+                                                <td>
+                                                    <div class="controls center">
+                                                        <a href="#" title="edit user" class="tip edit"><span class="icon12 icomoon-icon-pencil"></span></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-9">
+                                        <div class="dataTables_paginate paging_bootstrap pagination">
+                                            <ul class="pagination">
+                                                <li class="prev disabled"><a href="#">上页</a></li>
+                                                <li class="active"><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+                                                <li><a href="#">4</a></li>
+                                                <li><a href="#">5</a></li>
+                                                <li class="next"><a href="#">下页</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div style="margin:10px 15px 18px 0px;float: left;">
+                                            <select name="select" class="form-control">
+                                                <option>1</option>
+                                                <option selected="selected">2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!-- End .panel -->
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Important plugins put in all pages -->
+        <script type="text/javascript" src="~/js/jq/jquery.min.js"></script>
+        <script type="text/javascript" src="~/js/jq/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="~/js/jq/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="~/js/bootstrap/bootstrap.js"></script>
+        <script type="text/javascript" src="~/js/jquery.mousewheel.js"></script>
+        <script type="text/javascript" src="~/js/libs/jRespond.min.js"></script>
+
+        <!-- Charts plugins -->
+        <!-- Search plugin -->
+        <!-- Misc plugins -->
+        <script type="text/javascript" src="~/plugins/misc/fullcalendar/fullcalendar.min.js"></script><!-- Calendar plugin -->
+        <script type="text/javascript" src="~/plugins/misc/qtip/jquery.qtip.min.js"></script><!-- Custom tooltip plugin -->
+        <script type="text/javascript" src="~/plugins/misc/totop/jquery.ui.totop.min.js"></script>
+        <!-- Back to top plugin -->
+        <!-- Form plugins -->
+        <script type="text/javascript" src="~/plugins/forms/uniform/jquery.uniform.min.js"></script>
+
+        <!-- Init plugins -->
+        <script type="text/javascript" src="~/js/main.js"></script><!-- Core js functions -->
+        <script type="text/javascript" src="~/js/tables.js"></script><!-- Init plugins only for page -->
+        <script>
+        $("#startDatepicker").datepicker({
+            showOtherMonths: true
+        });
+        $("#endDatepicker").datepicker({
+            showOtherMonths: true
+        });
+
+        $('#add').on('click', function () {
+            $.jiframe('添加新的支出', './newPurchase.html', '100%', '300')
+        })
+
+        $('.edit').on('click', function () {
+            $.jiframe('修改支出', './newPurchase.html', '100%', '300')
+        })
+
+        $('.more').on('click', function () {
+            $.jAlert('备注', `${'这里的备注能不能编辑呢？伤脑筋额'}`, '450')
+        })
+        </script>
+    </body>
+
+</html>
+</div>

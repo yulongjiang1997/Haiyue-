@@ -1,0 +1,169 @@
+.titleWrapper{
+    padding:  10px 0;
+}
+.taskTitle{
+    padding: 0 0 0 10px;
+    position: relative;
+    color: #e74c3c
+}
+.taskTitle::before{
+    content: '';
+    width: 4px;
+    background-color:#e74c3c;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: block
+}
+
+
+.publishTaskTitle{
+    padding: 0 0 0 10px;
+    position: relative;
+    color: #3498db
+}
+.publishTaskTitle::before{
+    content: '';
+    width: 4px;
+    background-color:#3498db;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: block
+}
+
+
+
+.flexSpaceBetween{
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+
+.timeday{
+    padding:10px
+}
+
+.detailWrapper{
+    display: inline-block
+}
+
+.headWrapper{
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap
+}
+
+.manager,.todo{
+    background-color:#e74c3c !important
+}
+.colleague,.done{
+    background-color: #3498db !important
+}
+.tech{
+    background-color: #e67e22 !important
+}
+.cusService,.on{
+    background-color: #2ecc71 !important
+}
+
+.taskState .todo,.replies .todo{
+    background-color: #e74c3c
+}
+.taskState .on,.replies .on{
+    background-color: #2ecc71
+}
+.taskState .done,.replies .done{
+    background-color: #3498db
+}
+.taskState .cancel,.replies .cancel,.cancel{
+    background-color: #8e44ad
+}
+
+.taskState {
+    vertical-align: middle
+}
+.taskState select{
+    width: auto
+}
+
+.taskState .todo,.replies .todo{
+    margin-bottom: 0
+}
+
+.colorBeforeTitleEdit{
+    padding: 0 0 0 10px;
+    position: relative;
+}
+
+.colorBeforeTitleEdit::before{
+    content: '';
+    width: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+    background-color: #8e44ad
+}
+
+.handleTime{
+    font-size: 12px
+}
+
+.colorBeforeTitleChange{
+    padding: 0 0 0 10px;
+    position: relative;
+}
+
+.colorBeforeTitleChange::before{
+    content: '';
+    width: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+    background-color: #95a5a6
+}
+
+
+.colorBeforeTitleCancel{
+    padding: 0 0 0 10px;
+    position: relative;
+}
+.colorBeforeTitleCancel::before{
+    content: '';
+    width: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: block;
+    background-color: #2c3e50
+}
+
+
+
+.stateChange{
+    display: flex;
+    justify-content: space-between
+}
+
+.lh32{
+    line-height: 32px
+}
+.txt{
+    color:#70a1ff
+}
+
+
+
+@media screen and (max-width:768px){
+    .detailWrapper{
+        width: 100%
+    }
+}

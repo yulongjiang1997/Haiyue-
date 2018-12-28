@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haiyue.EF", "Haiyue.EF\Haiy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haiyue.Model", "Haiyue.Model\Haiyue.Model.csproj", "{8F50C9FD-C2CE-4603-8C7A-4964C4ED2D00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Haiyue.Service", "Haiyue.Service\Haiyue.Service.csproj", "{390C4F8B-3EFE-497D-B6BE-3D803F258D01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Haiyue.Service", "Haiyue.Service\Haiyue.Service.csproj", "{390C4F8B-3EFE-497D-B6BE-3D803F258D01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{F9B8DB60-1C84-48BE-8412-10B685DE5C88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{390C4F8B-3EFE-497D-B6BE-3D803F258D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{390C4F8B-3EFE-497D-B6BE-3D803F258D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{390C4F8B-3EFE-497D-B6BE-3D803F258D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9B8DB60-1C84-48BE-8412-10B685DE5C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9B8DB60-1C84-48BE-8412-10B685DE5C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9B8DB60-1C84-48BE-8412-10B685DE5C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9B8DB60-1C84-48BE-8412-10B685DE5C88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

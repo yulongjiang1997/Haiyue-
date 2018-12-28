@@ -12,6 +12,11 @@ namespace Haiyue.Model.Model
         [StringLength(50)]
         public string Name { get; set; }
 
+        public int DepartmentId { get; set; }
+
+        [ForeignKey("DepartmentId")]
+        public Department Department { get; set; }
+
         /// <summary>
         /// 员工信息导航
         /// </summary>
