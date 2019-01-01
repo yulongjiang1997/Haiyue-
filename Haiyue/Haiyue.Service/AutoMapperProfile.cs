@@ -15,6 +15,8 @@ using Haiyue.Model.Dto.Expenditures;
 using Haiyue.Model.Dto.Expenditures.ExpenditureTypes;
 using Haiyue.Model.Dto.LeaveAMessages;
 using Haiyue.Model.Dto.LeaveAMessages.LeaveAMessageReplys;
+using Haiyue.Model.Dto.Refunds;
+using Haiyue.Model.Dto.OtherOrders;
 
 namespace Haiyue.Service
 {
@@ -23,7 +25,7 @@ namespace Haiyue.Service
         public AutoMapperProfile()
         {
             CreateMap<UserAddOrEditDto, User>().ReverseMap();
-            CreateMap<ReturnUserDto, User>().ReverseMap();
+            CreateMap<ReturnUserDto, User>().ReverseMap().ForMember(o=>o.Position,op=>op.MapFrom(a=>a.Position.Name));
 
             CreateMap<ReturnGameDto, Game>().ReverseMap();
             CreateMap<GameAddOrEditDto, Game>().ReverseMap();
@@ -45,9 +47,12 @@ namespace Haiyue.Service
             CreateMap<ReturnDepartmentDto, Department>().ReverseMap();
 
             CreateMap<AddOrEditTaskListDto, TaskList>().ReverseMap();
-            CreateMap<AddOrEditTaskListDto, TaskChangeLog>().ReverseMap();
-            CreateMap<ReturnTaskChangeLogDto, TaskChangeLog>().ReverseMap().ForMember(o => o.EditTime, op => op.MapFrom(a => a.CreateTime));
             CreateMap<ReturnTaskListDto, TaskList>().ReverseMap();
+
+            CreateMap<AddOrEditTaskListDto, TaskChangeLog>();
+            CreateMap<ReturnTaskChangeLogDto, TaskChangeLog>().ReverseMap().ForMember(o => o.EditTime, op => op.MapFrom(a => a.CreateTime))
+                                                                           .ForMember(o => o.OperatorName, op => op.MapFrom(a => a.Operator.Name));
+
             CreateMap<ReturnTaskStatueLogDto, TaskStatusLog>().ReverseMap().ForMember(o => o.EditTime, op => op.MapFrom(a => a.CreateTime));
             CreateMap<AddTaskStatusLogDto, TaskStatusLog>().ReverseMap();
             
@@ -58,10 +63,16 @@ namespace Haiyue.Service
             CreateMap<AddOrEditExpeditureTypeDto, ExpenditureType>().ReverseMap();
             CreateMap<ReturnJurisdictionTypeDto, ExpenditureType>().ReverseMap();
 
-            CreateMap<Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageReplyDto, LeaveAMessage>().ReverseMap();
+            CreateMap<AddOrEditLeaveAMessageDto, LeaveAMessage>().ReverseMap();
             CreateMap<ReturnLeaveAMessageDto, LeaveAMessage>().ReverseMap();
-            CreateMap<Model.Dto.LeaveAMessages.LeaveAMessageReplys.AddOrEditLeaveAMessageReplyDto, LeaveAMessageReply>().ReverseMap();
-            CreateMap<ReturnLeaveAMessageReplyDto, LeaveAMessageReply>().ReverseMap();
+            CreateMap<AddOrEditLeaveAMessageReplyDto, LeaveAMessageReply>().ReverseMap();
+            CreateMap<ReturnLeaveAMessageReplyDto, LeaveAMessageReply>().ReverseMap().ForMember(o => o.UserName, op => op.MapFrom(i => i.ReplyUser.Name));
+
+            CreateMap<ReturnRefundDto, Refund>().ReverseMap().ForMember(o=>o.Handler,op=>op.MapFrom(a=>a.Handler.Name));
+            CreateMap<AddOrEditRefundDto, Refund>().ReverseMap();
+
+            CreateMap<ReturnOtherOrderDto, OtherOrder>().ReverseMap().ForMember(o => o.Handler, op => op.MapFrom(a => a.Handler.Name));
+            CreateMap<AddOrEditOtherOrderDto, OtherOrder>().ReverseMap();
         }
     }
 }

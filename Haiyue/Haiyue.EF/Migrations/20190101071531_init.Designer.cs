@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Haiyue.HYEF.Migrations
 {
     [DbContext(typeof(HYContext))]
-    [Migration("20181228054222_AddTaskListTable")]
-    partial class AddTaskListTable
+    [Migration("20190101071531_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,6 +64,56 @@ namespace Haiyue.HYEF.Migrations
                     b.ToTable("Department");
                 });
 
+            modelBuilder.Entity("Haiyue.Model.Model.Expenditure", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Amount");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime>("ExpenditureTime");
+
+                    b.Property<int>("ExpenditureTypeId");
+
+                    b.Property<int>("HandlerId");
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("Remarks");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ExpenditureTypeId");
+
+                    b.HasIndex("HandlerId");
+
+                    b.ToTable("Expenditures");
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.ExpenditureType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExpenditureTypes");
+                });
+
             modelBuilder.Entity("Haiyue.Model.Model.Game", b =>
                 {
                     b.Property<int>("Id")
@@ -81,6 +131,81 @@ namespace Haiyue.HYEF.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.LeaveAMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("Title");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("LeaveAMessages");
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.LeaveAMessageReply", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Content");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<int>("LeaveAMessageId");
+
+                    b.Property<int>("ReplyUserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeaveAMessageId");
+
+                    b.HasIndex("ReplyUserId");
+
+                    b.ToTable("LeaveAMessageReplys");
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.LoginInfo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<DateTime>("OutTime");
+
+                    b.Property<string>("Token");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("LoginInfos");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.NoteBook", b =>
@@ -101,9 +226,54 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("NoteBooks");
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.OtherOrder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("ActualPayment");
+
+                    b.Property<double>("ActualRefund");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("GmaeOrGiftCard");
+
+                    b.Property<int>("HandlerId");
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("OrderNumber");
+
+                    b.Property<DateTime>("OtherTime");
+
+                    b.Property<string>("Product");
+
+                    b.Property<double>("RefundAmount");
+
+                    b.Property<int>("RefundStatus");
+
+                    b.Property<string>("Remark");
+
+                    b.Property<string>("ServiceName");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HandlerId");
+
+                    b.ToTable("OtherOrders");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.Position", b =>
@@ -143,7 +313,7 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<int>("GameId");
 
-                    b.Property<string>("Handler");
+                    b.Property<int>("HandlerId");
 
                     b.Property<DateTime?>("LastUpTime")
                         .HasMaxLength(30);
@@ -180,7 +350,44 @@ namespace Haiyue.HYEF.Migrations
 
                     b.HasIndex("GameId");
 
+                    b.HasIndex("HandlerId");
+
                     b.ToTable("Purchases");
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.Refund", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("ActualPayment");
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasMaxLength(30);
+
+                    b.Property<int>("HandlerId");
+
+                    b.Property<DateTime?>("LastUpTime")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("OrderNumber");
+
+                    b.Property<DateTime>("OrderTime");
+
+                    b.Property<int>("PaymentStatus");
+
+                    b.Property<string>("Remark");
+
+                    b.Property<string>("ServiceName");
+
+                    b.Property<string>("TotalExpenditure");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HandlerId");
+
+                    b.ToTable("Refunds");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.TaskChangeLog", b =>
@@ -207,7 +414,7 @@ namespace Haiyue.HYEF.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TaskId");
+                    b.HasIndex("OperatorId");
 
                     b.ToTable("TaskChangeLogss");
                 });
@@ -263,8 +470,6 @@ namespace Haiyue.HYEF.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TaskId");
-
                     b.ToTable("TaskStatusLogss");
                 });
 
@@ -296,7 +501,7 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("PassWored");
+                    b.Property<string>("Password");
 
                     b.Property<string>("Phone");
 
@@ -311,6 +516,56 @@ namespace Haiyue.HYEF.Migrations
                     b.HasIndex("PositionId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.Expenditure", b =>
+                {
+                    b.HasOne("Haiyue.Model.Model.ExpenditureType", "ExpenditureType")
+                        .WithMany("Expenditures")
+                        .HasForeignKey("ExpenditureTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Haiyue.Model.Model.User", "User")
+                        .WithMany("Expenditures")
+                        .HasForeignKey("HandlerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.LeaveAMessageReply", b =>
+                {
+                    b.HasOne("Haiyue.Model.Model.LeaveAMessage", "LeaveAMessage")
+                        .WithMany("LeaveAMessageReply")
+                        .HasForeignKey("LeaveAMessageId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Haiyue.Model.Model.User", "ReplyUser")
+                        .WithMany("LeaveAMessageReplys")
+                        .HasForeignKey("ReplyUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.LoginInfo", b =>
+                {
+                    b.HasOne("Haiyue.Model.Model.User", "User")
+                        .WithMany("LoginInfos")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.NoteBook", b =>
+                {
+                    b.HasOne("Haiyue.Model.Model.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.OtherOrder", b =>
+                {
+                    b.HasOne("Haiyue.Model.Model.User", "Handler")
+                        .WithMany()
+                        .HasForeignKey("HandlerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.Position", b =>
@@ -332,21 +587,26 @@ namespace Haiyue.HYEF.Migrations
                         .WithMany("Purchase")
                         .HasForeignKey("GameId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Haiyue.Model.Model.User", "Handler")
+                        .WithMany()
+                        .HasForeignKey("HandlerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Haiyue.Model.Model.Refund", b =>
+                {
+                    b.HasOne("Haiyue.Model.Model.User", "Handler")
+                        .WithMany()
+                        .HasForeignKey("HandlerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.TaskChangeLog", b =>
                 {
-                    b.HasOne("Haiyue.Model.Model.TaskList", "TaskList")
-                        .WithMany("TaskChangeLogs")
-                        .HasForeignKey("TaskId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Haiyue.Model.Model.TaskStatusLog", b =>
-                {
-                    b.HasOne("Haiyue.Model.Model.TaskList", "TaskList")
-                        .WithMany("TaskStatusLogs")
-                        .HasForeignKey("TaskId")
+                    b.HasOne("Haiyue.Model.Model.User", "Operator")
+                        .WithMany()
+                        .HasForeignKey("OperatorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

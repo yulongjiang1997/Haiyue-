@@ -10,9 +10,6 @@ namespace Haiyue.Model.Model
     {
         public int TaskId { get; set; }
 
-        [ForeignKey("TaskId")]
-        public TaskList TaskList { get; set; }
-
         /// <summary>
         /// 任务内容
         /// </summary>
@@ -22,6 +19,9 @@ namespace Haiyue.Model.Model
         /// 操作人ID
         /// </summary>
         public int OperatorId { get; set; }
+
+        [ForeignKey("OperatorId")]
+        public virtual User Operator { get; set; }
 
         /// <summary>
         /// 任务开始时间

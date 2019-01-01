@@ -16,7 +16,7 @@ namespace Haiyue.Model.Dto.Users
         /// <summary>
         /// 密码
         /// </summary>
-        public string PassWored { get; set; }
+        public string Password { get; set; }
 
         /// <summary>
         /// 权限

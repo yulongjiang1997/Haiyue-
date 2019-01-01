@@ -29,7 +29,7 @@ namespace Haiyue.Service.Services.UserServices
             if (await ChekeUserOnly(model.Name, model.IdNumber))
             {
                 var user = _mapper.Map<User>(model);
-                user.PassWored = MD5Help.MD5Encrypt32(user.PassWored);
+                user.Password = MD5Help.MD5Encrypt32(user.Password);
                 _context.Users.Add(user);
             }
             return await _context.SaveChangesAsync() > 0;
@@ -51,7 +51,7 @@ namespace Haiyue.Service.Services.UserServices
             if (user != null && await ChekeUserOnly(model.Name, model.IdNumber, id))
             {
                 _mapper.Map(model, user);
-                user.PassWored = MD5Help.MD5Encrypt32(user.PassWored);
+                user.Password = MD5Help.MD5Encrypt32(user.Password);
                 user.LastUpTime = DateTime.Now;
             }
             return await _context.SaveChangesAsync() > 0;
@@ -95,7 +95,7 @@ namespace Haiyue.Service.Services.UserServices
 
         public async Task<ReturnLoginDto> Login(LoginDto model)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(i => i.Name == model.UserName && i.PassWored == MD5Help.MD5Encrypt32(model.Password));
+            var user = await _context.Users.FirstOrDefaultAsync(i => i.Name == model.UserName && i.Password == MD5Help.MD5Encrypt32(model.Password));
             ReturnLoginDto result = null;
             if (user != null)
             {
@@ -108,6 +108,8 @@ namespace Haiyue.Service.Services.UserServices
                     Token = loginInfo.Token,
                     UserId = loginInfo.UserId
                 };
+                user.LoginTime = DateTime.Now;
+                await _context.SaveChangesAsync();
             }
             return result == null ? null : result;
         }

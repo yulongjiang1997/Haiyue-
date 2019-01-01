@@ -43,9 +43,5 @@ namespace Haiyue.Model.Model
         /// </summary>
         public TaskStatusType TaskStatus { get; set; }
 
-
-        public ICollection<TaskStatusLog> TaskStatusLogs { get; set; }
-        public ICollection<TaskChangeLog> TaskChangeLogs { get; set; }
-
     }
 }

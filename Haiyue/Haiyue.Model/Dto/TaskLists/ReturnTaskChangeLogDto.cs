@@ -13,9 +13,9 @@ namespace Haiyue.Model.Dto.TaskLists
         public string Content { get; set; }
 
         /// <summary>
-        /// 操作人ID
+        /// 操作人
         /// </summary>
-        public int OperatorId { get; set; }
+        public string OperatorName { get; set; }
 
         /// <summary>
         /// 修改时间

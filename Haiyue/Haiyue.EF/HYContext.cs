@@ -1,5 +1,6 @@
 ﻿using Haiyue.Model.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace Haiyue.HYEF
 {
@@ -10,6 +11,7 @@ namespace Haiyue.HYEF
 
         }
 
+        
 
         public DbSet<User> Users { get; set; }
 

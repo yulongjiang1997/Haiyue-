@@ -155,7 +155,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.CreateAsync(Haiyue.Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageReplyDto)">
+        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.CreateAsync(Haiyue.Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageDto)">
             <summary>
             添加留言
             </summary>
@@ -169,7 +169,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.CreateReplyAsync(Haiyue.Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageReplyDto)">
+        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.CreateReplyAsync(Haiyue.Model.Dto.LeaveAMessages.LeaveAMessageReplys.AddOrEditLeaveAMessageReplyDto)">
             <summary>
             添加留言回复
             </summary>
@@ -183,7 +183,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.EditAsync(System.Int32,Haiyue.Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageReplyDto)">
+        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.EditAsync(System.Int32,Haiyue.Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageDto)">
             <summary>
             修改留言
             </summary>
@@ -221,6 +221,34 @@
         <member name="M:Haiyue.Web.Controllers.NoteBookController.QueryPaginAsync(Haiyue.Model.Dto.NoteBooks.SelectNoteBoolDto)">
             <summary>
             分页查询记事本内容
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.OtherOrderController.CreateAsync(Haiyue.Model.Dto.OtherOrders.AddOrEditOtherOrderDto)">
+            <summary>
+            添加其他订单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.OtherOrderController.DeleteAsync(System.Int32)">
+            <summary>
+            删除其他订单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.OtherOrderController.EditAsync(System.Int32,Haiyue.Model.Dto.OtherOrders.AddOrEditOtherOrderDto)">
+            <summary>
+            修改其他订单
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.OtherOrderController.QueryPaginAsync(Haiyue.Model.Dto.OtherOrders.SelectOtherOrderDto)">
+            <summary>
+            分页查询其他订单
             </summary>
             <param name="model"></param>
             <returns></returns>
@@ -286,6 +314,34 @@
             修改付款状态
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.RefundController.CreateAsync(Haiyue.Model.Dto.Refunds.AddOrEditRefundDto)">
+            <summary>
+            添加退款记录
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.RefundController.DeleteAsync(System.Int32)">
+            <summary>
+            删除退款记录
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.RefundController.EditAsync(System.Int32,Haiyue.Model.Dto.Refunds.AddOrEditRefundDto)">
+            <summary>
+            修改退款记录
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.RefundController.QueryPaginAsync(Haiyue.Model.Dto.Refunds.SelectRefundDto)">
+            <summary>
+            分页查询退款记录
+            </summary>
+            <param name="model"></param>
             <returns></returns>
         </member>
         <member name="M:Haiyue.Web.Controllers.TaskListController.CreateAsync(Haiyue.Model.Dto.TaskLists.AddOrEditTaskListDto)">

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Haiyue.Model;
 using Haiyue.Model.Dto.LeaveAMessages;
+using Haiyue.Model.Dto.LeaveAMessages.LeaveAMessageReplys;
 using Haiyue.Service.Services.LeaveAMessageServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +29,7 @@ namespace Haiyue.Web.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Create")]
-        public async Task<IActionResult> CreateAsync(AddOrEditLeaveAMessageReplyDto model)
+        public async Task<IActionResult> CreateAsync(AddOrEditLeaveAMessageDto model)
         {
             var result = new ReturnData<bool>();
 
@@ -64,7 +65,7 @@ namespace Haiyue.Web.Controllers
         {
             var result = new ReturnData<bool>();
 
-            result.Obj = await _service.CreateAsync(model);
+            result.Obj = await _service.CreateReplyAsync(model);
 
             return Ok(result);
         }
@@ -92,7 +93,7 @@ namespace Haiyue.Web.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Edit")]
-        public async Task<IActionResult> EditAsync(int id, AddOrEditLeaveAMessageReplyDto model)
+        public async Task<IActionResult> EditAsync(int id, AddOrEditLeaveAMessageDto model)
         {
             var result = new ReturnData<bool>();
 

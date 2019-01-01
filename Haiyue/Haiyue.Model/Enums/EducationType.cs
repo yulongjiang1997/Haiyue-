@@ -32,11 +32,6 @@ namespace Haiyue.Model.Enums
         Undergraduate,
 
         /// <summary>
-        /// 研究生
-        /// </summary>
-        GraduateStudent,
-
-        /// <summary>
         /// 硕士
         /// </summary>
         Master,

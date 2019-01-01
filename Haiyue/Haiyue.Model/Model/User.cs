@@ -16,7 +16,7 @@ namespace Haiyue.Model.Model
         /// <summary>
         /// 密码
         /// </summary>
-        public string PassWored { get; set; }
+        public string Password { get; set; }
 
         /// <summary>
         /// 权限
@@ -81,7 +81,7 @@ namespace Haiyue.Model.Model
 
         public ICollection<LoginInfo> LoginInfos { get; set;}
 
-        public ICollection<LeaveAMessage> LeaveAMessages { get; set; }
+        //public ICollection<LeaveAMessage> LeaveAMessages { get; set; }
 
         public ICollection<LeaveAMessageReply> LeaveAMessageReplys { get; set; }
     }

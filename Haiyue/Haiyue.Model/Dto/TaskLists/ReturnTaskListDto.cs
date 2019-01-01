@@ -8,6 +8,8 @@ namespace Haiyue.Model.Dto.TaskLists
 {
     public class ReturnTaskListDto
     {
+        public int Id { get; set; }
+
         public DateTime CreateTime { get; set; }
 
         /// <summary>

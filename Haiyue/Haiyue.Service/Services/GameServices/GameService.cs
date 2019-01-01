@@ -24,8 +24,11 @@ namespace Haiyue.Service.Services.GameServices
         }
         public async Task<bool> CreateAsync(GameAddOrEditDto model)
         {
-            var game = _mapper.Map<Game>(model);
-            _context.Games.Add(game);
+            if (await CheckName(model.Name))
+            {
+                var game = _mapper.Map<Game>(model);
+                _context.Games.Add(game);
+            }
             return await _context.SaveChangesAsync() > 0;
         }
 
@@ -44,8 +47,11 @@ namespace Haiyue.Service.Services.GameServices
             var game = await _context.Games.FirstOrDefaultAsync(i => i.Id == id);
             if (game != null)
             {
-                _mapper.Map(model, game);
-                game.LastUpTime = DateTime.Now;
+                if (await CheckName(model.Name, id))
+                {
+                    _mapper.Map(model, game);
+                    game.LastUpTime = DateTime.Now;
+                }
             }
             return await _context.SaveChangesAsync() > 0;
         }
@@ -63,8 +69,22 @@ namespace Haiyue.Service.Services.GameServices
             result.Total = await games.CountAsync();
             result.PageNumber = model.PageNumber;
             result.Amount = model.Amount;
-            result.Items =_mapper.Map<List<ReturnGameDto>>(await games.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync());
+            result.Items = _mapper.Map<List<ReturnGameDto>>(await games.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync());
             return result;
+        }
+
+        public async Task<bool> CheckName(string name, int? id = null)
+        {
+            Game game = null;
+            if (id == null)
+            {
+                game = await _context.Games.FirstOrDefaultAsync(i => i.Name == name);
+            }
+            else
+            {
+                game = await _context.Games.FirstOrDefaultAsync(i => i.Name == name && i.Id != id);
+            }
+            return game == null;
         }
     }
 }

@@ -21,6 +21,9 @@ using Haiyue.Service.Services.DepartmentServices;
 using Haiyue.Service.Services.TaskListServices;
 using Haiyue.Service.Services.ExpenditureServices;
 using Haiyue.Service.Services.ExpenditureServices.ExpenditureTypeServices;
+using Haiyue.Service.Services.LeaveAMessageServices;
+using Haiyue.Service.Services.RefundServices;
+using Haiyue.Service.Services.OtherOrderServices;
 
 namespace Haiyue.Web
 {
@@ -90,6 +93,9 @@ namespace Haiyue.Web
             services.AddTransient<ITaskListService, TaskListService>();
             services.AddTransient<IExpenditureService, ExpenditureService>();
             services.AddTransient<IExpenditureTypeService, ExpenditureTypeService>();
+            services.AddTransient<ILeaveAMessageService, LeaveAMessageService>();
+            services.AddTransient<IRefundService, RefundService>();
+            services.AddTransient<IOtherOrderService, OtherOrderService>();
             services.AddTransient<BaseService>();
             #endregion
         }

@@ -9,8 +9,8 @@ namespace Haiyue.Model.Model
     {
         public int UserId { get; set; }
 
-        [ForeignKey("UserId")]
-        public User User { get; set; }
+        //[ForeignKey("UserId")]
+        //public virtual User User { get; set; }
  
         public string Title { get; set; }
 

@@ -13,7 +13,7 @@ namespace Haiyue.Model.Model
         public int LeaveAMessageId { get; set; }
 
         [ForeignKey("LeaveAMessageId")]
-        public LeaveAMessage LeaveAMessage { get; set; }
+        public virtual LeaveAMessage LeaveAMessage { get; set; }
 
         /// <summary>
         /// 回复用户ID
@@ -21,7 +21,7 @@ namespace Haiyue.Model.Model
         public int ReplyUserId { get; set; }
 
         [ForeignKey("ReplyUserId")]
-        public User ReplyUser { get; set; }
+        public virtual User ReplyUser { get; set; }
 
         public string Content { get; set; }
     }

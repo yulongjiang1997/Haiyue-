@@ -9,14 +9,9 @@ namespace Haiyue.Model.Model
     public class Refund : BaseModel
     {
         /// <summary>
-        /// 订单时间
+        /// 退款时间
         /// </summary>
-        public DateTime OrderTime { get; set; }
-
-        /// <summary>
-        /// 操作人
-        /// </summary>
-        public int HandlerId { get; set; }
+        public DateTime OtherTime { get; set; }
 
         /// <summary>
         /// 订单号
@@ -29,14 +24,14 @@ namespace Haiyue.Model.Model
         public string ServiceName { get; set; }
 
         /// <summary>
-        /// 支出总价
+        /// 游戏或者礼品卡
         /// </summary>
-        public string TotalExpenditure { get; set; }
+        public string GmaeOrGiftCard { get; set; }
 
         /// <summary>
-        /// 付款状态
+        /// 产品
         /// </summary>
-        public PaymentStatusType PaymentStatus { get; set; }
+        public string Product { get; set; }
 
         /// <summary>
         /// 实际付款
@@ -44,11 +39,32 @@ namespace Haiyue.Model.Model
         public double ActualPayment { get; set; }
 
         /// <summary>
+        /// 实际退款
+        /// </summary>
+        public double ActualRefund { get; set; }
+
+        /// <summary>
+        /// 退款金额
+        /// </summary>
+        public double RefundAmount { get; set; }
+
+        /// <summary>
+        /// 退款状态
+        /// </summary>
+        public RefundStatusType RefundStatus { get; set; }
+
+        /// <summary>
         /// 备注
         /// </summary>
         public string Remark { get; set; }
 
+        /// <summary>
+        /// 操作人
+        /// </summary>
+        public int HandlerId { get; set; }
+
         [ForeignKey("HandlerId")]
         public User Handler { get; set; }
+
     }
 }

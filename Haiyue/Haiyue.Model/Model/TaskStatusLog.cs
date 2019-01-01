@@ -10,9 +10,6 @@ namespace Haiyue.Model.Model
     {
         public int TaskId { get; set; }
 
-        [ForeignKey("TaskId")]
-        public TaskList TaskList { get; set; }
-
         /// <summary>
         /// 变更前状态
         /// </summary>

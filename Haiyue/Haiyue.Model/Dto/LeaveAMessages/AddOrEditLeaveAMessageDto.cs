@@ -4,11 +4,9 @@ using System.Text;
 
 namespace Haiyue.Model.Dto.LeaveAMessages
 {
-    public class AddOrEditLeaveAMessageReplyDto
+    public class AddOrEditLeaveAMessageDto
     {
         public int UserId { get; set; }
-
-        public int LeaveAMessageId { get; set; }
 
         public string Title { get; set; }
 

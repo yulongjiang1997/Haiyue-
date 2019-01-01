@@ -15,7 +15,7 @@ namespace Haiyue.Service.Services.LeaveAMessageServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> CreateAsync(Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageReplyDto model);
+        Task<bool> CreateAsync(AddOrEditLeaveAMessageDto model);
 
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Haiyue.Service.Services.LeaveAMessageServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> CreateReplyAsync(Model.Dto.LeaveAMessages.LeaveAMessageReplys.AddOrEditLeaveAMessageReplyDto model);
+        Task<bool> CreateReplyAsync(AddOrEditLeaveAMessageReplyDto model);
 
         /// <summary>
         /// 删除留言回复
@@ -45,7 +45,7 @@ namespace Haiyue.Service.Services.LeaveAMessageServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> EditAsync(int id, Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageReplyDto model);
+        Task<bool> EditAsync(int id, Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageDto model);
 
         /// <summary>
         /// 分页查询留言

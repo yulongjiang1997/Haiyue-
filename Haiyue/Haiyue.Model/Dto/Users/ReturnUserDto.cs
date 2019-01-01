@@ -7,6 +7,8 @@ namespace Haiyue.Model.Dto.Users
 {
     public class ReturnUserDto
     {
+        public int Id { get; set; }
+
         /// <summary>
         /// 姓名
         /// </summary>

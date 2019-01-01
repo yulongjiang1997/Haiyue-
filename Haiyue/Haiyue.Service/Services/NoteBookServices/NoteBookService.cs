@@ -52,7 +52,7 @@ namespace Haiyue.Service.Services.NoteBookServices
         public async Task<ReturnPaginSelectDto<ReturnNoteBookDto>> QueryPaginAsync(SelectNoteBoolDto model)
         {
             var result = new ReturnPaginSelectDto<ReturnNoteBookDto>();
-            var noteBooks = _context.NoteBooks.AsNoTracking();
+            var noteBooks =  _context.NoteBooks.Where(i=>i.UserId==model.UserId).AsNoTracking();
             result.Amount = model.Amount;
             result.Total = await noteBooks.CountAsync();
             result.PageNumber = model.PageNumber;
