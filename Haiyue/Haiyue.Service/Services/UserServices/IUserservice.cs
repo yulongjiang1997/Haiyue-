@@ -1,4 +1,5 @@
 ﻿using Haiyue.Model.Dto;
+using Haiyue.Model.Dto.Admin;
 using Haiyue.Model.Dto.Users;
 using System;
 using System.Collections.Generic;
@@ -43,5 +44,27 @@ namespace Haiyue.Service.Services.UserServices
         /// </summary>
         /// <returns></returns>
         List<ReturnJurisdictionTypeDto> GetJurisdictionType();
+
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task<ReturnLoginDto> Login(LoginDto model);
+
+        /// <summary>
+        /// 检查token是否超时
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        bool CheckTokenTimeOut(int userId, string token);
+
+        /// <summary>
+        /// 检查是否为管理员
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        bool CheckIsAdmin(int userId);
     }
 }

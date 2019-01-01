@@ -155,6 +155,48 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.CreateAsync(Haiyue.Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageReplyDto)">
+            <summary>
+            添加留言
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.DeleteAsync(System.Int32)">
+            <summary>
+            删除留言
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.CreateReplyAsync(Haiyue.Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageReplyDto)">
+            <summary>
+            添加留言回复
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.DeleteReplyAsync(System.Int32)">
+            <summary>
+            删除留言回复
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.EditAsync(System.Int32,Haiyue.Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageReplyDto)">
+            <summary>
+            修改留言
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.LeaveAMessageController.QueryPaginAsync(Haiyue.Model.Dto.LeaveAMessages.SelectLeaveAMessageDto)">
+            <summary>
+            分页查询留言
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
         <member name="M:Haiyue.Web.Controllers.NoteBookController.CreateAsync(Haiyue.Model.Dto.NoteBooks.NoteBookAddOrEditDto)">
             <summary>
             添加记事本内容

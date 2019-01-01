@@ -5,7 +5,7 @@ namespace Haiyue.HYEF
 {
     public class HYContext : DbContext
     {
-        public HYContext(DbContextOptions<HYContext> options):base(options)
+        public HYContext(DbContextOptions<HYContext> options) : base(options)
         {
 
         }
@@ -21,7 +21,7 @@ namespace Haiyue.HYEF
 
         public DbSet<Game> Games { get; set; }
 
-        public DbSet<Currency> Currencys  { get; set; }
+        public DbSet<Currency> Currencys { get; set; }
 
         public DbSet<NoteBook> NoteBooks { get; set; }
 
@@ -35,6 +35,15 @@ namespace Haiyue.HYEF
 
         public DbSet<ExpenditureType> ExpenditureTypes { get; set; }
 
+        public DbSet<LoginInfo> LoginInfos { get; set; }
 
+        public DbSet<LeaveAMessage> LeaveAMessages { get; set; }
+
+        public DbSet<LeaveAMessageReply> LeaveAMessageReplys { get; set; }
+
+        public DbSet<OtherOrder> OtherOrders { get; set; }
+
+        public DbSet<Refund> Refunds { get; set; }
+        
     }
 }

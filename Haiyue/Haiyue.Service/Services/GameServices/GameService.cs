@@ -52,18 +52,18 @@ namespace Haiyue.Service.Services.GameServices
 
         public async Task<List<ReturnGameDto>> QueryAll()
         {
-            var purchases = _context.Games.AsNoTracking();
-            return _mapper.Map<List<ReturnGameDto>>(await purchases.ToListAsync());
+            var games = _context.Games.AsNoTracking();
+            return _mapper.Map<List<ReturnGameDto>>(await games.ToListAsync());
         }
 
         public async Task<ReturnPaginSelectDto<ReturnGameDto>> QueryPaginAsync(SelectGameDto model)
         {
             var result = new ReturnPaginSelectDto<ReturnGameDto>();
-            var purchases = _context.Games.AsNoTracking();
-            result.Total = await purchases.CountAsync();
+            var games = _context.Games.AsNoTracking();
+            result.Total = await games.CountAsync();
             result.PageNumber = model.PageNumber;
             result.Amount = model.Amount;
-            result.Items =_mapper.Map<List<ReturnGameDto>>(await purchases.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync());
+            result.Items =_mapper.Map<List<ReturnGameDto>>(await games.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync());
             return result;
         }
     }

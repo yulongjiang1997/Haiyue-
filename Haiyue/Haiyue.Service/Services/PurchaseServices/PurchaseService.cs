@@ -74,7 +74,7 @@ namespace Haiyue.Service.Services.PurchaseServices
         public async Task<ReturnPaginSelectDto<ReturnPuurchaseDto>> QueryPaginAsync(SelectPurchaseDto model)
         {
             var result = new ReturnPaginSelectDto<ReturnPuurchaseDto>();
-            var purchases = _context.Purchases.Include(i => i.Game).Include(i => i.Currency).AsNoTracking();
+            var purchases = _context.Purchases.Include(i => i.Game).Include(i => i.Currency).Include(i => i.Handler).AsNoTracking();
 
 
             #region 高级筛选

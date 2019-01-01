@@ -13,10 +13,149 @@
     <CodeAnalysisRuleSet />
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\css\bootstrap\bootstrap-theme.css" />
+    <None Include="wwwroot\css\bootstrap\bootstrap-theme.min.css" />
+    <None Include="wwwroot\css\bootstrap\bootstrap.css" />
+    <None Include="wwwroot\css\bootstrap\bootstrap.min.css" />
+    <None Include="wwwroot\css\bootstrap\bootstrap.rtl.css" />
+    <None Include="wwwroot\css\bootstrap\bootstrap.rtl.min.css" />
+    <None Include="wwwroot\css\bootstrap\index.html" />
+    <None Include="wwwroot\css\custom.css" />
+    <None Include="wwwroot\css\fix.css" />
+    <None Include="wwwroot\css\fonts\broccolidry.eot" />
+    <None Include="wwwroot\css\fonts\broccolidry.svg" />
+    <None Include="wwwroot\css\fonts\broccolidry.ttf" />
+    <None Include="wwwroot\css\fonts\broccolidry.woff" />
+    <None Include="wwwroot\css\fonts\cuticons.eot" />
+    <None Include="wwwroot\css\fonts\cuticons.svg" />
+    <None Include="wwwroot\css\fonts\cuticons.ttf" />
+    <None Include="wwwroot\css\fonts\cuticons.woff" />
+    <None Include="wwwroot\css\fonts\ecoico.eot" />
+    <None Include="wwwroot\css\fonts\ecoico.svg" />
+    <None Include="wwwroot\css\fonts\ecoico.ttf" />
+    <None Include="wwwroot\css\fonts\ecoico.woff" />
+    <None Include="wwwroot\css\fonts\entypo.eot" />
+    <None Include="wwwroot\css\fonts\entypo.svg" />
+    <None Include="wwwroot\css\fonts\entypo.ttf" />
+    <None Include="wwwroot\css\fonts\entypo.woff" />
+    <None Include="wwwroot\css\fonts\icomoon.dev.svg" />
+    <None Include="wwwroot\css\fonts\icomoon.eot" />
+    <None Include="wwwroot\css\fonts\icomoon.svg" />
+    <None Include="wwwroot\css\fonts\icomoon.ttf" />
+    <None Include="wwwroot\css\fonts\icomoon.woff" />
+    <None Include="wwwroot\css\fonts\iconic.eot" />
+    <None Include="wwwroot\css\fonts\iconic.svg" />
+    <None Include="wwwroot\css\fonts\iconic.ttf" />
+    <None Include="wwwroot\css\fonts\iconic.woff" />
+    <None Include="wwwroot\css\fonts\index.html" />
+    <None Include="wwwroot\css\fonts\license.txt" />
+    <None Include="wwwroot\css\fonts\meteocons.eot" />
+    <None Include="wwwroot\css\fonts\meteocons.svg" />
+    <None Include="wwwroot\css\fonts\meteocons.ttf" />
+    <None Include="wwwroot\css\fonts\meteocons.woff" />
+    <None Include="wwwroot\css\fonts\minia.eot" />
+    <None Include="wwwroot\css\fonts\minia.svg" />
+    <None Include="wwwroot\css\fonts\minia.ttf" />
+    <None Include="wwwroot\css\fonts\minia.woff" />
+    <None Include="wwwroot\css\fonts\silkcons.eot" />
+    <None Include="wwwroot\css\fonts\silkcons.svg" />
+    <None Include="wwwroot\css\fonts\silkcons.ttf" />
+    <None Include="wwwroot\css\fonts\silkcons.woff" />
+    <None Include="wwwroot\css\fonts\typicons.eot" />
+    <None Include="wwwroot\css\fonts\typicons.svg" />
+    <None Include="wwwroot\css\fonts\typicons.ttf" />
+    <None Include="wwwroot\css\fonts\typicons.woff" />
+    <None Include="wwwroot\css\fonts\wpzoom.eot" />
+    <None Include="wwwroot\css\fonts\wpzoom.svg" />
+    <None Include="wwwroot\css\fonts\wpzoom.ttf" />
+    <None Include="wwwroot\css\fonts\wpzoom.woff" />
+    <None Include="wwwroot\css\icons.css" />
+    <None Include="wwwroot\css\ie8.css" />
+    <None Include="wwwroot\css\index.html" />
+    <None Include="wwwroot\css\main.css" />
+    <None Include="wwwroot\css\mega-menu.css" />
+    <None Include="wwwroot\css\note.css" />
+    <None Include="wwwroot\css\supr-theme\images\index.html" />
+    <None Include="wwwroot\css\supr-theme\images\ui-bg_diagonals-small_100_f4f4f4_40x40.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-bg_dots-small_75_dedede_2x2.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-bg_dots-small_75_f7f7f7_2x2.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-bg_glass_55_9fc569_1x400.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-icons_2e83ff_256x240.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-icons_353535_256x240.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-icons_454545_256x240.png" />
+    <None Include="wwwroot\css\supr-theme\images\ui-icons_ed7a53_256x240.png" />
+    <None Include="wwwroot\css\supr-theme\jquery-ui-timepicker-addon.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.autocomplete.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.combobox.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.core.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.datepicker.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.dialog.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.progressbar.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.resizable.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.slider.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.spinner.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.supr.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.theme.css" />
+    <None Include="wwwroot\css\supr-theme\jquery.ui.tooltip.css" />
+    <None Include="wwwroot\css\tasks.css" />
+    <None Include="wwwroot\js\bootstrap\bootstrap.js" />
+    <None Include="wwwroot\js\bootstrap\bootstrap.min.js" />
+    <None Include="wwwroot\js\bootstrap\index.html" />
+    <None Include="wwwroot\js\buttons.js" />
+    <None Include="wwwroot\js\calendar.js" />
+    <None Include="wwwroot\js\charts.js" />
+    <None Include="wwwroot\js\dashboard.js" />
+    <None Include="wwwroot\js\datatable.js" />
+    <None Include="wwwroot\js\drag.js" />
+    <None Include="wwwroot\js\elements.js" />
+    <None Include="wwwroot\js\email.js" />
+    <None Include="wwwroot\js\empty.js" />
+    <None Include="wwwroot\js\file.js" />
+    <None Include="wwwroot\js\form-validation.js" />
+    <None Include="wwwroot\js\forms.js" />
+    <None Include="wwwroot\js\index.html" />
+    <None Include="wwwroot\js\jquery.mousewheel.js" />
+    <None Include="wwwroot\js\jq\jquery-migrate-1.2.1.min.js" />
+    <None Include="wwwroot\js\jq\jquery-ui.min.js" />
+    <None Include="wwwroot\js\jq\jquery.min.js" />
+    <None Include="wwwroot\js\json-charts.js" />
+    <None Include="wwwroot\js\libs\excanvas.min.js" />
+    <None Include="wwwroot\js\libs\jRespond.min.js" />
+    <None Include="wwwroot\js\libs\modernizr.js" />
+    <None Include="wwwroot\js\libs\respond.min.js" />
+    <None Include="wwwroot\js\main.js" />
+    <None Include="wwwroot\js\mega-menu.js" />
+    <None Include="wwwroot\js\support.js" />
+    <None Include="wwwroot\js\supr-theme\index.html" />
+    <None Include="wwwroot\js\supr-theme\jquery-ui-1.8.21.custom.min.js" />
+    <None Include="wwwroot\js\supr-theme\jquery-ui-1.8.22.custom.min.js" />
+    <None Include="wwwroot\js\supr-theme\jquery-ui-sliderAccess.js" />
+    <None Include="wwwroot\js\supr-theme\jquery-ui-timepicker-addon.js" />
+    <None Include="wwwroot\js\tables.js" />
+    <None Include="wwwroot\js\widgets.js" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="wwwroot\plugins\forms\tiny_mce\plugins\spellchecker\classes\utils\" />
+    <Folder Include="wwwroot\plugins\forms\tiny_mce\plugins\spellchecker\includes\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Haiyue.Service\Haiyue.Service.csproj" />
   </ItemGroup>
 
 </Project>

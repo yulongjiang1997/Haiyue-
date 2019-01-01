@@ -98,6 +98,6 @@ namespace Haiyue.Model.Model
         public int HandlerId { get; set; }
 
         [ForeignKey("HandlerId")]
-        public User User { get; set; }
+        public User Handler { get; set; }
     }
 }

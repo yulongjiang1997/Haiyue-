@@ -10,6 +10,7 @@ using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Users;
 using Haiyue.Model.Model;
 using Microsoft.EntityFrameworkCore;
+using Haiyue.Model.Dto.Admin;
 
 namespace Haiyue.Service.Services.UserServices
 {
@@ -49,7 +50,7 @@ namespace Haiyue.Service.Services.UserServices
             var user = await _context.Users.FirstOrDefaultAsync(i => i.Id == id);
             if (user != null && await ChekeUserOnly(model.Name, model.IdNumber, id))
             {
-               _mapper.Map(model,user);
+                _mapper.Map(model, user);
                 user.PassWored = MD5Help.MD5Encrypt32(user.PassWored);
                 user.LastUpTime = DateTime.Now;
             }
@@ -73,7 +74,7 @@ namespace Haiyue.Service.Services.UserServices
             result.Amount = model.Amount;
             result.Total = await user.CountAsync();
             result.PageNumber = model.PageNumber;
-            result.Items =_mapper.Map<List<ReturnUserDto>>(await user.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync());
+            result.Items = _mapper.Map<List<ReturnUserDto>>(await user.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync());
             return result;
         }
 
@@ -90,6 +91,59 @@ namespace Haiyue.Service.Services.UserServices
             }
 
             return user == null;
+        }
+
+        public async Task<ReturnLoginDto> Login(LoginDto model)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(i => i.Name == model.UserName && i.PassWored == MD5Help.MD5Encrypt32(model.Password));
+            ReturnLoginDto result = null;
+            if (user != null)
+            {
+                var loginInfo = await UpdateLoginInfo(user);
+                result = new ReturnLoginDto()
+                {
+                    Jurisdiction = loginInfo.User.Jurisdiction,
+                    Name = loginInfo.User.Name,
+                    OutTime = loginInfo.OutTime,
+                    Token = loginInfo.Token,
+                    UserId = loginInfo.UserId
+                };
+            }
+            return result == null ? null : result;
+        }
+
+        public async Task<LoginInfo> UpdateLoginInfo(User user)
+        {
+            var loginInfo = await _context.LoginInfos.FirstOrDefaultAsync(i => i.UserId == user.Id);
+            var result = new LoginInfo()
+            {
+                LastUpTime = DateTime.Now,
+                OutTime = DateTime.Now.AddMinutes(30),
+                Token = MD5Help.MD5Encrypt32(user.IdNumber + user.JobNumber + DateTime.Now),
+                UserId = user.Id
+            };
+            if (loginInfo != null)
+            {
+                loginInfo = result;
+            }
+            else
+            {
+                _context.LoginInfos.Add(result);
+            }
+            await _context.SaveChangesAsync();
+            return result;
+        }
+
+        public  bool CheckTokenTimeOut(int userId, string token)
+        {
+            var timeOut =  _context.LoginInfos.FirstOrDefault(i => i.UserId == userId && i.Token == token && i.OutTime > DateTime.Now);
+            return timeOut != null;
+        }
+
+        public bool CheckIsAdmin(int userId)
+        {
+            var timeOut = _context.LoginInfos.FirstOrDefault(i => i.UserId == userId&&i.User.Jurisdiction==JurisdictionType.SuperAdmin);
+            return timeOut != null;
         }
     }
 }

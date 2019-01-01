@@ -52,16 +52,16 @@ namespace Haiyue.Service.Services.ExpenditureServices
         public async Task<ReturnPaginSelectDto<ReturnExpenditureDto>> QueryPaginAsync(SelectExpenditureDto model)
         {
             var result = new ReturnPaginSelectDto<ReturnExpenditureDto>();
-            var expenditure = _context.Expenditures.Include(i => i.ExpenditureType).AsNoTracking();
+            var expenditure = _context.Expenditures.Include(i => i.ExpenditureType).Include(i=>i.User).AsNoTracking();
 
             if (model.BeginTime.HasValue)
             {
-                expenditure = expenditure.Where(i => i.CreateTime >= model.BeginTime);
+                expenditure = expenditure.Where(i => i.ExpenditureTime >= model.BeginTime);
             }
 
             if (model.EndTime.HasValue)
             {
-                expenditure = expenditure.Where(i => i.CreateTime <= model.EndTime);
+                expenditure = expenditure.Where(i => i.ExpenditureTime <= model.EndTime);
             }
 
             if (model.ExpenditureTypeId.HasValue)
@@ -82,7 +82,7 @@ namespace Haiyue.Service.Services.ExpenditureServices
             result.Amount = model.Amount;
             result.Total = await expenditure.CountAsync();
             result.PageNumber = model.PageNumber;
-            result.Items = _mapper.Map<List<ReturnExpenditureDto>>(await expenditure.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync());
+            result.Items = _mapper.Map<List<ReturnExpenditureDto>>(await expenditure.Pagin(model).OrderBy(i => i.ExpenditureTime).ToListAsync());
             return result;
         }
     }

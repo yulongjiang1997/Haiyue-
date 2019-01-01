@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Haiyue.Model;
+using Haiyue.Model.Dto.Admin;
 using Haiyue.Model.Dto.Users;
 using Haiyue.Service.Services.UserServices;
+using Haiyue.Web.ActionFilter;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -83,6 +85,20 @@ namespace Haiyue.Web.Controllers
         public async Task<IActionResult> QueryAsync(SelectUserDto model)
         {
             var result = await _service.QueryPaginAsync(model);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> LoginAsync(LoginDto model)
+        {
+            var result = new ReturnData<ReturnLoginDto>();
+            result.Obj = await _service.Login(model);
+            if (result.Obj ==null)
+            {
+                result.Success = false;
+                result.Message = "登录失败，用户名或密码错误";
+            }
             return Ok(result);
         }
 

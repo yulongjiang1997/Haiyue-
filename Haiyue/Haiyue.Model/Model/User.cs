@@ -78,5 +78,11 @@ namespace Haiyue.Model.Model
         
 
         public ICollection<Expenditure> Expenditures { get; set; }
+
+        public ICollection<LoginInfo> LoginInfos { get; set;}
+
+        public ICollection<LeaveAMessage> LeaveAMessages { get; set; }
+
+        public ICollection<LeaveAMessageReply> LeaveAMessageReplys { get; set; }
     }
 }

@@ -76,7 +76,7 @@ namespace Haiyue.Web
             });
             services.AddDbContextPool<HYContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));
             //services.AddDbContextPool<HYContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TestSqlServer")));//测试数据库
-            services.AddMvc(options => { options.Filters.Add(typeof(PermissionActionFillter)); });//权限检查
+            //services.AddMvc(options => { options.Filters.Add(typeof(PermissionActionFillter)); });//权限检查
             services.AddMvc(options => { options.Filters.Add(typeof(ExceptionFiltering)); });
 
             #region 依赖注入添加

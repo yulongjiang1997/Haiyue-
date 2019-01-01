@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Haiyue.Model.Model;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Haiyue.Model.Dto.Expenditures
@@ -25,5 +27,10 @@ namespace Haiyue.Model.Dto.Expenditures
         /// 备注
         /// </summary>
         public string Remarks { get; set; }
+
+        /// <summary>
+        /// 操作人
+        /// </summary>
+        public int HandlerId { get; set; }
     }
 }

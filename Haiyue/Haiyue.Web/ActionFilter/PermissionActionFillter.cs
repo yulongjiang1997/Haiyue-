@@ -1,4 +1,5 @@
 ﻿using Haiyue.Model;
+using Haiyue.Service.Services.UserServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -11,42 +12,70 @@ namespace Haiyue.Web.ActionFilter
 {
     public class PermissionActionFillter : ActionFilterAttribute
     {
-
-        public override void OnActionExecuting(ActionExecutingContext context)
+        private readonly IUserservice _service;
+        public PermissionActionFillter(IUserservice service)
         {
-
+            _service = service;
         }
-
-        ////private readonly IAdminService _service;
-        ////public  PermissionActionFillter(IAdminService service)
-        ////{
-        ////    _service = service;
-        ////}
-        //public override  void OnActionExecuting(ActionExecutingContext context)
-        //{
-        //    HttpRequest request = context.HttpContext.Request;
-        //    var isLoing=request.Path.Value.Contains("Login");
-        //    if (!isLoing) {
-        //        var token = request.Headers["Token"].ToString();
-        //        var email = request.Headers["UserEmail"].ToString();
-        //        if (!_service.CheckTokenTimeOut(email, token))
-        //        {
-        //            context.Result = new JsonResult(new ControllerReturnData<object>
-        //            {
-        //                Message = "Error 401 No Access",
-        //                Success = false,
-        //            });
-        //            context.HttpContext.Response.StatusCode = 401;
-        //        }
-        //        base.OnActionExecuting(context);
-        //    }
-        //}
-    }
-    public class NoCheck: ActionFilterAttribute
-    {
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            base.OnActionExecuting(context);
+            HttpRequest request = context.HttpContext.Request;
+            var path = request.Path.Value;
+            if (!path.Contains("Login"))
+            {
+                var token = request.Headers["Token"].ToString();
+                var userId = Convert.ToInt32(request.Headers["UserId"]);
+                if (!_service.CheckTokenTimeOut(userId, token))
+                {
+                    context.Result = new JsonResult(new ReturnData<object>
+                    {
+                        Message = "Error 401 No Access",
+                        Success = false,
+                    });
+                    context.HttpContext.Response.StatusCode = 401;
+                }
+                if (path.Contains("Expenditure") || path.Contains("Game") ||
+                    path.Contains("User") || path.Contains("Currency"))
+                {
+                    if (!_service.CheckIsAdmin(userId))
+                    {
+                        context.Result = new JsonResult(new ReturnData<object>
+                        {
+                            Message = "Error 401 No Admin Access",
+                            Success = false,
+                        });
+                        context.HttpContext.Response.StatusCode = 401;
+                    }
+                }
+                base.OnActionExecuting(context);
+            }
+        }
+    }
+    public class CheckAdmin : ActionFilterAttribute
+    {
+        private readonly IUserservice _service;
+        public CheckAdmin(IUserservice service)
+        {
+            _service = service;
+        }
+        public override void OnActionExecuting(ActionExecutingContext context)
+        {
+            HttpRequest request = context.HttpContext.Request;
+            var isLoing = request.Path.Value.Contains("Login");
+            if (!isLoing)
+            {
+                var userId = Convert.ToInt32(request.Headers["UserId"]);
+                if (!_service.CheckIsAdmin(userId))
+                {
+                    context.Result = new JsonResult(new ReturnData<object>
+                    {
+                        Message = "Error 401 No Access",
+                        Success = false,
+                    });
+                    context.HttpContext.Response.StatusCode = 401;
+                }
+                base.OnActionExecuting(context);
+            }
         }
     }
 }

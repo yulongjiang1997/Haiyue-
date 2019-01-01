@@ -13,7 +13,7 @@ namespace Haiyue.Model.Dto.Purchase
         /// <summary>
         /// 操作人
         /// </summary>
-        public string Handler { get; set; }
+        public string HandlerId { get; set; }
 
         /// <summary>
         /// 订单日期

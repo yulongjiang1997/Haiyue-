@@ -98,6 +98,5 @@ namespace Haiyue.Web.Controllers
             return Ok(result);
         }
 
-
     }
 }

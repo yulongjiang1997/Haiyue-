@@ -30,5 +30,12 @@ namespace Haiyue.Model.Dto.Expenditures
         /// 备注
         /// </summary>
         public string Remarks { get; set; }
+
+        /// <summary>
+        /// 操作人
+        /// </summary>
+        public string HandlerName { get; set; }
+
+
     }
 }

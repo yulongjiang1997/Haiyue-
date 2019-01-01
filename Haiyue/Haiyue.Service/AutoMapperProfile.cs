@@ -13,6 +13,8 @@ using Haiyue.Model.Dto.Departments;
 using Haiyue.Model.Dto.TaskLists;
 using Haiyue.Model.Dto.Expenditures;
 using Haiyue.Model.Dto.Expenditures.ExpenditureTypes;
+using Haiyue.Model.Dto.LeaveAMessages;
+using Haiyue.Model.Dto.LeaveAMessages.LeaveAMessageReplys;
 
 namespace Haiyue.Service
 {
@@ -27,7 +29,7 @@ namespace Haiyue.Service
             CreateMap<GameAddOrEditDto, Game>().ReverseMap();
 
             CreateMap<PurchaseAddOrEditDto, Purchase>().ReverseMap();
-            CreateMap<ReturnPuurchaseDto, Purchase>().ReverseMap();
+            CreateMap<ReturnPuurchaseDto, Purchase>().ReverseMap().ForMember(o=>o.Handler,op=>op.MapFrom(a=>a.Handler.Name));
                // .ForMember(o => o.GameName, op => op.MapFrom(a => a.Game.Name));
 
             CreateMap<ReturnPositionDto, Position>().ReverseMap();
@@ -50,10 +52,16 @@ namespace Haiyue.Service
             CreateMap<AddTaskStatusLogDto, TaskStatusLog>().ReverseMap();
             
             CreateMap<AddOrEditExpenditureDto, Expenditure > ().ReverseMap();
-            CreateMap<ReturnExpenditureDto, Expenditure > ().ReverseMap().ForMember(o => o.ExpenditureType, op => op.MapFrom(a => a.ExpenditureType.Name));
+            CreateMap<ReturnExpenditureDto, Expenditure > ().ReverseMap().ForMember(o => o.ExpenditureType, op => op.MapFrom(a => a.ExpenditureType.Name))
+                                                                         .ForMember(o => o.HandlerName, op => op.MapFrom(a => a.User.Name));
 
             CreateMap<AddOrEditExpeditureTypeDto, ExpenditureType>().ReverseMap();
             CreateMap<ReturnJurisdictionTypeDto, ExpenditureType>().ReverseMap();
+
+            CreateMap<Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageReplyDto, LeaveAMessage>().ReverseMap();
+            CreateMap<ReturnLeaveAMessageDto, LeaveAMessage>().ReverseMap();
+            CreateMap<Model.Dto.LeaveAMessages.LeaveAMessageReplys.AddOrEditLeaveAMessageReplyDto, LeaveAMessageReply>().ReverseMap();
+            CreateMap<ReturnLeaveAMessageReplyDto, LeaveAMessageReply>().ReverseMap();
         }
     }
 }
