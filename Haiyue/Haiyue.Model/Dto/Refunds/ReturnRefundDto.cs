@@ -6,5 +6,6 @@ namespace Haiyue.Model.Dto.Refunds
 {
     public class ReturnRefundDto
     {
+
     }
 }
