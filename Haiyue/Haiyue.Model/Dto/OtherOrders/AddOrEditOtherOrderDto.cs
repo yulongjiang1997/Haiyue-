@@ -46,5 +46,10 @@ namespace Haiyue.Model.Dto.OtherOrders
         /// 备注
         /// </summary>
         public string Remark { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime? LastUpDateTime { get; set; }
     }
 }

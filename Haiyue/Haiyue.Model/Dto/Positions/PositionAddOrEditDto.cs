@@ -8,5 +8,9 @@ namespace Haiyue.Model.Dto.Positions
     {
         public string Name { get; set; }
         public int DepartmentId { get; set; }
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime? LastUpDateTime { get; set; }
     }
 }

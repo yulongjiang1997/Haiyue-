@@ -12,12 +12,12 @@ namespace Haiyue.Model.Model
         [StringLength(30)]
         public DateTime CreateTime { get; set; }
         [StringLength(30)]
-        public DateTime? LastUpTime { get; set; }
+        public DateTime LastUpDateTime { get; set; }
 
         public BaseModel()
         {
             CreateTime = DateTime.Now;
-            LastUpTime = DateTime.Now;
+            LastUpDateTime = DateTime.Now;
         }
     }
 }

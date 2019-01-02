@@ -1,5 +1,5 @@
-﻿using Haiyue.Model.Dto;
-using Haiyue.Model.Dto.Admin;
+﻿using Haiyue.Model;
+using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Users;
 using System;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace Haiyue.Service.Services.UserServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> EditUserByIdAsync(int id, UserAddOrEditDto model);
+        Task<ReturnData<bool>> EditUserByIdAsync(int id, UserAddOrEditDto model);
 
         /// <summary>
         /// 分页查询游戏

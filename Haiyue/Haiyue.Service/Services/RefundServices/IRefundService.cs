@@ -1,4 +1,5 @@
-﻿using Haiyue.Model.Dto;
+﻿using Haiyue.Model;
+using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Refunds;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Haiyue.Service.Services.RefundServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> EditAsync(int id, AddOrEditRefundDto model);
+        Task<ReturnData<bool>> EditAsync(int id, AddOrEditRefundDto model);
 
         /// <summary>
         /// 分页查询退款申请

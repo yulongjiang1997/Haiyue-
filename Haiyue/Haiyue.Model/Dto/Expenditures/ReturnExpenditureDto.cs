@@ -37,5 +37,10 @@ namespace Haiyue.Model.Dto.Expenditures
         public string HandlerName { get; set; }
 
 
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime LastUpDateTime { get; set; }
+
     }
 }

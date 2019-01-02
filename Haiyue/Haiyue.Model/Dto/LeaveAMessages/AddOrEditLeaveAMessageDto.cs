@@ -11,5 +11,10 @@ namespace Haiyue.Model.Dto.LeaveAMessages
         public string Title { get; set; }
 
         public string Content { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime? LastUpDateTime { get; set; }
     }
 }

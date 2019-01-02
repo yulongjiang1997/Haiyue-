@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Haiyue.HYEF;
+using Haiyue.Model;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.TaskLists;
 using Haiyue.Model.Enums;
@@ -41,23 +42,30 @@ namespace Haiyue.Service.Services.TaskListServices
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> EditAsync(int id, AddOrEditTaskListDto model)
+        public async Task<ReturnData<bool>> EditAsync(int id, AddOrEditTaskListDto model)
         {
+            var returnResult = new ReturnData<bool>();
             var taskList = await _context.TaskLists.FirstOrDefaultAsync(i => i.Id == id);
             if (taskList != null)
             {
+                var checkTime = CheckLastUpDateTime.Check(model.LastUpDateTime.Value, taskList.LastUpDateTime);
+                if (!checkTime.Success)
+                {
+                    return checkTime;
+                }
                 _mapper.Map(model, taskList);
                 var taskChangeLog = _mapper.Map<TaskChangeLog>(model);
                 taskChangeLog.OperatorId = model.PublisherId;
                 taskChangeLog.TaskId = id;
                 _context.TaskChangeLogss.Add(taskChangeLog);
             }
-            return await _context.SaveChangesAsync() > 0;
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<bool> EditTaskStatus(int id, AddTaskStatusLogDto model)
         {
-            var tasklist = await _context.TaskLists.FirstOrDefaultAsync(i => i.Id == id);
+            var tasklist = await _context.TaskLists.FirstOrDefaultAsync(i => i.Id == id&&i.TaskStatus==model.CurrentStatus);
             if (tasklist != null)
             {
                 tasklist.TaskStatus = model.ChangeStatus;

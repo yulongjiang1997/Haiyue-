@@ -63,11 +63,9 @@ namespace Haiyue.Web.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("Edit")]
-        public async Task<IActionResult> EditAsync(int id, double exchangeRate)
+        public async Task<IActionResult> EditAsync(int id, CurrencyAddOrEditDto model)
         {
-            var result = new ReturnData<bool>();
-
-            result.Obj = await _service.EditAsync(id, exchangeRate);
+            var result = await _service.EditAsync(id, model);
 
             return Ok(result);
         }

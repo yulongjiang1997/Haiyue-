@@ -62,9 +62,7 @@ namespace Haiyue.Web.Controllers
         [Route("Edit")]
         public async Task<IActionResult> EditAsync(int id, AddOrEditTaskListDto model)
         {
-            var result = new ReturnData<bool>();
-
-            result.Obj = await _service.EditAsync(id, model);
+            var result = await _service.EditAsync(id, model);
 
             return Ok(result);
         }
@@ -78,9 +76,7 @@ namespace Haiyue.Web.Controllers
         [Route("EditTaskStatus")]
         public async Task<IActionResult> EditTaskStatus(int id, AddTaskStatusLogDto model)
         {
-            var result = new ReturnData<bool>();
-
-            result.Obj = await _service.EditTaskStatus(id, model);
+            var result = await _service.EditTaskStatus(id, model);
 
             return Ok(result);
         }

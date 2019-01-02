@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Haiyue.HYEF;
+using Haiyue.Model;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.OtherOrders;
 using Haiyue.Model.Enums;
@@ -49,15 +50,22 @@ namespace Haiyue.Service.Services.OtherOrderServices
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> EditAsync(int id, AddOrEditOtherOrderDto model)
+        public async Task<ReturnData<bool>> EditAsync(int id, AddOrEditOtherOrderDto model)
         {
+            var returnResult = new ReturnData<bool>();
             var otherOrder = await _context.OtherOrders.FirstOrDefaultAsync(i => i.Id == id);
             if (otherOrder != null)
             {
+                var checkTime = CheckLastUpDateTime.Check(model.LastUpDateTime.Value, otherOrder.LastUpDateTime);
+                if (!checkTime.Success)
+                {
+                    return checkTime;
+                }
                 _mapper.Map(model, otherOrder);
-                otherOrder.LastUpTime = DateTime.Now;
+                otherOrder.LastUpDateTime = DateTime.Now;
             }
-            return await _context.SaveChangesAsync() > 0;
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<ReturnPaginSelectDto<ReturnOtherOrderDto>> QueryPaginAsync(SelectOtherOrderDto model)

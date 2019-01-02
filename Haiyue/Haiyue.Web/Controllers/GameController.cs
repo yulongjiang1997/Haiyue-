@@ -65,13 +65,7 @@ namespace Haiyue.Web.Controllers
         [Route("Edit")]
         public async Task<IActionResult> EditAsync(int id, GameAddOrEditDto model)
         {
-            var result = new ReturnData<bool>();
-
-            result.Obj = await _service.EditAsync(id, model);
-            if (!result.Obj)
-            {
-                result.Message = "游戏名不能重复，请确认信息是否正确";
-            }
+            var result = await _service.EditAsync(id, model);
             return Ok(result);
         }
 

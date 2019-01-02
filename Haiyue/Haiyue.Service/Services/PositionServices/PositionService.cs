@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Haiyue.HYEF;
+using Haiyue.Model;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Positions;
 using Haiyue.Model.Model;
@@ -43,15 +44,29 @@ namespace Haiyue.Service.Services.PositionServices
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> EditAsync(int id, PositionAddOrEditDto model)
+        public async Task<ReturnData<bool>> EditAsync(int id, PositionAddOrEditDto model)
         {
+            var returnResult = new ReturnData<bool>();
             var position = await _context.Positions.FirstOrDefaultAsync(i => i.Id == id);
-            if (position != null && await CheckOnly(model.Name, id))
+            if (position != null)
             {
+                var checkTime = CheckLastUpDateTime.Check(model.LastUpDateTime.Value, position.LastUpDateTime);
+                if (!checkTime.Success)
+                {
+                    return checkTime;
+                }
+                if(! await CheckOnly(model.Name,id))
+                {
+                    returnResult.Message = "职位名称重复，修改失败";
+                    returnResult.Obj = false;
+                    returnResult.Success = false;
+                    return returnResult;
+                }
                 _mapper.Map(model, position);
-                position.LastUpTime = DateTime.Now;
+                position.LastUpDateTime = DateTime.Now;
             }
-            return await _context.SaveChangesAsync() > 0;
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<ReturnPaginSelectDto<ReturnPositionDto>> QueryPaginAsync(SelectPositionDto model)

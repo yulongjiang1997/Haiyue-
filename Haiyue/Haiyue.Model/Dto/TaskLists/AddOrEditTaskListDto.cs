@@ -41,5 +41,10 @@ namespace Haiyue.Model.Dto.TaskLists
         /// 任务当前状态
         /// </summary>
         public TaskStatusType TaskStatus { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime? LastUpDateTime { get; set; }
     }
 }

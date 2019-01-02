@@ -73,5 +73,10 @@ namespace Haiyue.Model.Dto.Users
         /// 添加时间
         /// </summary>
         public DateTime CreateTime { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime LastUpDateTime { get; set; }
     }
 }

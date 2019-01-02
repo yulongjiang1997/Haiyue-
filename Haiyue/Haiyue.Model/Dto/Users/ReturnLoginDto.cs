@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Haiyue.Model.Dto.Admin
+namespace Haiyue.Model.Dto.Users
 {
     public class ReturnLoginDto
     {

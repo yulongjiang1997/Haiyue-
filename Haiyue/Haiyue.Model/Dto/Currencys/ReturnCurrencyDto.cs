@@ -15,5 +15,10 @@ namespace Haiyue.Model.Dto.Currencys
         public double ExchangeRate { get; set; }
 
         public DateTime CreateTime { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime LastUpDateTime { get; set; }
     }
 }

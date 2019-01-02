@@ -1,4 +1,5 @@
-﻿using Haiyue.Model.Dto;
+﻿using Haiyue.Model;
+using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.LeaveAMessages;
 using Haiyue.Model.Dto.LeaveAMessages.LeaveAMessageReplys;
 using System;
@@ -45,7 +46,7 @@ namespace Haiyue.Service.Services.LeaveAMessageServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> EditAsync(int id, Model.Dto.LeaveAMessages.AddOrEditLeaveAMessageDto model);
+        Task<ReturnData<bool>>EditAsync(int id, AddOrEditLeaveAMessageDto model);
 
         /// <summary>
         /// 分页查询留言

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Haiyue.HYEF;
+using Haiyue.Model;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.NoteBooks;
 using Haiyue.Model.Model;
@@ -38,15 +39,22 @@ namespace Haiyue.Service.Services.NoteBookServices
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> EditAsync(int id, NoteBookAddOrEditDto model)
+        public async Task<ReturnData<bool>> EditAsync(int id, NoteBookAddOrEditDto model)
         {
+            var returnResult = new ReturnData<bool>();
             var noteBook = await _context.NoteBooks.FirstOrDefaultAsync(i => i.Id == id);
             if(noteBook!=null)
             {
+                var checkTime = CheckLastUpDateTime.Check(model.LastUpDateTime.Value, noteBook.LastUpDateTime);
+                if (!checkTime.Success)
+                {
+                    return checkTime;
+                }
                 _mapper.Map(model, noteBook);
-                noteBook.LastUpTime = DateTime.Now;
+                noteBook.LastUpDateTime = DateTime.Now;
             }
-            return await _context.SaveChangesAsync() > 0;
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<ReturnPaginSelectDto<ReturnNoteBookDto>> QueryPaginAsync(SelectNoteBoolDto model)

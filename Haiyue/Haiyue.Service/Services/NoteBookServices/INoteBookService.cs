@@ -1,4 +1,5 @@
-﻿using Haiyue.Model.Dto;
+﻿using Haiyue.Model;
+using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.NoteBooks;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Haiyue.Service.Services.NoteBookServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> EditAsync(int id, NoteBookAddOrEditDto model);
+        Task<ReturnData<bool>> EditAsync(int id, NoteBookAddOrEditDto model);
 
         /// <summary>
         /// 分页查询记事本内容

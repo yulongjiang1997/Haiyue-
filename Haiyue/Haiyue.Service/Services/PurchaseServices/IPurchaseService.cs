@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Haiyue.Model;
 
 namespace Haiyue.Service.Services.PurchaseServices
 {
@@ -32,7 +33,7 @@ namespace Haiyue.Service.Services.PurchaseServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> EditAsync(int id, PurchaseAddOrEditDto model);
+        Task<ReturnData<bool>> EditAsync(int id, PurchaseAddOrEditDto model);
 
         /// <summary>
         /// 修改付款状态

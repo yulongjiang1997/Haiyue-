@@ -9,6 +9,7 @@ using Haiyue.Model.Dto;
 using Haiyue.Model.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using Haiyue.Model;
 
 namespace Haiyue.Service.Services.PurchaseServices
 {
@@ -49,16 +50,23 @@ namespace Haiyue.Service.Services.PurchaseServices
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> EditAsync(int id, PurchaseAddOrEditDto model)
+        public async Task<ReturnData<bool>> EditAsync(int id, PurchaseAddOrEditDto model)
         {
+            var returnResult = new ReturnData<bool>();
             var result = await _context.Purchases.FirstOrDefaultAsync(i => i.Id == id);
             var currency = await _context.Currencys.FirstOrDefaultAsync(i => i.Id == model.CurrencyId);
             if (result != null)
             {
+                var checkTime = CheckLastUpDateTime.Check(model.LastUpDateTime.Value, result.LastUpDateTime);
+                if (!checkTime.Success)
+                {
+                    return checkTime;
+                }
                 _mapper.Map(model, result);
                 result.RealIncomeRMB = model.RealIncome * currency.ExchangeRate;
             }
-            return await _context.SaveChangesAsync() > 0;
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<bool> EditPaymentStatusAsync(int id)

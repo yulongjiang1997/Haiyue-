@@ -10,7 +10,7 @@ using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Users;
 using Haiyue.Model.Model;
 using Microsoft.EntityFrameworkCore;
-using Haiyue.Model.Dto.Admin;
+using Haiyue.Model;
 
 namespace Haiyue.Service.Services.UserServices
 {
@@ -36,7 +36,7 @@ namespace Haiyue.Service.Services.UserServices
         public async Task<bool> CreateUserAsync(UserAddOrEditDto model)
         {
             //检查用户是否重复
-            if (await ChekeUserOnly(model.Name, model.IdNumber))
+            if (await ChekeUserOnly(model.IdNumber))
             {
                 //使用AutoMapper自动映射添加用户实体的数据到数据库所需实体
                 var user = _mapper.Map<User>(model);
@@ -68,20 +68,34 @@ namespace Haiyue.Service.Services.UserServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async Task<bool> EditUserByIdAsync(int id, UserAddOrEditDto model)
+        public async Task<ReturnData<bool>> EditUserByIdAsync(int id, UserAddOrEditDto model)
         {
+            var returnResult = new ReturnData<bool>();
             var user = await _context.Users.FirstOrDefaultAsync(i => i.Id == id);
             //检查当前id是否有对应用户
-            if (user != null && await ChekeUserOnly(model.Name, model.IdNumber, id))
+            if (user != null)
             {
+                var checkTime = CheckLastUpDateTime.Check(model.LastUpDateTime.Value, user.LastUpDateTime);
+                if (!checkTime.Success)
+                {
+                    return checkTime;
+                }
+                if(!await ChekeUserOnly(model.IdNumber,id))
+                {
+                    returnResult.Message = "证件号重复，修改失败";
+                    returnResult.Obj = false;
+                    returnResult.Success = false;
+                    return returnResult;
+                }
                 //使用AutoMapper自动映射数据
                 _mapper.Map(model, user);
                 //把明文密码转换成密文（md5加密）
                 user.Password = MD5Help.MD5Encrypt32(user.Password);
                 //修改更新时间
-                user.LastUpTime = DateTime.Now;
+                user.LastUpDateTime = DateTime.Now;
             }
-            return await _context.SaveChangesAsync() > 0;
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         /// <summary>
@@ -116,23 +130,22 @@ namespace Haiyue.Service.Services.UserServices
 
         /// <summary>
         /// 检查用户是否重复，
-        /// 根据姓名和身份证进行双重检查
+        /// 根据身份证进行检查
         /// </summary>
-        /// <param name="name">用户姓名</param>
         /// <param name="idNumber">身份证</param>
         /// <param name="editId">编辑使用的用户id 添加用户不使用</param>
         /// <returns></returns>
-        private async Task<bool> ChekeUserOnly(string name, string idNumber, int? editId = null)
+        private async Task<bool> ChekeUserOnly(string idNumber, int? editId = null)
         {
             User user = new User();
             if (editId.HasValue)
-            {   
+            {
                 //如果编辑用户的Id不为空 那么检查id不为当前id的用户是否有重复信息
-                user = await _context.Users.FirstOrDefaultAsync(i => i.Name == name && i.IdNumber == idNumber && i.Id != editId);
+                user = await _context.Users.FirstOrDefaultAsync(i =>i.IdNumber == idNumber && i.Id != editId);
             }
             else
             {
-                user = await _context.Users.FirstOrDefaultAsync(i => i.Name == name && i.IdNumber == idNumber);
+                user = await _context.Users.FirstOrDefaultAsync(i =>i.IdNumber == idNumber);
             }
 
             return user == null;
@@ -177,7 +190,7 @@ namespace Haiyue.Service.Services.UserServices
             //实例化登录信息的实体
             var result = new LoginInfo()
             {
-                LastUpTime = DateTime.Now,
+                LastUpDateTime = DateTime.Now,
                 OutTime = DateTime.Now.AddMinutes(30),
                 Token = MD5Help.MD5Encrypt32(user.IdNumber + user.JobNumber + DateTime.Now),
                 UserId = user.Id

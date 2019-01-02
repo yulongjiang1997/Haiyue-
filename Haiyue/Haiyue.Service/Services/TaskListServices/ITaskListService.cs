@@ -1,4 +1,5 @@
-﻿using Haiyue.Model.Dto;
+﻿using Haiyue.Model;
+using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.TaskLists;
 using Haiyue.Model.Enums;
 using System;
@@ -30,7 +31,7 @@ namespace Haiyue.Service.Services.TaskListServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> EditAsync(int id, AddOrEditTaskListDto model);
+        Task<ReturnData<bool>> EditAsync(int id, AddOrEditTaskListDto model);
 
         /// <summary>
         /// 修改任务状态

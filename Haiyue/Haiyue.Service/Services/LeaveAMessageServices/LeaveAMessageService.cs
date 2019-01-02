@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Haiyue.HYEF;
+using Haiyue.Model;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.LeaveAMessages;
 using Haiyue.Model.Dto.LeaveAMessages.LeaveAMessageReplys;
@@ -53,15 +54,22 @@ namespace Haiyue.Service.Services.LeaveAMessageServices
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> EditAsync(int id, AddOrEditLeaveAMessageDto model)
+        public async Task<ReturnData<bool>> EditAsync(int id, AddOrEditLeaveAMessageDto model)
         {
+            var returnResult = new ReturnData<bool>();
             var leaveAMessage = await _context.LeaveAMessages.FirstOrDefaultAsync(i => i.Id == id);
             if (leaveAMessage != null)
             {
+                var checkTime = CheckLastUpDateTime.Check(model.LastUpDateTime.Value, leaveAMessage.LastUpDateTime);
+                if (!checkTime.Success)
+                {
+                    return checkTime;
+                }
                 _mapper.Map(model, leaveAMessage);
-                leaveAMessage.LastUpTime = DateTime.Now;
+                leaveAMessage.LastUpDateTime = DateTime.Now;
             }
-            return await _context.SaveChangesAsync() > 0;
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<ReturnPaginSelectDto<ReturnLeaveAMessageDto>> QueryPaginAsync(SelectLeaveAMessageDto model)

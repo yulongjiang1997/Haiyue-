@@ -32,5 +32,10 @@ namespace Haiyue.Model.Dto.Expenditures
         /// 操作人
         /// </summary>
         public int HandlerId { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime? LastUpDateTime { get; set; }
     }
 }

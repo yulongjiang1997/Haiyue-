@@ -93,5 +93,10 @@ namespace Haiyue.Model.Dto.Purchase
         /// 操作人
         /// </summary>
         public string Handler { get; set; }
+
+        /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime LastUpDateTime { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Haiyue.HYEF;
+using Haiyue.Model;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Expenditures;
 using Haiyue.Model.Model;
@@ -38,15 +39,22 @@ namespace Haiyue.Service.Services.ExpenditureServices
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> EditAsync(int id, AddOrEditExpenditureDto model)
+        public async Task<ReturnData<bool>> EditAsync(int id, AddOrEditExpenditureDto model)
         {
+            var returnResult = new ReturnData<bool>();
             var expenditure = await _context.Expenditures.FirstOrDefaultAsync(i => i.Id == id);
             if (expenditure != null)
             {
+                var checkTime = CheckLastUpDateTime.Check(model.LastUpDateTime.Value, expenditure.LastUpDateTime);
+                if (!checkTime.Success)
+                {
+                    return checkTime;
+                }
                 _mapper.Map(model, expenditure);
-                expenditure.LastUpTime = DateTime.Now;
+                expenditure.LastUpDateTime = DateTime.Now;
             }
-            return await _context.SaveChangesAsync() > 0;
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<ReturnPaginSelectDto<ReturnExpenditureDto>> QueryPaginAsync(SelectExpenditureDto model)

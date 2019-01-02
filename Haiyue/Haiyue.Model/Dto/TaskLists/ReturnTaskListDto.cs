@@ -48,6 +48,11 @@ namespace Haiyue.Model.Dto.TaskLists
         public TaskStatusType TaskStatus { get; set; }
 
         /// <summary>
+        /// 修改时间
+        /// </summary>
+        public DateTime LastUpDateTime { get; set; }
+
+        /// <summary>
         /// 任务是否阅读
         /// </summary>
         public TaskIsHaveReadType IsHave { get; set; }

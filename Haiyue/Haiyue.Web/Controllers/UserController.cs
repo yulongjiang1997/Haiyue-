@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Haiyue.Model;
-using Haiyue.Model.Dto.Admin;
 using Haiyue.Model.Dto.Users;
 using Haiyue.Service.Services.UserServices;
 using Haiyue.Web.ActionFilter;
@@ -70,8 +69,7 @@ namespace Haiyue.Web.Controllers
         [Route("Edit")]
         public async Task<IActionResult> EditAsync(int id, UserAddOrEditDto model)
         {
-            var result = new ReturnData<bool>();
-            result.Obj = await _service.EditUserByIdAsync(id, model);
+            var result = await _service.EditUserByIdAsync(id, model);
             return Ok(result);
         }
 

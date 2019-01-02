@@ -23,7 +23,7 @@
             <param name="model"></param>
             <returns></returns>
         </member>
-        <member name="M:Haiyue.Web.Controllers.CurrencyController.EditAsync(System.Int32,System.Double)">
+        <member name="M:Haiyue.Web.Controllers.CurrencyController.EditAsync(System.Int32,Haiyue.Model.Dto.Currencys.CurrencyAddOrEditDto)">
             <summary>
             修改汇率
             </summary>

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Haiyue.HYEF;
+using Haiyue.Model;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Game;
 using Haiyue.Model.Model;
@@ -42,18 +43,29 @@ namespace Haiyue.Service.Services.GameServices
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> EditAsync(int id, GameAddOrEditDto model)
+        public async Task<ReturnData<bool>> EditAsync(int id, GameAddOrEditDto model)
         {
+            var returnResult = new ReturnData<bool>();
             var game = await _context.Games.FirstOrDefaultAsync(i => i.Id == id);
             if (game != null)
             {
-                if (await CheckName(model.Name, id))
+                var checkTime = CheckLastUpDateTime.Check(model.LastUpDateTime.Value, game.LastUpDateTime);
+                if (!checkTime.Success)
                 {
-                    _mapper.Map(model, game);
-                    game.LastUpTime = DateTime.Now;
+                    return checkTime;
                 }
+                if (!await CheckName(model.Name, id))
+                {
+                    returnResult.Message = "游戏名不能重复，请确认信息是否正确";
+                    returnResult.Success = false;
+                    returnResult.Obj = false;
+                    return returnResult;
+                }
+                _mapper.Map(model, game);
+                game.LastUpDateTime = DateTime.Now;
             }
-            return await _context.SaveChangesAsync() > 0;
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<List<ReturnGameDto>> QueryAll()

@@ -62,9 +62,7 @@ namespace Haiyue.Web.Controllers
         [Route("Edit")]
         public async Task<IActionResult> EditAsync(int id, DepartmentAddOrEditDto model)
         {
-            var result = new ReturnData<bool>();
-
-            result.Obj = await _service.EditAsync(id, model);
+            var result = await _service.EditAsync(id, model);
 
             return Ok(result);
         }

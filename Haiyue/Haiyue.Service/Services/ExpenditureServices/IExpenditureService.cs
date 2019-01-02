@@ -1,4 +1,5 @@
-﻿using Haiyue.Model.Dto;
+﻿using Haiyue.Model;
+using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Expenditures;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Haiyue.Service.Services.ExpenditureServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> EditAsync(int id, AddOrEditExpenditureDto model);
+        Task<ReturnData<bool>> EditAsync(int id, AddOrEditExpenditureDto model);
 
         /// <summary>
         /// 分页查询支出

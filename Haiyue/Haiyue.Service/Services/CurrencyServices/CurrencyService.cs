@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Haiyue.HYEF;
+using Haiyue.Model;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Currencys;
 using Haiyue.Model.Model;
@@ -47,22 +48,35 @@ namespace Haiyue.Service.Services.CurrencyServices
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> EditAsync(int id, double exchangeRate)
+        public async Task<ReturnData<bool>> EditAsync(int id, CurrencyAddOrEditDto model)
         {
+            var returnResult = new ReturnData<bool>();
             //根据ID查询对象判断是否为空  不为空则修改
             var result = await _context.Currencys.FirstOrDefaultAsync(i => i.Id == id);
             if (result != null)
             {
-                result.ExchangeRate = exchangeRate;
-                result.LastUpTime = DateTime.Now;
+                var checkTime = CheckLastUpDateTime.Check(model.LastUpDateTime.Value, result.LastUpDateTime);
+                if (!checkTime.Success)
+                {
+                    return checkTime;
+                }
+                if (!await CheckOnly(model.Name,id))
+                {
+                    returnResult.Message = "汇率名称重复，修改失败";
+                    returnResult.Obj = false;
+                    returnResult.Success = false;
+                    return returnResult;
+                }
+                result.ExchangeRate = model.ExchangeRate;
+                result.LastUpDateTime = DateTime.Now;
             }
-            return await _context.SaveChangesAsync() > 0;
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<ReturnPaginSelectDto<ReturnCurrencyDto>> QueryPaginAsync(SelectCurrencyDto model)
         {
-            var result = new  ReturnPaginSelectDto<ReturnCurrencyDto>();
-            
+            var result = new ReturnPaginSelectDto<ReturnCurrencyDto>();
             var currency = _context.Currencys.AsNoTracking();
 
             result.Total = await currency.CountAsync();
