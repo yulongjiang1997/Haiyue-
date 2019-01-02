@@ -15,7 +15,7 @@ namespace Haiyue.Service.Services.DepartmentServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> CreateAsync(DepartmentAddOrEditDto model);
+        Task<ReturnData<bool>> CreateAsync(DepartmentAddOrEditDto model);
 
         /// <summary>
         /// 删除部门

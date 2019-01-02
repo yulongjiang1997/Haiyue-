@@ -33,18 +33,24 @@ namespace Haiyue.Service.Services.UserServices
         /// </summary>
         /// <param name="model">添加用户需要的实体</param>
         /// <returns></returns>
-        public async Task<bool> CreateUserAsync(UserAddOrEditDto model)
+        public async Task<ReturnData<bool>> CreateUserAsync(UserAddOrEditDto model)
         {
+            var returnResult = new ReturnData<bool>();
             //检查用户是否重复
-            if (await ChekeUserOnly(model.IdNumber))
+            if (!await ChekeUserOnly(model.IdNumber))
             {
-                //使用AutoMapper自动映射添加用户实体的数据到数据库所需实体
-                var user = _mapper.Map<User>(model);
-                //密码使用MD5加密
-                user.Password = MD5Help.MD5Encrypt32(user.Password);
-                _context.Users.Add(user);
+                returnResult.Message = "证件号重复，修改失败";
+                returnResult.Obj = false;
+                returnResult.Success = false;
+                return returnResult;
             }
-            return await _context.SaveChangesAsync() > 0;
+            //使用AutoMapper自动映射添加用户实体的数据到数据库所需实体
+            var user = _mapper.Map<User>(model);
+            //密码使用MD5加密
+            user.Password = MD5Help.MD5Encrypt32(user.Password);
+            _context.Users.Add(user);
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         /// <summary>

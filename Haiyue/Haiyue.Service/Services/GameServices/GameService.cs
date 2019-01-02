@@ -23,14 +23,21 @@ namespace Haiyue.Service.Services.GameServices
             _context = context;
             _mapper = mapper;
         }
-        public async Task<bool> CreateAsync(GameAddOrEditDto model)
+        public async Task<ReturnData<bool>> CreateAsync(GameAddOrEditDto model)
         {
-            if (await CheckName(model.Name))
+            var returnResult = new ReturnData<bool>();
+            if (!await CheckName(model.Name))
             {
-                var game = _mapper.Map<Game>(model);
-                _context.Games.Add(game);
+                returnResult.Message = "游戏名不能重复，请确认信息是否正确";
+                returnResult.Success = false;
+                returnResult.Obj = false;
+                return returnResult;
+                
             }
-            return await _context.SaveChangesAsync() > 0;
+            var game = _mapper.Map<Game>(model);
+            _context.Games.Add(game);
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<bool> DeleteAsync(int id)

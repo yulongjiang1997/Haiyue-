@@ -15,7 +15,7 @@ namespace Haiyue.Service.Services.PositionServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> CreateAsync(PositionAddOrEditDto model);
+        Task<ReturnData<bool>> CreateAsync(PositionAddOrEditDto model);
 
         /// <summary>
         /// 删除职位

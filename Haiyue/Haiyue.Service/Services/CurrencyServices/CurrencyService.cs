@@ -25,16 +25,22 @@ namespace Haiyue.Service.Services.CurrencyServices
             _mapper = mapper;
         }
 
-        public async Task<bool> CreateAsync(CurrencyAddOrEditDto model)
+        public async Task<ReturnData<bool>> CreateAsync(CurrencyAddOrEditDto model)
         {
+            var returnResult = new ReturnData<bool>();
             //检查货币名是否重复
-            if (await CheckOnly(model.Name))
+            if (!await CheckOnly(model.Name))
             {
-                //通过automapper对象自动转换Dto为Model实体
-                var currencys = _mapper.Map<Currency>(model);
-                _context.Currencys.Add(currencys);
+                returnResult.Message = "汇率名称重复，添加失败";
+                returnResult.Obj = false;
+                returnResult.Success = false;
+                return returnResult;
             }
-            return await _context.SaveChangesAsync() > 0;
+            //通过automapper对象自动转换Dto为Model实体
+            var currencys = _mapper.Map<Currency>(model);
+            _context.Currencys.Add(currencys);
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<bool> DeleteAsync(int id)

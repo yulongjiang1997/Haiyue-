@@ -41,8 +41,7 @@ namespace Haiyue.Web.Controllers
         [Route("Create")]
         public async Task<IActionResult> CreateAsync(UserAddOrEditDto model)
         {
-            var result = new ReturnData<bool>();
-            result.Obj = await _service.CreateUserAsync(model);
+            var result = await _service.CreateUserAsync(model);
             return Ok(result);
         }
 

@@ -15,7 +15,7 @@ namespace Haiyue.Service.Services.GameServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> CreateAsync(GameAddOrEditDto model);
+        Task<ReturnData<bool>> CreateAsync(GameAddOrEditDto model);
 
         /// <summary>
         /// 删除游戏

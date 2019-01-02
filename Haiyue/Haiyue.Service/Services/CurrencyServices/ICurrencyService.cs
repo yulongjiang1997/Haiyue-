@@ -15,7 +15,7 @@ namespace Haiyue.Service.Services.CurrencyServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> CreateAsync(CurrencyAddOrEditDto model);
+        Task<ReturnData<bool>> CreateAsync(CurrencyAddOrEditDto model);
 
         /// <summary>
         /// 删除汇率

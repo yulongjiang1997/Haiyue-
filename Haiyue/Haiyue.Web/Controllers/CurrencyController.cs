@@ -33,9 +33,7 @@ namespace Haiyue.Web.Controllers
         [Route("Create")]
         public async Task<IActionResult> CreateAsync(CurrencyAddOrEditDto model)
         {
-            var result = new ReturnData<bool>();
-
-            result.Obj = await _service.CreateAsync(model);
+            var result = await _service.CreateAsync(model);
 
             return Ok(result);
         }

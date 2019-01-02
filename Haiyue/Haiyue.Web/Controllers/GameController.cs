@@ -30,9 +30,7 @@ namespace Haiyue.Web.Controllers
         [Route("Create")]
         public async Task<IActionResult> CreateAsync(GameAddOrEditDto model)
         {
-            var result = new ReturnData<bool>();
-
-            result.Obj = await _service.CreateAsync(model);
+            var result = await _service.CreateAsync(model);
             if(!result.Obj)
             {
                 result.Message = "游戏名不能重复，请确认信息是否正确";

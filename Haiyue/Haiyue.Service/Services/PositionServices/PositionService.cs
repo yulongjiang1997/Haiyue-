@@ -24,14 +24,20 @@ namespace Haiyue.Service.Services.PositionServices
             _mapper = mapper;
         }
 
-        public async Task<bool> CreateAsync(PositionAddOrEditDto model)
+        public async Task<ReturnData<bool>> CreateAsync(PositionAddOrEditDto model)
         {
-            if (await CheckOnly(model.Name))
+            var returnResult = new ReturnData<bool>();
+            if (!await CheckOnly(model.Name))
             {
-                var position = _mapper.Map<Position>(model);
-                _context.Positions.Add(position);
+                returnResult.Message = "职位名称重复，修改失败";
+                returnResult.Obj = false;
+                returnResult.Success = false;
+                return returnResult;
             }
-            return await _context.SaveChangesAsync() > 0;
+            var position = _mapper.Map<Position>(model);
+            _context.Positions.Add(position);
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<bool> DeleteAsync(int id)

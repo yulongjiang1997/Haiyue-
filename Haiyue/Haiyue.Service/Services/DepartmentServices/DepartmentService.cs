@@ -24,14 +24,20 @@ namespace Haiyue.Service.Services.DepartmentServices
             _mapper = mapper;
         }
 
-        public async Task<bool> CreateAsync(DepartmentAddOrEditDto model)
+        public async Task<ReturnData<bool>> CreateAsync(DepartmentAddOrEditDto model)
         {
-            if (await CheckOnly(model.Name))
+            var returnResult = new ReturnData<bool>();
+            if (!await CheckOnly(model.Name))
             {
-                var department = _mapper.Map<Department>(model);
-                _context.Department.Add(department);
+                returnResult.Message = "部门名称重复，修改失败";
+                returnResult.Obj = false;
+                returnResult.Success = false;
+                return returnResult;
             }
-            return await _context.SaveChangesAsync() > 0;
+            var department = _mapper.Map<Department>(model);
+            _context.Department.Add(department);
+            returnResult.Obj = await _context.SaveChangesAsync() > 0;
+            return returnResult;
         }
 
         public async Task<bool> DeleteAsync(int id)

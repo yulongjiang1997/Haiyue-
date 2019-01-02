@@ -15,7 +15,7 @@ namespace Haiyue.Service.Services.UserServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> CreateUserAsync(UserAddOrEditDto model);
+        Task<ReturnData<bool>> CreateUserAsync(UserAddOrEditDto model);
 
         /// <summary>
         /// 删除用户
