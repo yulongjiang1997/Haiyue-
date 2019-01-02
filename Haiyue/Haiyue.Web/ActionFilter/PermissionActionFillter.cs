@@ -24,7 +24,7 @@ namespace Haiyue.Web.ActionFilter
             if (!path.Contains("Login"))
             {
                 var token = request.Headers["Token"].ToString();
-                var userId = Convert.ToInt32(request.Headers["UserId"]);
+                var userId = request.Headers["UserId"].ToString();
                 if (!_service.CheckTokenTimeOut(userId, token))
                 {
                     context.Result = new JsonResult(new ReturnData<object>
@@ -64,7 +64,7 @@ namespace Haiyue.Web.ActionFilter
             var isLoing = request.Path.Value.Contains("Login");
             if (!isLoing)
             {
-                var userId = Convert.ToInt32(request.Headers["UserId"]);
+                var userId = request.Headers["UserId"].ToString();
                 if (!_service.CheckIsAdmin(userId))
                 {
                     context.Result = new JsonResult(new ReturnData<object>

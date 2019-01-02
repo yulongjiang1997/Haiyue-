@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class LeaveAMessageReply : BaseModel
+    public class LeaveAMessageReply : BaseModel<int>
     {
         /// <summary>
         /// 留言ID
@@ -18,7 +18,7 @@ namespace Haiyue.Model.Model
         /// <summary>
         /// 回复用户ID
         /// </summary>
-        public int ReplyUserId { get; set; }
+        public string ReplyUserId { get; set; }
 
         [ForeignKey("ReplyUserId")]
         public virtual User ReplyUser { get; set; }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class OtherOrder : BaseModel
+    public class OtherOrder : BaseModel<int>
     {
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Haiyue.Model.Model
         /// <summary>
         /// 操作人
         /// </summary>
-        public int HandlerId { get; set; }
+        public string HandlerId { get; set; }
 
         /// <summary>
         /// 订单号

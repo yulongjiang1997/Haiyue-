@@ -22,7 +22,7 @@ namespace Haiyue.Service.Services.UserServices
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> DeleteUserByIdAsync(int id);
+        Task<bool> DeleteUserByIdAsync(string id);
 
         /// <summary>
         /// 编辑用户
@@ -30,7 +30,7 @@ namespace Haiyue.Service.Services.UserServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<ReturnData<bool>> EditUserByIdAsync(int id, UserAddOrEditDto model);
+        Task<ReturnData<bool>> EditUserByIdAsync(string id, UserAddOrEditDto model);
 
         /// <summary>
         /// 分页查询游戏
@@ -58,13 +58,13 @@ namespace Haiyue.Service.Services.UserServices
         /// <param name="userId"></param>
         /// <param name="token"></param>
         /// <returns></returns>
-        bool CheckTokenTimeOut(int userId, string token);
+        bool CheckTokenTimeOut(string userId, string token);
 
         /// <summary>
         /// 检查是否为管理员
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        bool CheckIsAdmin(int userId);
+        bool CheckIsAdmin(string userId);
     }
 }

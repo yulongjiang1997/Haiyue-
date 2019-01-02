@@ -8,7 +8,7 @@ namespace Haiyue.Model.Dto.TaskLists
     public class SelectTaskListDto : SelectBaseDto
     {
         public TaskDelegationType? TaskDelegationType { get; set; }
-        public int? UserId { get; set; }
+        public string UserId { get; set; }
         public TaskStatusType? TaskStatusType { get; set; }
     }
 }

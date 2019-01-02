@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class TaskList:BaseModel
+    public class TaskList:BaseModel<int>
     {
         /// <summary>
         /// 任务标题
@@ -21,12 +21,12 @@ namespace Haiyue.Model.Model
         /// <summary>
         /// 发布人ID
         /// </summary>
-        public int PublisherId { get; set; }
+        public string PublisherId { get; set; }
 
         /// <summary>
         /// 指派人ID
         /// </summary>
-        public int AssignId { get; set; }
+        public string AssignId { get; set; }
 
         /// <summary>
         /// 任务开始时间

@@ -52,7 +52,7 @@ namespace Haiyue.Web.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("Delete")]
-        public async Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteAsync(string id)
         {
             var result = new ReturnData<bool>();
             result.Obj = await _service.DeleteUserByIdAsync(id);
@@ -66,7 +66,7 @@ namespace Haiyue.Web.Controllers
         /// <returns></returns>
         [HttpPost]
         [Route("Edit")]
-        public async Task<IActionResult> EditAsync(int id, UserAddOrEditDto model)
+        public async Task<IActionResult> EditAsync(string id, UserAddOrEditDto model)
         {
             var result = await _service.EditUserByIdAsync(id, model);
             return Ok(result);

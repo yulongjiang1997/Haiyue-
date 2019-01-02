@@ -119,7 +119,7 @@ namespace Haiyue.Web.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("EditIsHave")]
-        public async Task<IActionResult> EditIsHave(int taskId,int userId)
+        public async Task<IActionResult> EditIsHave(int taskId,string userId)
         {
             var result = new ReturnData<bool>();
 

@@ -14,4 +14,3 @@ F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.Asse
 F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.AssemblyInfo.cs
 F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.dll
 F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.pdb
-F:\Projects\Haiyue\Haiyue\Haiyue.Model\obj\Debug\netcoreapp2.1\Haiyue.Model.csprojAssemblyReference.cache

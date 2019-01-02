@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class Expenditure : BaseModel
+    public class Expenditure : BaseModel<int>
     {
         /// <summary>
         /// 支出日期
@@ -20,7 +20,7 @@ namespace Haiyue.Model.Model
         /// <summary>
         /// 操作人
         /// </summary>
-        public int HandlerId { get; set; }
+        public string HandlerId { get; set; }
 
         [ForeignKey("HandlerId")]
         public User User { get; set; }

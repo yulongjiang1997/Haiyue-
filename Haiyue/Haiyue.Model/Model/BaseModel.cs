@@ -5,10 +5,10 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class BaseModel
+    public class BaseModel<T>
     {
         [Key]
-        public int Id { get; set; }
+        public T Id { get; set; }
         [StringLength(30)]
         public DateTime CreateTime { get; set; }
         [StringLength(30)]

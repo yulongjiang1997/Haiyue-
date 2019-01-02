@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class Currency:BaseModel
+    public class Currency:BaseModel<int>
     {
         public string Name { get; set; }
 

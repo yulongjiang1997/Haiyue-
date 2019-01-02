@@ -45,11 +45,9 @@ namespace Haiyue.Web.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("Delete")]
-        public async Task<IActionResult> DeleteAsync(int id)
+        public async Task<IActionResult> DeleteAsync(int id,string userId)
         {
-            var result = new ReturnData<bool>();
-
-            result.Obj = await _service.DeleteAsync(id);
+            var result = await _service.DeleteAsync(id, userId);
 
             return Ok(result);
         }
@@ -77,11 +75,9 @@ namespace Haiyue.Web.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("DeleteReply")]
-        public async Task<IActionResult> DeleteReplyAsync(int id)
+        public async Task<IActionResult> DeleteReplyAsync(int id,string userId)
         {
-            var result = new ReturnData<bool>();
-
-            result.Obj = await _service.DeleteAsync(id);
+            var result = await _service.DeleteReplyAsync(id, userId);
 
             return Ok(result);
         }

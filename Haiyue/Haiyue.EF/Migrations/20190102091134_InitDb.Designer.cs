@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Haiyue.HYEF.Migrations
 {
     [DbContext(typeof(HYContext))]
-    [Migration("20190101090708_Updatetable")]
-    partial class Updatetable
+    [Migration("20190102091134_InitDb")]
+    partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,7 +32,7 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<double>("ExchangeRate");
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<string>("Name");
@@ -53,7 +53,7 @@ namespace Haiyue.HYEF.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<string>("Name")
@@ -79,9 +79,9 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<int>("ExpenditureTypeId");
 
-                    b.Property<int>("HandlerId");
+                    b.Property<string>("HandlerId");
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<string>("Remarks");
@@ -104,7 +104,7 @@ namespace Haiyue.HYEF.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<string>("Name");
@@ -123,7 +123,7 @@ namespace Haiyue.HYEF.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<string>("Name");
@@ -144,12 +144,12 @@ namespace Haiyue.HYEF.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<string>("Title");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -167,12 +167,12 @@ namespace Haiyue.HYEF.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<int>("LeaveAMessageId");
 
-                    b.Property<int>("ReplyUserId");
+                    b.Property<string>("ReplyUserId");
 
                     b.HasKey("Id");
 
@@ -192,14 +192,14 @@ namespace Haiyue.HYEF.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<DateTime>("OutTime");
 
                     b.Property<string>("Token");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -221,12 +221,12 @@ namespace Haiyue.HYEF.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<string>("Title");
 
-                    b.Property<int>("UserId");
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -246,9 +246,9 @@ namespace Haiyue.HYEF.Migrations
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
 
-                    b.Property<int>("HandlerId");
+                    b.Property<string>("HandlerId");
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<string>("OrderNumber");
@@ -281,7 +281,7 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<int>("DepartmentId");
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<string>("Name")
@@ -307,9 +307,9 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<int>("GameId");
 
-                    b.Property<int>("HandlerId");
+                    b.Property<string>("HandlerId");
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<int>("Number");
@@ -364,20 +364,20 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<string>("GmaeOrGiftCard");
 
-                    b.Property<int>("HandlerId");
+                    b.Property<string>("HandlerId");
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<string>("OrderNumber");
-
-                    b.Property<DateTime>("OtherTime");
 
                     b.Property<string>("Product");
 
                     b.Property<double>("RefundAmount");
 
                     b.Property<int>("RefundStatus");
+
+                    b.Property<DateTime>("RefundTime");
 
                     b.Property<string>("Remark");
 
@@ -405,10 +405,10 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<DateTime>("EndTime");
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
-                    b.Property<int>("OperatorId");
+                    b.Property<string>("OperatorId");
 
                     b.Property<int>("TaskId");
 
@@ -425,7 +425,7 @@ namespace Haiyue.HYEF.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AssignId");
+                    b.Property<string>("AssignId");
 
                     b.Property<DateTime>("BeginTime");
 
@@ -436,10 +436,12 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<DateTime>("EndTime");
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<int>("IsHave");
+
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
-                    b.Property<int>("PublisherId");
+                    b.Property<string>("PublisherId");
 
                     b.Property<int>("TaskStatus");
 
@@ -463,7 +465,7 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<int>("CurrentStatus");
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<int>("TaskId");
@@ -475,9 +477,8 @@ namespace Haiyue.HYEF.Migrations
 
             modelBuilder.Entity("Haiyue.Model.Model.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("CreateTime")
                         .HasMaxLength(30);
@@ -494,7 +495,7 @@ namespace Haiyue.HYEF.Migrations
 
                     b.Property<int>("Jurisdiction");
 
-                    b.Property<DateTime?>("LastUpTime")
+                    b.Property<DateTime>("LastUpDateTime")
                         .HasMaxLength(30);
 
                     b.Property<DateTime?>("LoginTime");
@@ -527,8 +528,7 @@ namespace Haiyue.HYEF.Migrations
 
                     b.HasOne("Haiyue.Model.Model.User", "User")
                         .WithMany("Expenditures")
-                        .HasForeignKey("HandlerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("HandlerId");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.LeaveAMessageReply", b =>
@@ -540,32 +540,28 @@ namespace Haiyue.HYEF.Migrations
 
                     b.HasOne("Haiyue.Model.Model.User", "ReplyUser")
                         .WithMany("LeaveAMessageReplys")
-                        .HasForeignKey("ReplyUserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ReplyUserId");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.LoginInfo", b =>
                 {
                     b.HasOne("Haiyue.Model.Model.User", "User")
                         .WithMany("LoginInfos")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.NoteBook", b =>
                 {
                     b.HasOne("Haiyue.Model.Model.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.OtherOrder", b =>
                 {
                     b.HasOne("Haiyue.Model.Model.User", "Handler")
                         .WithMany()
-                        .HasForeignKey("HandlerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("HandlerId");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.Position", b =>
@@ -590,24 +586,21 @@ namespace Haiyue.HYEF.Migrations
 
                     b.HasOne("Haiyue.Model.Model.User", "Handler")
                         .WithMany()
-                        .HasForeignKey("HandlerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("HandlerId");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.Refund", b =>
                 {
                     b.HasOne("Haiyue.Model.Model.User", "Handler")
                         .WithMany()
-                        .HasForeignKey("HandlerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("HandlerId");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.TaskChangeLog", b =>
                 {
                     b.HasOne("Haiyue.Model.Model.User", "Operator")
                         .WithMany()
-                        .HasForeignKey("OperatorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("OperatorId");
                 });
 
             modelBuilder.Entity("Haiyue.Model.Model.User", b =>

@@ -8,7 +8,7 @@ namespace Haiyue.Model.Model
     /// <summary>
     /// 部门
     /// </summary>
-    public class Department:BaseModel
+    public class Department:BaseModel<int>
     {
         [StringLength(50)]
         public string Name { get; set; }

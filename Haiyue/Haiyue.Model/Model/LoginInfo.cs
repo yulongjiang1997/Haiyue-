@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class LoginInfo : BaseModel
+    public class LoginInfo : BaseModel<int>
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         [ForeignKey("UserId")]
         public User User { get; set; }

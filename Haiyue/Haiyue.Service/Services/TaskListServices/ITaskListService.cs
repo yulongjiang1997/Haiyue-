@@ -60,6 +60,6 @@ namespace Haiyue.Service.Services.TaskListServices
         /// <param name="id"></param>
         /// <param name="isHaveRead"></param>
         /// <returns></returns>
-        Task<bool> EditTaskHaveReadStatus(int taskId,int userId);
+        Task<bool> EditTaskHaveReadStatus(int taskId,string userId);
     }
 }

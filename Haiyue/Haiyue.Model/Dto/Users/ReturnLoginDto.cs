@@ -7,7 +7,7 @@ namespace Haiyue.Model.Dto.Users
 {
     public class ReturnLoginDto
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public string Name { get; set; }
 

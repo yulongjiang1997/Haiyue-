@@ -7,7 +7,7 @@ namespace Haiyue.Model.Model
     /// <summary>
     /// 职位
     /// </summary>
-    public class Position:BaseModel
+    public class Position:BaseModel<int>
     {
         [StringLength(50)]
         public string Name { get; set; }

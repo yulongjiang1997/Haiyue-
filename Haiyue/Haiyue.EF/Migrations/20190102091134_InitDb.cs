@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Haiyue.HYEF.Migrations
 {
-    public partial class init : Migration
+    public partial class InitDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,7 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Symbol = table.Column<string>(nullable: true),
                     ExchangeRate = table.Column<double>(nullable: false)
@@ -32,7 +32,7 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: true)
                 },
                 constraints: table =>
@@ -47,7 +47,7 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -62,7 +62,7 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -77,8 +77,8 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
-                    UserId = table.Column<int>(nullable: false),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
+                    UserId = table.Column<string>(nullable: true),
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true)
                 },
@@ -94,14 +94,15 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true),
-                    PublisherId = table.Column<int>(nullable: false),
-                    AssignId = table.Column<int>(nullable: false),
+                    PublisherId = table.Column<string>(nullable: true),
+                    AssignId = table.Column<string>(nullable: true),
                     BeginTime = table.Column<DateTime>(nullable: false),
                     EndTime = table.Column<DateTime>(nullable: false),
-                    TaskStatus = table.Column<int>(nullable: false)
+                    TaskStatus = table.Column<int>(nullable: false),
+                    IsHave = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,7 +116,7 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     TaskId = table.Column<int>(nullable: false),
                     CurrentStatus = table.Column<int>(nullable: false),
                     ChangeStatus = table.Column<int>(nullable: false)
@@ -132,7 +133,7 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: true),
                     DepartmentId = table.Column<int>(nullable: false)
                 },
@@ -151,10 +152,9 @@ namespace Haiyue.HYEF.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Id = table.Column<string>(nullable: false),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     Name = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     Jurisdiction = table.Column<int>(nullable: false),
@@ -187,10 +187,10 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     ExpenditureTime = table.Column<DateTime>(nullable: false),
                     ExpenditureTypeId = table.Column<int>(nullable: false),
-                    HandlerId = table.Column<int>(nullable: false),
+                    HandlerId = table.Column<string>(nullable: true),
                     Amount = table.Column<double>(nullable: false),
                     Remarks = table.Column<string>(nullable: true)
                 },
@@ -208,7 +208,7 @@ namespace Haiyue.HYEF.Migrations
                         column: x => x.HandlerId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,9 +218,9 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     LeaveAMessageId = table.Column<int>(nullable: false),
-                    ReplyUserId = table.Column<int>(nullable: false),
+                    ReplyUserId = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -237,7 +237,7 @@ namespace Haiyue.HYEF.Migrations
                         column: x => x.ReplyUserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -247,8 +247,8 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
-                    UserId = table.Column<int>(nullable: false),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
+                    UserId = table.Column<string>(nullable: true),
                     Token = table.Column<string>(nullable: true),
                     OutTime = table.Column<DateTime>(nullable: false)
                 },
@@ -260,7 +260,7 @@ namespace Haiyue.HYEF.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -270,10 +270,10 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     BgColor = table.Column<int>(nullable: false),
                     Title = table.Column<string>(nullable: true),
-                    UserId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
                     Content = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -284,7 +284,7 @@ namespace Haiyue.HYEF.Migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -294,18 +294,15 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
-                    OtherTime = table.Column<DateTime>(nullable: false),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
+                    OrderTime = table.Column<DateTime>(nullable: false),
+                    HandlerId = table.Column<string>(nullable: true),
                     OrderNumber = table.Column<string>(nullable: true),
                     ServiceName = table.Column<string>(nullable: true),
-                    GmaeOrGiftCard = table.Column<string>(nullable: true),
-                    Product = table.Column<string>(nullable: true),
+                    TotalExpenditure = table.Column<string>(nullable: true),
+                    PaymentStatus = table.Column<int>(nullable: false),
                     ActualPayment = table.Column<double>(nullable: false),
-                    ActualRefund = table.Column<double>(nullable: false),
-                    RefundAmount = table.Column<double>(nullable: false),
-                    RefundStatus = table.Column<int>(nullable: false),
-                    Remark = table.Column<string>(nullable: true),
-                    HandlerId = table.Column<int>(nullable: false)
+                    Remark = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -315,7 +312,7 @@ namespace Haiyue.HYEF.Migrations
                         column: x => x.HandlerId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -325,7 +322,7 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     GameId = table.Column<int>(nullable: false),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     OrderNumber = table.Column<string>(nullable: true),
@@ -341,7 +338,7 @@ namespace Haiyue.HYEF.Migrations
                     PaymentAccount = table.Column<string>(nullable: true),
                     PaymentStatus = table.Column<int>(nullable: false),
                     Remarks = table.Column<string>(nullable: true),
-                    HandlerId = table.Column<int>(nullable: false)
+                    HandlerId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -363,7 +360,7 @@ namespace Haiyue.HYEF.Migrations
                         column: x => x.HandlerId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -373,15 +370,18 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
-                    OrderTime = table.Column<DateTime>(nullable: false),
-                    HandlerId = table.Column<int>(nullable: false),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
+                    RefundTime = table.Column<DateTime>(nullable: false),
                     OrderNumber = table.Column<string>(nullable: true),
                     ServiceName = table.Column<string>(nullable: true),
-                    TotalExpenditure = table.Column<string>(nullable: true),
-                    PaymentStatus = table.Column<int>(nullable: false),
+                    GmaeOrGiftCard = table.Column<string>(nullable: true),
+                    Product = table.Column<string>(nullable: true),
                     ActualPayment = table.Column<double>(nullable: false),
-                    Remark = table.Column<string>(nullable: true)
+                    ActualRefund = table.Column<double>(nullable: false),
+                    RefundAmount = table.Column<double>(nullable: false),
+                    RefundStatus = table.Column<int>(nullable: false),
+                    Remark = table.Column<string>(nullable: true),
+                    HandlerId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -391,7 +391,7 @@ namespace Haiyue.HYEF.Migrations
                         column: x => x.HandlerId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -401,10 +401,10 @@ namespace Haiyue.HYEF.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
-                    LastUpTime = table.Column<DateTime>(maxLength: 30, nullable: true),
+                    LastUpDateTime = table.Column<DateTime>(maxLength: 30, nullable: false),
                     TaskId = table.Column<int>(nullable: false),
                     Content = table.Column<string>(nullable: true),
-                    OperatorId = table.Column<int>(nullable: false),
+                    OperatorId = table.Column<string>(nullable: true),
                     BeginTime = table.Column<DateTime>(nullable: false),
                     EndTime = table.Column<DateTime>(nullable: false)
                 },
@@ -416,7 +416,7 @@ namespace Haiyue.HYEF.Migrations
                         column: x => x.OperatorId,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

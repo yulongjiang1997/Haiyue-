@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class LeaveAMessage:BaseModel
+    public class LeaveAMessage:BaseModel<int>
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         //[ForeignKey("UserId")]
         //public virtual User User { get; set; }

@@ -20,12 +20,12 @@ namespace Haiyue.Model.Dto.TaskLists
         /// <summary>
         /// 发布人ID
         /// </summary>
-        public int PublisherId { get; set; }
+        public string PublisherId { get; set; }
 
         /// <summary>
         /// 指派人ID
         /// </summary>
-        public int AssignId { get; set; }
+        public string AssignId { get; set; }
 
         /// <summary>
         /// 任务开始时间

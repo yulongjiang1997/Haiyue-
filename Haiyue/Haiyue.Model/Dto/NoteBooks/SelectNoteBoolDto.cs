@@ -6,6 +6,6 @@ namespace Haiyue.Model.Dto.NoteBooks
 {
     public class SelectNoteBoolDto:SelectBaseDto
     {
-        public int UserId { get; set; }
+        public string UserId { get; set; }
     }
 }

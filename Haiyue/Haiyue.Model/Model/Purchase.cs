@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class Purchase:BaseModel
+    public class Purchase:BaseModel<int>
     {
         /// <summary>
         /// 游戏外键ID
@@ -95,7 +95,7 @@ namespace Haiyue.Model.Model
         /// <summary>
         /// 操作人
         /// </summary>
-        public int HandlerId { get; set; }
+        public string HandlerId { get; set; }
 
         [ForeignKey("HandlerId")]
         public User Handler { get; set; }

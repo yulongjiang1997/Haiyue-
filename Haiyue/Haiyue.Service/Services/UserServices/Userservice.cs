@@ -48,6 +48,7 @@ namespace Haiyue.Service.Services.UserServices
             var user = _mapper.Map<User>(model);
             //密码使用MD5加密
             user.Password = MD5Help.MD5Encrypt32(user.Password);
+            user.Id = Guid.NewGuid().ToString();
             _context.Users.Add(user);
             returnResult.Obj = await _context.SaveChangesAsync() > 0;
             return returnResult;
@@ -58,7 +59,7 @@ namespace Haiyue.Service.Services.UserServices
         /// </summary>
         /// <param name="id">用户id</param>
         /// <returns></returns>
-        public async Task<bool> DeleteUserByIdAsync(int id)
+        public async Task<bool> DeleteUserByIdAsync(string id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(i => i.Id == id);
             if (user != null)
@@ -74,7 +75,7 @@ namespace Haiyue.Service.Services.UserServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        public async Task<ReturnData<bool>> EditUserByIdAsync(int id, UserAddOrEditDto model)
+        public async Task<ReturnData<bool>> EditUserByIdAsync(string id, UserAddOrEditDto model)
         {
             var returnResult = new ReturnData<bool>();
             var user = await _context.Users.FirstOrDefaultAsync(i => i.Id == id);
@@ -141,10 +142,10 @@ namespace Haiyue.Service.Services.UserServices
         /// <param name="idNumber">身份证</param>
         /// <param name="editId">编辑使用的用户id 添加用户不使用</param>
         /// <returns></returns>
-        private async Task<bool> ChekeUserOnly(string idNumber, int? editId = null)
+        private async Task<bool> ChekeUserOnly(string idNumber, string editId = "")
         {
             User user = new User();
-            if (editId.HasValue)
+            if (!string.IsNullOrEmpty(editId))
             {
                 //如果编辑用户的Id不为空 那么检查id不为当前id的用户是否有重复信息
                 user = await _context.Users.FirstOrDefaultAsync(i =>i.IdNumber == idNumber && i.Id != editId);
@@ -214,13 +215,13 @@ namespace Haiyue.Service.Services.UserServices
             return result;
         }
 
-        public bool CheckTokenTimeOut(int userId, string token)
+        public bool CheckTokenTimeOut(string userId, string token)
         {
             var timeOut = _context.LoginInfos.FirstOrDefault(i => i.UserId == userId && i.Token == token && i.OutTime > DateTime.Now);
             return timeOut != null;
         }
 
-        public bool CheckIsAdmin(int userId)
+        public bool CheckIsAdmin(string userId)
         {
             var timeOut = _context.LoginInfos.FirstOrDefault(i => i.UserId == userId && i.User.Jurisdiction == JurisdictionType.SuperAdmin);
             return timeOut != null;

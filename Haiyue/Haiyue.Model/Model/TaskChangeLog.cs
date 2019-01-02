@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class TaskChangeLog:BaseModel
+    public class TaskChangeLog:BaseModel<int>
     {
         public int TaskId { get; set; }
 
@@ -18,7 +18,7 @@ namespace Haiyue.Model.Model
         /// <summary>
         /// 操作人ID
         /// </summary>
-        public int OperatorId { get; set; }
+        public string OperatorId { get; set; }
 
         [ForeignKey("OperatorId")]
         public virtual User Operator { get; set; }

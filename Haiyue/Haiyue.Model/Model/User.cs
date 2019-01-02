@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class User : BaseModel
+    public class User : BaseModel<string>
     {
         /// <summary>
         /// 姓名

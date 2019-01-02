@@ -31,14 +31,14 @@ namespace Haiyue.Service.Services.LeaveAMessageServices
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> DeleteReplyAsync(int id);
+        Task<ReturnData<bool>> DeleteReplyAsync(int id,string userId);
 
         /// <summary>
         /// 删除留言
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> DeleteAsync(int id);
+        Task<ReturnData<bool>> DeleteAsync(int id,string userId);
 
         /// <summary>
         /// 编辑留言

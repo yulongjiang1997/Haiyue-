@@ -235,7 +235,7 @@ namespace Haiyue.Service.Services.TaskListServices
             return result;
         }
 
-        public async Task<bool> EditTaskHaveReadStatus(int taskId, int userId)
+        public async Task<bool> EditTaskHaveReadStatus(int taskId, string userId)
         {
             var taskByUser = await _context.TaskLists.Where(i => i.AssignId == userId && i.Id == taskId && i.IsHave == TaskIsHaveReadType.No).FirstOrDefaultAsync();
             if (taskByUser != null)

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class Refund : BaseModel
+    public class Refund : BaseModel<int>
     {
         /// <summary>
         /// 退款时间
@@ -61,7 +61,7 @@ namespace Haiyue.Model.Model
         /// <summary>
         /// 操作人
         /// </summary>
-        public int HandlerId { get; set; }
+        public string HandlerId { get; set; }
 
         [ForeignKey("HandlerId")]
         public User Handler { get; set; }

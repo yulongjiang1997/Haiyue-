@@ -4,6 +4,7 @@ using Haiyue.Model;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.LeaveAMessages;
 using Haiyue.Model.Dto.LeaveAMessages.LeaveAMessageReplys;
+using Haiyue.Model.Enums;
 using Haiyue.Model.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -28,16 +29,27 @@ namespace Haiyue.Service.Services.LeaveAMessageServices
         public async Task<bool> CreateAsync(AddOrEditLeaveAMessageDto model)
         {
             var leaveAMessage = _mapper.Map<LeaveAMessage>(model);
+            leaveAMessage.LastUpDateTime = DateTime.Now;
             _context.LeaveAMessages.Add(leaveAMessage);
 
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<ReturnData<bool>> DeleteAsync(int id, string userId)
         {
+            var result = new ReturnData<bool>();
             var leaveAMessage = await _context.LeaveAMessages.FirstOrDefaultAsync(i => i.Id == id);
+            var user = await _context.Users.FirstOrDefaultAsync(i => i.Id == userId);
+            if (user == null || !(user.Id == leaveAMessage.UserId || user.Jurisdiction == JurisdictionType.SuperAdmin))
+            {
+                result.Obj = false;
+                result.Success = false;
+                result.Message = "非本人或者管理员，无法删除";
+                return result;
+            }
             _context.LeaveAMessages.Remove(leaveAMessage);
-            return await _context.SaveChangesAsync() > 0;
+            result.Obj = await _context.SaveChangesAsync() > 0;
+            return result;
         }
 
         public async Task<bool> CreateReplyAsync(AddOrEditLeaveAMessageReplyDto model)
@@ -47,11 +59,21 @@ namespace Haiyue.Service.Services.LeaveAMessageServices
             return await _context.SaveChangesAsync() > 0;
         }
 
-        public async Task<bool> DeleteReplyAsync(int id)
+        public async Task<ReturnData<bool>> DeleteReplyAsync(int id, string userId)
         {
+            var result = new ReturnData<bool>();
             var leaveAMessage = await _context.LeaveAMessageReplys.FirstOrDefaultAsync(i => i.Id == id);
+            var user = await _context.Users.FirstOrDefaultAsync(i => i.Id == userId);
+            if (user == null || !(user.Id == leaveAMessage.ReplyUserId || user.Jurisdiction == JurisdictionType.SuperAdmin))
+            {
+                result.Obj = false;
+                result.Success = false;
+                result.Message = "非本人或者管理员，无法删除";
+                return result;
+            }
             _context.LeaveAMessageReplys.Remove(leaveAMessage);
-            return await _context.SaveChangesAsync() > 0;
+            result.Obj = await _context.SaveChangesAsync() > 0;
+            return result;
         }
 
         public async Task<ReturnData<bool>> EditAsync(int id, AddOrEditLeaveAMessageDto model)
@@ -86,11 +108,27 @@ namespace Haiyue.Service.Services.LeaveAMessageServices
                                     Title = lam.Title,
                                     UserName = lamu.Name
                                 };
+
+            switch (model.SelectCondition)
+            {
+                case "*":
+                    if (!string.IsNullOrEmpty(model.SelectKeyword))
+                    {
+                        leaveAMessage = leaveAMessage.Where(i => EF.Functions.Like(i.Title, $"%{model.SelectKeyword}%")
+                                                              || EF.Functions.Like(i.Content, $"%{model.SelectKeyword}%"));
+                    }
+                    break;
+                default:
+                    break;
+            }
+
             var resultPagin = await leaveAMessage.Pagin(model).OrderBy(i => i.CreateTime).ToListAsync();
+
+
             foreach (var item in resultPagin)
             {
                 //循环获得当前留言ID 并通过留言ID获得对应的回复
-                item.LeaveAMessageReply = _mapper.Map<List<ReturnLeaveAMessageReplyDto>>( await _context.LeaveAMessageReplys.Include(i => i.ReplyUser).Where(i => i.LeaveAMessageId == item.Id).ToListAsync());
+                item.LeaveAMessageReply = _mapper.Map<List<ReturnLeaveAMessageReplyDto>>(await _context.LeaveAMessageReplys.Include(i => i.ReplyUser).Where(i => i.LeaveAMessageId == item.Id).ToListAsync());
             }
             result.Amount = model.Amount;
             result.Total = await leaveAMessage.CountAsync();

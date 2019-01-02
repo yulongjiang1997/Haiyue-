@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Haiyue.Model.Model
 {
-    public class TaskStatusLog:BaseModel
+    public class TaskStatusLog:BaseModel<int>
     {
         public int TaskId { get; set; }
 
