@@ -99,5 +99,37 @@ namespace Haiyue.Web.Controllers
 
             return Ok(result);
         }
+
+        /// <summary>
+        /// 根据用户分页查询任务
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("QueryPaginByUser")]
+        public async Task<IActionResult> QueryPaginByUserAsync(SelectTaskListDto model)
+        {
+
+            var result = await _service.QueryPaginByUser(model);
+
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// 修改任务阅读状态为已阅读
+        /// </summary>
+        /// <param name="taskId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("EditIsHave")]
+        public async Task<IActionResult> EditIsHave(int taskId,int userId)
+        {
+            var result = new ReturnData<bool>();
+
+            result.Obj = await _service.EditTaskHaveReadStatus(taskId, userId);
+
+            return Ok(result);
+        }
     }
 }

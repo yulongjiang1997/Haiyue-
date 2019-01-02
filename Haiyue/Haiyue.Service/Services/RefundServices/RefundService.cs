@@ -2,6 +2,7 @@
 using Haiyue.HYEF;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.Refunds;
+using Haiyue.Model.Enums;
 using Haiyue.Model.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -49,19 +50,33 @@ namespace Haiyue.Service.Services.RefundServices
             return await _context.SaveChangesAsync() > 0;
         }
 
+        public async Task<bool> EditRefundStatusAsync(int id)
+        {
+            var refund = await _context.Refunds.FirstOrDefaultAsync(i => i.Id == id && i.RefundStatus == RefundStatusType.NotRefundedYet);
+            if (refund != null)
+            {
+                refund.RefundStatus = RefundStatusType.Refunded;
+            }
+            return await _context.SaveChangesAsync() > 0;
+        }
+
         public async Task<ReturnPaginSelectDto<ReturnRefundDto>> QueryPaginAsync(SelectRefundDto model)
         {
             var result = new ReturnPaginSelectDto<ReturnRefundDto>();
-            var refund = _context.Refunds.AsNoTracking();
+            var refund = _context.Refunds.Include(i => i.Handler).AsNoTracking();
 
             switch (model.SelectCondition)
             {
-                case "OrderNumber": refund = refund.Where(i => EF.Functions.Like(i.OrderNumber, $"{model.SelectKeyword}")); break;
-                case "ServiceName": refund.Where(i => EF.Functions.Like(i.ServiceName, $"{model.SelectKeyword}")); break;
-                case "Product": refund.Where(i => EF.Functions.Like(i.Product, $"{model.SelectKeyword}")); break;
-                case "*": refund.Where(i => EF.Functions.Like(i.OrderNumber, $"{model.SelectKeyword}")||
-                                            EF.Functions.Like(i.ServiceName, $"{model.SelectKeyword}")||
-                                            EF.Functions.Like(i.Product, $"{model.SelectKeyword}"));
+                case "OrderNumber": refund = refund.Where(i => EF.Functions.Like(i.OrderNumber, $"%{model.SelectKeyword}%")); break;
+                case "ServiceName": refund = refund.Where(i => EF.Functions.Like(i.ServiceName, $"%{model.SelectKeyword}%")); break;
+                case "Product": refund = refund.Where(i => EF.Functions.Like(i.Product, $"%{model.SelectKeyword}%")); break;
+                case "*":
+                    if (!string.IsNullOrEmpty(model.SelectKeyword))
+                    {
+                        refund = refund.Where(i => EF.Functions.Like(i.OrderNumber, $"%{model.SelectKeyword}%") ||
+                                          EF.Functions.Like(i.ServiceName, $"%{model.SelectKeyword}%") ||
+                                          EF.Functions.Like(i.Product, $"%{model.SelectKeyword}%"));
+                    }
                     break;
                 default:
                     break;
@@ -70,6 +85,16 @@ namespace Haiyue.Service.Services.RefundServices
             if (model.RefundStatus.HasValue)
             {
                 refund = refund.Where(i => i.RefundStatus == model.RefundStatus);
+            }
+
+            if (model.BeginTime.HasValue)
+            {
+                refund = refund.Where(i => i.RefundTime >= model.BeginTime);
+            }
+
+            if (model.EndTime.HasValue)
+            {
+                refund = refund.Where(i => i.RefundTime <= model.EndTime);
             }
 
             result.Amount = model.Amount;

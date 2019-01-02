@@ -253,6 +253,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Haiyue.Web.Controllers.OtherOrderController.EditPaymentStatusAsync(System.Int32)">
+            <summary>
+            修改付款状态
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Haiyue.Web.Controllers.PositionController.CreateAsync(Haiyue.Model.Dto.Positions.PositionAddOrEditDto)">
             <summary>
             添加职位
@@ -344,6 +351,13 @@
             <param name="model"></param>
             <returns></returns>
         </member>
+        <member name="M:Haiyue.Web.Controllers.RefundController.EditRefundStatusAsync(System.Int32)">
+            <summary>
+            修改退款状态
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Haiyue.Web.Controllers.TaskListController.CreateAsync(Haiyue.Model.Dto.TaskLists.AddOrEditTaskListDto)">
             <summary>
             添加任务
@@ -377,6 +391,21 @@
             分页查询任务
             </summary>
             <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.TaskListController.QueryPaginByUserAsync(Haiyue.Model.Dto.TaskLists.SelectTaskListDto)">
+            <summary>
+            根据用户分页查询任务
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Haiyue.Web.Controllers.TaskListController.EditIsHave(System.Int32,System.Int32)">
+            <summary>
+            修改任务阅读状态为已阅读
+            </summary>
+            <param name="taskId"></param>
+            <param name="userId"></param>
             <returns></returns>
         </member>
         <member name="M:Haiyue.Web.Controllers.UserController.GetJurisdictionType">

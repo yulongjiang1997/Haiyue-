@@ -4,14 +4,16 @@ using Haiyue.HYEF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Haiyue.HYEF.Migrations
 {
     [DbContext(typeof(HYContext))]
-    partial class HYContextModelSnapshot : ModelSnapshot
+    [Migration("20190101103844_Updatetable1")]
+    partial class Updatetable1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

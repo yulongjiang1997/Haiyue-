@@ -2,6 +2,7 @@
 using Haiyue.HYEF;
 using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.OtherOrders;
+using Haiyue.Model.Enums;
 using Haiyue.Model.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -38,6 +39,16 @@ namespace Haiyue.Service.Services.OtherOrderServices
             return await _context.SaveChangesAsync() > 0;
         }
 
+        public async Task<bool> EditPaymentStatusAsync(int id)
+        {
+            var otherOrder = await _context.OtherOrders.FirstOrDefaultAsync(i => i.Id == id && i.PaymentStatus == PaymentStatusType.Unpaid);
+            if (otherOrder != null)
+            {
+                otherOrder.PaymentStatus = PaymentStatusType.AlreadyPaid;
+            }
+            return await _context.SaveChangesAsync() > 0;
+        }
+
         public async Task<bool> EditAsync(int id, AddOrEditOtherOrderDto model)
         {
             var otherOrder = await _context.OtherOrders.FirstOrDefaultAsync(i => i.Id == id);
@@ -52,15 +63,19 @@ namespace Haiyue.Service.Services.OtherOrderServices
         public async Task<ReturnPaginSelectDto<ReturnOtherOrderDto>> QueryPaginAsync(SelectOtherOrderDto model)
         {
             var result = new ReturnPaginSelectDto<ReturnOtherOrderDto>();
-            var otherOrders = _context.OtherOrders.AsNoTracking();
+            var otherOrders = _context.OtherOrders.Include(i=>i.Handler).AsNoTracking();
 
             switch (model.SelectCondition)
             {
-                case "OrderNumber": otherOrders = otherOrders.Where(i => EF.Functions.Like(i.OrderNumber, $"{model.SelectKeyword}")); break;
-                case "ServiceName": otherOrders.Where(i => EF.Functions.Like(i.ServiceName, $"{model.SelectKeyword}")); break;
+                case "OrderNumber": otherOrders = otherOrders.Where(i => EF.Functions.Like(i.OrderNumber, $"%{model.SelectKeyword}%")); break;
+                case "ServiceName": otherOrders = otherOrders.Where(i => EF.Functions.Like(i.ServiceName, $"%{model.SelectKeyword}%")); break;
                 case "*":
-                    otherOrders.Where(i => EF.Functions.Like(i.OrderNumber, $"{model.SelectKeyword}") ||
-                                      EF.Functions.Like(i.ServiceName, $"{model.SelectKeyword}"));
+                    if(!string.IsNullOrEmpty(model.SelectKeyword))
+                    {
+                        otherOrders = otherOrders.Where(i => EF.Functions.Like(i.OrderNumber, $"%{model.SelectKeyword}%") ||
+                                     EF.Functions.Like(i.ServiceName, $"%{model.SelectKeyword}%"));
+                    }
+                   
                     break;
                 default:
                     break;
@@ -69,6 +84,16 @@ namespace Haiyue.Service.Services.OtherOrderServices
             if (model.PaymentStatus.HasValue)
             {
                 otherOrders = otherOrders.Where(i => i.PaymentStatus == model.PaymentStatus);
+            }
+
+            if (model.BeginTime.HasValue)
+            {
+                otherOrders = otherOrders.Where(i => i.OrderTime >= model.BeginTime);
+            }
+
+            if (model.EndTime.HasValue)
+            {
+                otherOrders = otherOrders.Where(i => i.OrderTime <= model.EndTime);
             }
 
             result.Amount = model.Amount;

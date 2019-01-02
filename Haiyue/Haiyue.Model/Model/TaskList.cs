@@ -43,5 +43,10 @@ namespace Haiyue.Model.Model
         /// </summary>
         public TaskStatusType TaskStatus { get; set; }
 
+        /// <summary>
+        /// 是否阅读任务
+        /// </summary>
+        public TaskIsHaveReadType IsHave { get; set; }
+
     }
 }

@@ -37,5 +37,13 @@ namespace Haiyue.Service.Services.OtherOrderServices
         /// <param name="model"></param>
         /// <returns></returns>
         Task<ReturnPaginSelectDto<ReturnOtherOrderDto>> QueryPaginAsync(SelectOtherOrderDto model);
+
+        /// <summary>
+        /// 修改付款状态
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="statusType"></param>
+        /// <returns></returns>
+        Task<bool> EditPaymentStatusAsync(int id);
     }
 }

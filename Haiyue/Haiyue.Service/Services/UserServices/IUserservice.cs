@@ -15,14 +15,14 @@ namespace Haiyue.Service.Services.UserServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> CreateAsync(UserAddOrEditDto model);
+        Task<bool> CreateUserAsync(UserAddOrEditDto model);
 
         /// <summary>
         /// 删除用户
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        Task<bool> DeleteAsync(int id);
+        Task<bool> DeleteUserByIdAsync(int id);
 
         /// <summary>
         /// 编辑用户
@@ -30,7 +30,7 @@ namespace Haiyue.Service.Services.UserServices
         /// <param name="id"></param>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<bool> EditAsync(int id, UserAddOrEditDto model);
+        Task<bool> EditUserByIdAsync(int id, UserAddOrEditDto model);
 
         /// <summary>
         /// 分页查询游戏

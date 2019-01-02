@@ -47,6 +47,11 @@ namespace Haiyue.Model.Dto.TaskLists
         /// </summary>
         public TaskStatusType TaskStatus { get; set; }
 
+        /// <summary>
+        /// 任务是否阅读
+        /// </summary>
+        public TaskIsHaveReadType IsHave { get; set; }
+
         public List<ReturnTaskStatueLogDto> TaskStatusLogs { get; set; }
 
         public List<ReturnTaskChangeLogDto> TaskChangeLogs { get; set; }

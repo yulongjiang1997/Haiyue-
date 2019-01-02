@@ -33,7 +33,10 @@ namespace Haiyue.Web.Controllers
             var result = new ReturnData<bool>();
 
             result.Obj = await _service.CreateAsync(model);
-
+            if(!result.Obj)
+            {
+                result.Message = "游戏名不能重复，请确认信息是否正确";
+            }
             return Ok(result);
         }
 
@@ -65,7 +68,10 @@ namespace Haiyue.Web.Controllers
             var result = new ReturnData<bool>();
 
             result.Obj = await _service.EditAsync(id, model);
-
+            if (!result.Obj)
+            {
+                result.Message = "游戏名不能重复，请确认信息是否正确";
+            }
             return Ok(result);
         }
 

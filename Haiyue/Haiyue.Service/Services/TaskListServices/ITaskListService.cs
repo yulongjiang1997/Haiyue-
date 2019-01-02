@@ -1,5 +1,6 @@
 ﻿using Haiyue.Model.Dto;
 using Haiyue.Model.Dto.TaskLists;
+using Haiyue.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -44,5 +45,20 @@ namespace Haiyue.Service.Services.TaskListServices
         /// <param name="model"></param>
         /// <returns></returns>
         Task<ReturnPaginSelectDto<ReturnTaskListDto>> QueryPaginAsync(SelectTaskListDto model);
+
+        /// <summary>
+        /// 根据User查询任务
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Task<List<ReturnPaginSelectDto<ReturnTaskListDto>>> QueryPaginByUser(SelectTaskListDto model);
+
+        /// <summary>
+        /// 修改任务阅读状态
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="isHaveRead"></param>
+        /// <returns></returns>
+        Task<bool> EditTaskHaveReadStatus(int taskId,int userId);
     }
 }

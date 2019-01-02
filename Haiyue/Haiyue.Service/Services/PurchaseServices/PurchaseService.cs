@@ -82,11 +82,11 @@ namespace Haiyue.Service.Services.PurchaseServices
             switch (model.SelectCondition)
             {
                 //筛选符合输入的订单号的数据
-                case "OrderNumber": purchases = purchases.Where(i => EF.Functions.Like(i.OrderNumber, $"{model.SelectKeyword}")); break;
+                case "OrderNumber": purchases = purchases.Where(i => EF.Functions.Like(i.OrderNumber, $"%{model.SelectKeyword}%")); break;
                 //筛选符合输入的服务器名称的数据
-                case "ServerName": purchases = purchases.Where(i => EF.Functions.Like(i.SupplierPhone, $"{model.SelectKeyword}")); break;
+                case "ServerName": purchases = purchases.Where(i => EF.Functions.Like(i.SupplierPhone, $"%{model.SelectKeyword}%")); break;
                 //筛选输入的供应商联系方式的数据
-                case "SupplierPhone": purchases = purchases.Where(i => EF.Functions.Like(i.OrderNumber, $"{model.SelectKeyword}")); break;
+                case "SupplierPhone": purchases = purchases.Where(i => EF.Functions.Like(i.OrderNumber, $"%{model.SelectKeyword}%")); break;
                 default:
                     break;
             }

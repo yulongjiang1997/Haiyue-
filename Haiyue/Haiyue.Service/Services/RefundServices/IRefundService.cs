@@ -37,5 +37,13 @@ namespace Haiyue.Service.Services.RefundServices
         /// <param name="model"></param>
         /// <returns></returns>
         Task<ReturnPaginSelectDto<ReturnRefundDto>> QueryPaginAsync(SelectRefundDto model);
+
+        /// <summary>
+        /// 修改退款状态
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="statusType"></param>
+        /// <returns></returns>
+        Task<bool> EditRefundStatusAsync(int id);
     }
 }

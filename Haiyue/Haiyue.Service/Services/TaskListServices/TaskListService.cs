@@ -77,7 +77,7 @@ namespace Haiyue.Service.Services.TaskListServices
                            orderby t.CreateTime
                            select new ReturnTaskListDto()
                            {
-                               Id=t.Id,
+                               Id = t.Id,
                                AssignName = au.Name,
                                BeginTime = t.BeginTime,
                                Content = t.Content,
@@ -87,14 +87,30 @@ namespace Haiyue.Service.Services.TaskListServices
                                TaskStatusLogs = null,
                                TaskStatus = t.TaskStatus,
                                Title = t.Title,
-                               CreateTime=t.CreateTime
+                               CreateTime = t.CreateTime
                            };
 
+            var resultPagin = await DataScreening(model, taskList);
+            result.Amount = model.Amount;
+            result.Total = await taskList.CountAsync();
+            result.PageNumber = model.PageNumber;
+            result.Items = resultPagin.ToList();
+            return result;
+        }
+
+        /// <summary>
+        ///  数据筛选
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="taskList"></param>
+        /// <returns></returns>
+        private async Task<IQueryable<ReturnTaskListDto>> DataScreening(SelectTaskListDto model, IQueryable<ReturnTaskListDto> taskList)
+        {
             var pagin = await taskList.Pagin(model).ToListAsync();
 
             foreach (var item in pagin)
             {
-                item.TaskChangeLogs = _mapper.Map<List<ReturnTaskChangeLogDto>>(await _context.TaskChangeLogss.Include(i=>i.Operator).Where(i => i.TaskId == item.Id).ToListAsync());
+                item.TaskChangeLogs = _mapper.Map<List<ReturnTaskChangeLogDto>>(await _context.TaskChangeLogss.Include(i => i.Operator).Where(i => i.TaskId == item.Id).ToListAsync());
                 item.TaskStatusLogs = _mapper.Map<List<ReturnTaskStatueLogDto>>(await _context.TaskStatusLogss.Where(i => i.TaskId == item.Id).ToListAsync());
             }
             var resultPagin = pagin.AsQueryable();
@@ -111,18 +127,18 @@ namespace Haiyue.Service.Services.TaskListServices
             if (model.TaskDelegationType.HasValue)
             {
                 var user = await _context.Users.FirstOrDefaultAsync(i => i.Id == model.UserId);
-                if(model.TaskDelegationType==TaskDelegationType.BeAuthorised)
+                if (model.TaskDelegationType == TaskDelegationType.BeAuthorised)
                 {
-                    resultPagin = resultPagin.Where(i=>i.AssignName==user.Name);
+                    resultPagin = resultPagin.Where(i => i.AssignName == user.Name);
                 }
-                if(model.TaskDelegationType==TaskDelegationType.Sponsor)
+                if (model.TaskDelegationType == TaskDelegationType.Sponsor)
                 {
                     resultPagin = resultPagin.Where(i => i.PublisherName == user.Name);
                 }
-                
+
             }
 
-            if(model.TaskStatusType.HasValue)
+            if (model.TaskStatusType.HasValue)
             {
                 resultPagin = resultPagin.Where(i => i.TaskStatus == model.TaskStatusType);
             }
@@ -130,20 +146,95 @@ namespace Haiyue.Service.Services.TaskListServices
             switch (model.SelectCondition)
             {
                 case "*":
-                    resultPagin = resultPagin.Where(i=>EF.Functions.Like(i.Title,$"{model.SelectKeyword}")||
-                                                       EF.Functions.Like(i.Content, $"{model.SelectKeyword}")||
-                                                       EF.Functions.Like(i.PublisherName, $"{model.SelectKeyword}"));
+                    if (!string.IsNullOrEmpty(model.SelectKeyword))
+                    {
+                        resultPagin = resultPagin.Where(i => EF.Functions.Like(i.Title, $"%{model.SelectKeyword}%") ||
+                                                       EF.Functions.Like(i.Content, $"%{model.SelectKeyword}%") ||
+                                                       EF.Functions.Like(i.PublisherName, $"%{model.SelectKeyword}%"));
+                    }
+
                     break;
                 default:
                     break;
             }
-            
 
-            result.Amount = model.Amount;
-            result.Total = await taskList.CountAsync();
-            result.PageNumber = model.PageNumber;
-            result.Items =  resultPagin.ToList();
+            return resultPagin;
+        }
+
+        public async Task<List<ReturnPaginSelectDto<ReturnTaskListDto>>> QueryPaginByUser(SelectTaskListDto model)
+        {
+            var assignTaskList = from t in _context.TaskLists.Where(i => i.AssignId == model.UserId)
+                                 join au in _context.Users on t.AssignId equals au.Id
+                                 join pu in _context.Users on t.PublisherId equals pu.Id
+                                 orderby t.CreateTime
+                                 select new ReturnTaskListDto()
+                                 {
+                                     Id = t.Id,
+                                     AssignName = au.Name,
+                                     BeginTime = t.BeginTime,
+                                     Content = t.Content,
+                                     EndTime = t.EndTime,
+                                     PublisherName = pu.Name,
+                                     TaskChangeLogs = null,
+                                     TaskStatusLogs = null,
+                                     TaskStatus = t.TaskStatus,
+                                     Title = t.Title,
+                                     CreateTime = t.CreateTime
+                                 };
+
+            var publisherTaskList = from t in _context.TaskLists.Where(i => i.PublisherId == model.UserId)
+                                    join au in _context.Users on t.AssignId equals au.Id
+                                    join pu in _context.Users on t.PublisherId equals pu.Id
+                                    orderby t.CreateTime
+                                    select new ReturnTaskListDto()
+                                    {
+                                        Id = t.Id,
+                                        AssignName = au.Name,
+                                        BeginTime = t.BeginTime,
+                                        Content = t.Content,
+                                        EndTime = t.EndTime,
+                                        PublisherName = pu.Name,
+                                        TaskChangeLogs = null,
+                                        TaskStatusLogs = null,
+                                        TaskStatus = t.TaskStatus,
+                                        Title = t.Title,
+                                        CreateTime = t.CreateTime
+                                    };
+
+            var assignPagin = await DataScreening(model, assignTaskList);
+            var publisherPagin = await DataScreening(model, publisherTaskList);
+            var result = new List<ReturnPaginSelectDto<ReturnTaskListDto>>();
+
+            #region 指定用户是被委托人
+            var resultAssugnPagin = new ReturnPaginSelectDto<ReturnTaskListDto>();
+            resultAssugnPagin.Amount = model.Amount;
+            resultAssugnPagin.Total = assignPagin.Count();
+            resultAssugnPagin.PageNumber = model.PageNumber;
+            resultAssugnPagin.Items = assignPagin.ToList();
+            #endregion
+
+            #region 指定用户发布的任务
+            var resultPublisherPagin = new ReturnPaginSelectDto<ReturnTaskListDto>();
+            resultPublisherPagin.Amount = model.Amount;
+            resultPublisherPagin.Total = publisherPagin.Count();
+            resultPublisherPagin.PageNumber = model.PageNumber;
+            resultPublisherPagin.Items = publisherPagin.ToList();
+            #endregion
+
+            result.Add(resultAssugnPagin);
+            result.Add(resultPublisherPagin);
+
             return result;
+        }
+
+        public async Task<bool> EditTaskHaveReadStatus(int taskId, int userId)
+        {
+            var taskByUser = await _context.TaskLists.Where(i => i.AssignId == userId && i.Id == taskId && i.IsHave == TaskIsHaveReadType.No).FirstOrDefaultAsync();
+            if (taskByUser != null)
+            {
+                taskByUser.IsHave = TaskIsHaveReadType.Yes;
+            }
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

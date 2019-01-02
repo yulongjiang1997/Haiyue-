@@ -83,5 +83,19 @@ namespace Haiyue.Web.Controllers
 
             return Ok(result);
         }
+
+        /// <summary>
+        /// 修改付款状态
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("EditPaymentStatus")]
+        public async Task<IActionResult> EditPaymentStatusAsync(int id)
+        {
+            var result = new ReturnData<bool>();
+            result.Obj = await _service.EditPaymentStatusAsync(id);
+            return Ok(result);
+        }
     }
 }

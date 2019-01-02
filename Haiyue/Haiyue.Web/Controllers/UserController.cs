@@ -43,7 +43,7 @@ namespace Haiyue.Web.Controllers
         public async Task<IActionResult> CreateAsync(UserAddOrEditDto model)
         {
             var result = new ReturnData<bool>();
-            result.Obj = await _service.CreateAsync(model);
+            result.Obj = await _service.CreateUserAsync(model);
             return Ok(result);
         }
 
@@ -57,7 +57,7 @@ namespace Haiyue.Web.Controllers
         public async Task<IActionResult> DeleteAsync(int id)
         {
             var result = new ReturnData<bool>();
-            result.Obj = await _service.DeleteAsync(id);
+            result.Obj = await _service.DeleteUserByIdAsync(id);
             return Ok(result);
         }
 
@@ -71,7 +71,7 @@ namespace Haiyue.Web.Controllers
         public async Task<IActionResult> EditAsync(int id, UserAddOrEditDto model)
         {
             var result = new ReturnData<bool>();
-            result.Obj = await _service.EditAsync(id, model);
+            result.Obj = await _service.EditUserByIdAsync(id, model);
             return Ok(result);
         }
 

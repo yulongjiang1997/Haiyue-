@@ -11,7 +11,7 @@ namespace Haiyue.Model.Model
         /// <summary>
         /// 退款时间
         /// </summary>
-        public DateTime OtherTime { get; set; }
+        public DateTime RefundTime { get; set; }
 
         /// <summary>
         /// 订单号

@@ -52,7 +52,7 @@ namespace Haiyue.Service.Services.ExpenditureServices
         public async Task<ReturnPaginSelectDto<ReturnExpenditureDto>> QueryPaginAsync(SelectExpenditureDto model)
         {
             var result = new ReturnPaginSelectDto<ReturnExpenditureDto>();
-            var expenditure = _context.Expenditures.Include(i => i.ExpenditureType).Include(i=>i.User).AsNoTracking();
+            var expenditure = _context.Expenditures.Include(i => i.ExpenditureType).Include(i => i.User).AsNoTracking();
 
             if (model.BeginTime.HasValue)
             {
@@ -66,14 +66,17 @@ namespace Haiyue.Service.Services.ExpenditureServices
 
             if (model.ExpenditureTypeId.HasValue)
             {
-                expenditure = expenditure.Where(i => i.ExpenditureTypeId <= model.ExpenditureTypeId);
+                expenditure = expenditure.Where(i => i.ExpenditureTypeId == model.ExpenditureTypeId);
             }
 
             switch (model.SelectCondition)
             {
                 case "*":
-                    expenditure = expenditure.Where(i => EF.Functions.Like(i.Remarks, $"{model.SelectKeyword}") ||
-                                                 EF.Functions.Like(i.User.Name, $"{model.SelectKeyword}"));
+                    if (!string.IsNullOrEmpty(model.SelectKeyword))
+                    {
+                        expenditure = expenditure.Where(i => EF.Functions.Like(i.Remarks, $"%{model.SelectKeyword}%") ||
+                                                             EF.Functions.Like(i.User.Name, $"%{model.SelectKeyword}%"));
+                    }
                     break;
                 default:
                     break;
