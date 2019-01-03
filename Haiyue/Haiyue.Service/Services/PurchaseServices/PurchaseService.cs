@@ -31,6 +31,7 @@ namespace Haiyue.Service.Services.PurchaseServices
             {
                 var purchases = _mapper.Map<Purchase>(model);
                 purchases.RealIncomeRMB = model.RealIncome * currency.ExchangeRate;
+                purchases.LastUpDateTime = DateTime.Now;
                 _context.Purchases.Add(purchases);
             }
             else

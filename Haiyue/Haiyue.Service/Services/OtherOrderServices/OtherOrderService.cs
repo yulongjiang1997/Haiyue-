@@ -28,6 +28,7 @@ namespace Haiyue.Service.Services.OtherOrderServices
         public async Task<bool> CreateAsync(AddOrEditOtherOrderDto model)
         {
             var otherOrder = _mapper.Map<OtherOrder>(model);
+            otherOrder.LastUpDateTime = DateTime.Now;
             _context.OtherOrders.Add(otherOrder);
 
             return await _context.SaveChangesAsync() > 0;

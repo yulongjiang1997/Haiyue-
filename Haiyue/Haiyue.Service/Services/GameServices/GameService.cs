@@ -35,6 +35,7 @@ namespace Haiyue.Service.Services.GameServices
                 
             }
             var game = _mapper.Map<Game>(model);
+            game.LastUpDateTime = DateTime.Now;
             _context.Games.Add(game);
             returnResult.Obj = await _context.SaveChangesAsync() > 0;
             return returnResult;

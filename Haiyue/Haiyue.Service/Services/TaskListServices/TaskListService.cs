@@ -28,6 +28,7 @@ namespace Haiyue.Service.Services.TaskListServices
         public async Task<bool> CreateAsync(AddOrEditTaskListDto model)
         {
             var taskList = _mapper.Map<TaskList>(model);
+            taskList.LastUpDateTime = DateTime.Now;
             _context.TaskLists.Add(taskList);
             return await _context.SaveChangesAsync() > 0;
         }

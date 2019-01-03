@@ -27,6 +27,7 @@ namespace Haiyue.Service.Services.NoteBookServices
         public async Task<bool> CreateAsync(NoteBookAddOrEditDto model)
         {
             var noteBook = _mapper.Map<NoteBook>(model);
+            noteBook.LastUpDateTime = DateTime.Now;
             _context.NoteBooks.Add(noteBook);
 
             return await _context.SaveChangesAsync() > 0;

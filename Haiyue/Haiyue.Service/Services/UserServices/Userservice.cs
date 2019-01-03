@@ -49,6 +49,7 @@ namespace Haiyue.Service.Services.UserServices
             //密码使用MD5加密
             user.Password = MD5Help.MD5Encrypt32(user.Password);
             user.Id = Guid.NewGuid().ToString();
+            user.LastUpDateTime = DateTime.Now;
             _context.Users.Add(user);
             returnResult.Obj = await _context.SaveChangesAsync() > 0;
             return returnResult;

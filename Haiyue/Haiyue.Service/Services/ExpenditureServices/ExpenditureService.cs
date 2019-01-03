@@ -27,6 +27,7 @@ namespace Haiyue.Service.Services.ExpenditureServices
         public async Task<bool> CreateAsync(AddOrEditExpenditureDto model)
         {
             var expenditure = _mapper.Map<Expenditure>(model);
+            expenditure.LastUpDateTime = DateTime.Now;
             _context.Expenditures.Add(expenditure);
 
             return await _context.SaveChangesAsync() > 0;

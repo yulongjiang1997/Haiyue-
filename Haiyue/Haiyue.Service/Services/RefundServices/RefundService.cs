@@ -28,6 +28,7 @@ namespace Haiyue.Service.Services.RefundServices
         public async Task<bool> CreateAsync(AddOrEditRefundDto model)
         {
             var refund = _mapper.Map<Refund>(model);
+            refund.LastUpDateTime = DateTime.Now;
             _context.Refunds.Add(refund);
 
             return await _context.SaveChangesAsync() > 0;

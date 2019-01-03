@@ -35,6 +35,7 @@ namespace Haiyue.Service.Services.PositionServices
                 return returnResult;
             }
             var position = _mapper.Map<Position>(model);
+            position.LastUpDateTime = DateTime.Now;
             _context.Positions.Add(position);
             returnResult.Obj = await _context.SaveChangesAsync() > 0;
             return returnResult;

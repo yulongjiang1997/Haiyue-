@@ -38,6 +38,7 @@ namespace Haiyue.Service.Services.CurrencyServices
             }
             //通过automapper对象自动转换Dto为Model实体
             var currencys = _mapper.Map<Currency>(model);
+            currencys.LastUpDateTime = DateTime.Now;
             _context.Currencys.Add(currencys);
             returnResult.Obj = await _context.SaveChangesAsync() > 0;
             return returnResult;

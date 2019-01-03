@@ -35,6 +35,7 @@ namespace Haiyue.Service.Services.DepartmentServices
                 return returnResult;
             }
             var department = _mapper.Map<Department>(model);
+            department.LastUpDateTime = DateTime.Now;
             _context.Department.Add(department);
             returnResult.Obj = await _context.SaveChangesAsync() > 0;
             return returnResult;
