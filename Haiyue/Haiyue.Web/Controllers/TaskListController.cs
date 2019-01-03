@@ -127,5 +127,19 @@ namespace Haiyue.Web.Controllers
 
             return Ok(result);
         }
+
+        /// <summary>
+        /// 根据用户ID获得未读任务
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetHaveStatusIsNo")]
+        public async Task<IActionResult> GetHaveStatusIsNo(string userId)
+        {
+            var result = await _service.GetHaveStatusIsNo(userId);
+
+            return Ok(result);
+        }
     }
 }

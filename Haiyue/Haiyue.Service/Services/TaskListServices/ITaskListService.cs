@@ -52,7 +52,7 @@ namespace Haiyue.Service.Services.TaskListServices
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<List<ReturnPaginSelectDto<ReturnTaskListDto>>> QueryPaginByUser(SelectTaskListDto model);
+        Task<ReturnQueryPaginByUserDto> QueryPaginByUser(SelectTaskListDto model);
 
         /// <summary>
         /// 修改任务阅读状态
@@ -61,5 +61,12 @@ namespace Haiyue.Service.Services.TaskListServices
         /// <param name="isHaveRead"></param>
         /// <returns></returns>
         Task<bool> EditTaskHaveReadStatus(int taskId,string userId);
+
+        /// <summary>
+        /// 获取当前未查看任务
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        Task<ReturnPaginSelectDto<ReturnGetHaveStatueDto>> GetHaveStatusIsNo(string userId);
     }
 }

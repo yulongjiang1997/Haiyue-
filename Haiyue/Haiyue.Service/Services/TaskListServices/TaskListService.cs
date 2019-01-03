@@ -29,6 +29,7 @@ namespace Haiyue.Service.Services.TaskListServices
         {
             var taskList = _mapper.Map<TaskList>(model);
             taskList.LastUpDateTime = DateTime.Now;
+            taskList.IsHave = TaskIsHaveReadType.No;
             _context.TaskLists.Add(taskList);
             return await _context.SaveChangesAsync() > 0;
         }
@@ -66,7 +67,7 @@ namespace Haiyue.Service.Services.TaskListServices
 
         public async Task<bool> EditTaskStatus(int id, AddTaskStatusLogDto model)
         {
-            var tasklist = await _context.TaskLists.FirstOrDefaultAsync(i => i.Id == id&&i.TaskStatus==model.CurrentStatus);
+            var tasklist = await _context.TaskLists.FirstOrDefaultAsync(i => i.Id == id && i.TaskStatus == model.CurrentStatus);
             if (tasklist != null)
             {
                 tasklist.TaskStatus = model.ChangeStatus;
@@ -170,7 +171,7 @@ namespace Haiyue.Service.Services.TaskListServices
             return resultPagin;
         }
 
-        public async Task<List<ReturnPaginSelectDto<ReturnTaskListDto>>> QueryPaginByUser(SelectTaskListDto model)
+        public async Task<ReturnQueryPaginByUserDto> QueryPaginByUser(SelectTaskListDto model)
         {
             var assignTaskList = from t in _context.TaskLists.Where(i => i.AssignId == model.UserId)
                                  join au in _context.Users on t.AssignId equals au.Id
@@ -212,7 +213,7 @@ namespace Haiyue.Service.Services.TaskListServices
 
             var assignPagin = await DataScreening(model, assignTaskList);
             var publisherPagin = await DataScreening(model, publisherTaskList);
-            var result = new List<ReturnPaginSelectDto<ReturnTaskListDto>>();
+            var result = new ReturnQueryPaginByUserDto();
 
             #region 指定用户是被委托人
             var resultAssugnPagin = new ReturnPaginSelectDto<ReturnTaskListDto>();
@@ -230,8 +231,8 @@ namespace Haiyue.Service.Services.TaskListServices
             resultPublisherPagin.Items = publisherPagin.ToList();
             #endregion
 
-            result.Add(resultAssugnPagin);
-            result.Add(resultPublisherPagin);
+            result.MyReleaseTask=resultAssugnPagin;
+            result.SendToMeTask=resultPublisherPagin;
 
             return result;
         }
@@ -244,6 +245,37 @@ namespace Haiyue.Service.Services.TaskListServices
                 taskByUser.IsHave = TaskIsHaveReadType.Yes;
             }
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<ReturnPaginSelectDto<ReturnGetHaveStatueDto>> GetHaveStatusIsNo(string userId)
+        {
+            var result = new ReturnPaginSelectDto<ReturnGetHaveStatueDto>();
+
+            var task = await _context.TaskLists.Where(i => i.AssignId == userId && i.IsHave == TaskIsHaveReadType.No).OrderByDescending(i => i.CreateTime).ToListAsync();
+
+            var returnTask = new List<ReturnGetHaveStatueDto>();
+
+            for (int i = 0; i < (task.Count() > 3 ? 3 : task.Count()); i++)
+            {
+                returnTask.Add(new ReturnGetHaveStatueDto()
+                {
+                    Title = task[i].Title,
+                    UserName =  GetUserNameByUserId(task[i].PublisherId)
+                });
+            }
+
+            result.Total = task.Count;
+            result.Items = returnTask;
+            result.PageNumber = 1;
+            result.Amount = result.Total;
+
+            return result;
+        }
+
+        private string GetUserNameByUserId(string userId)
+        {
+            var user =  _context.Users.Where(i => i.Id == userId).FirstOrDefault();
+            return user == null ? "" : user.Name;
         }
     }
 }

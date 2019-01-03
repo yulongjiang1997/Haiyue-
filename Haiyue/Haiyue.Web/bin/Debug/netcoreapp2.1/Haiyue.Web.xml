@@ -408,6 +408,13 @@
             <param name="userId"></param>
             <returns></returns>
         </member>
+        <member name="M:Haiyue.Web.Controllers.TaskListController.GetHaveStatusIsNo(System.String)">
+            <summary>
+            根据用户ID获得未读任务
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
         <member name="M:Haiyue.Web.Controllers.UserController.GetJurisdictionType">
             <summary>
             获得所有权限名称
